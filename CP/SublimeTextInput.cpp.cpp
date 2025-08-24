@@ -1,1 +1,0 @@
-abdullah shah of class 10 b deem it an honour to conduct todays assembly

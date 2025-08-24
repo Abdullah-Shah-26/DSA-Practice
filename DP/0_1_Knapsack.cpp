@@ -93,9 +93,10 @@ return prev[maxwt];
     
     for(int W = wt[0] ; W <= maxwt; W++)
     prev[W] = val[0];
-    
+    1
     for(int idx = 1; idx < val.size(); idx++)
-    {//! instead of going L to R we will go R to L and overwrite prev values repeatedly instead of creating a curr
+    {
+    //! instead of going L to R we will go R to L and overwrite prev values repeatedly instead of creating a curr
         for(int w = maxwt ; w >= wt[0]; w--)
         {
             int notTake = 0 + prev[W];
