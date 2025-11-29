@@ -7,13 +7,12 @@ class DisjointSet
 public:
   DisjointSet(int n)
   {
-    size.resize(n + 1, 0);
     parent.resize(n + 1);
-    size.resize(n+1);
+    size.resize(n + 1);
     for (int i = 0; i <= n; i++)
     {
       parent[i] = i;
-      size[i] = 1; 
+      size[i] = 1;
     }
   }
   // Find Ultimate Parent
@@ -43,21 +42,34 @@ public:
     }
   }
 };
-int main(){
+int main()
+{
   DisjointSet ds(7);
-  ds.unionBySize(1,2);
-  ds.unionBySize(2,3);
-  ds.unionBySize(4,5);
-  ds.unionBySize(6,7);
-  ds.unionBySize(5,6);
+  ds.unionBySize(1, 2);
+  ds.unionBySize(2, 3);
+  ds.unionBySize(4, 5);
+  ds.unionBySize(6, 7);
+  ds.unionBySize(5, 6);
 
-  if(ds.findUPar(3) == ds.findUPar(7))
+  if (ds.findUPar(3) == ds.findUPar(7))
   {
-    cout<< "Same";
+    cout << "Same" << endl;
   }
   else
-    cout<< "Not Same";
+  {
+    cout << "Not Same" << endl;
+  }
 
-  ds.unionBySize(3,7);
+  ds.unionBySize(3, 7);
+
+  if (ds.findUPar(3) == ds.findUPar(7))
+  {
+    cout << "Same" << endl;
+  }
+  else
+  {
+    cout << "Not Same" << endl;
+  }
+
   return 0;
 }
