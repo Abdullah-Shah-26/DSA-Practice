@@ -9,7 +9,8 @@ Contains topic-wise solutions I worked on while building foundational problem-so
 - Stacks & Queues  
 - Binary Search  
 - Trees / BST  
-- AVL  
+- AVL
+- Segment Trees
 - Heaps  
 - Graphs  
 - Dynamic Programming  
