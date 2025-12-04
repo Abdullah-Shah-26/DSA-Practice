@@ -20,6 +20,3 @@ Contains topic-wise solutions & Implementations I worked on while building found
 - DSU  
 - C++ STL  
 - Competitive Programming
-
-## 📌 Note
-I no longer actively update this repo since moving my DSA workflow to **Codolio**.
