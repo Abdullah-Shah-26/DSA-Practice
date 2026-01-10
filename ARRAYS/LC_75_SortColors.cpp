@@ -1,3 +1,6 @@
+#include<bits/stdc++.h>
+using namespace std;
+
 class Solution {
     public:
         void sortColors(vector<int>& nums) { //! DNF algorithm // TC = O(n) - divides arr into 3 partition of 0 s 1 s and 2s along with unsorted part which keeps minimizing and sorts in 1 pass
