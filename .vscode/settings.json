@@ -56,18 +56,4 @@
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
   "C_Cpp_Runner.msvcSecureNoWarnings": false
-  
-  // Disable AI-style full-line/inline completions for C++ only,
-  // keep normal IntelliSense suggestions working
-  "[cpp]": {
-    "editor.inlineSuggest.enabled": false,
-    "editor.tabCompletion": "off",
-    "editor.acceptSuggestionOnEnter": "off"
-  },
-  
-  // Turn off GitHub Copilot suggestions for C++ only
-  "github.copilot.enable": {
-    "*": true,
-    "cpp": true
-  }
 }
