@@ -17,9 +17,9 @@ int NCR(int n, int r) // TC = O(r)  SC = O(1)
 //* TC = O(N * R)
 void BF(int n)
 {
-  for(int  c = 1; c < n; c++)
+  for (int c = 1; c < n; c++)
   {
-      cout << NCR(n-1,c-1) << " "; 
+    cout << NCR(n - 1, c - 1) << " ";
   }
 }
 
@@ -51,8 +51,35 @@ void printPascalRow(int r, int n)
   }
 }
 
-  int main()
-  {
-    int n = 5;
-    NCR(5, 2);
-  }
+class Solution {
+public:
+    vector<int>generateRow(int row)
+    {
+      long long ans = 1;
+      vector<int>ansRow;
+      ansRow.push_back(1);
+      for(int col = 1; col < row; col++) // TC = O(r)
+      {
+        ans *= (row - col);
+        ans /= col;
+        ansRow.push_back(ans);
+      }
+      return ansRow;
+    }
+    vector<vector<int>> generate(int N) {
+      vector<vector<int>>ans;
+      for(int i = 1; i <= N; i++) // O(N x R)
+      {
+        ans.push_back(generateRow(i));
+      }
+      return ans;
+    }
+};
+
+
+int main()
+{
+  int n = 5;
+  NCR(5, 2);
+}
+
