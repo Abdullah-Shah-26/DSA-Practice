@@ -19,4 +19,3 @@ Contains topic-wise solutions & Implementations I worked on while building found
 - Sliding Window  
 - DSU  
 - C++ STL  
-- Competitive Programming
