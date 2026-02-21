@@ -15,17 +15,24 @@ using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 
 static const int MOD = 1'000'000'007;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio()
+{
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+}
 
-class Solution {
+class Solution
+{
 public:
-    vector<int> corpFlightBookings(vector<vector<int>>& bookings, int n) {
+  vector<int> corpFlightBookings(vector<vector<int>> &bookings, int n)
+  {
     // Line Sweep Algo
     // TC = O(M + N)
     // SC = O(N)
-    vector<int>arr(n + 2, 0);
-    int m = bookings.size()
-    for(int i = 0; i < m; i++){
+    vector<int> arr(n + 2, 0);
+    int m = bookings.size();
+    for (int i = 0; i < m; i++)
+    {
       int st = bookings[i][0];
       int end = bookings[i][1];
       int seats = bookings[i][2];
@@ -33,13 +40,14 @@ public:
       arr[st] += seats;
       arr[end + 1] -= seats;
     }
-    vector<int>ans(n);
+    vector<int> ans(n);
 
     int cumSum = 0;
-    for(int i = 1; i <= n; i++){
+    for (int i = 1; i <= n; i++)
+    {
       cumSum += arr[i];
-      ans[i-1] = cumSum;
+      ans[i - 1] = cumSum;
     }
     return ans;
-    }
+  }
 };

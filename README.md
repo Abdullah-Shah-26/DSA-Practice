@@ -1,8 +1,8 @@
-#  C++ DSA Practice
+# DSA Practice
 
 A condensed archive of my DSA practice. Contains topic-wise solutions & Implementations I worked on while building foundational problem-solving consistency.
 
-##  Contents
+## Contents
 - Arrays  
 - Linked Lists  
 - Stacks & Queues  
