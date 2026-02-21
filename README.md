@@ -1,7 +1,6 @@
-#  Cpp-Dsa-Practice
+#  C++ DSA Practice
 
-A condensed archive of my C++ DSA practice before shifting to Codolio.  
-Contains topic-wise solutions & Implementations I worked on while building foundational problem-solving consistency.
+A condensed archive of my DSA practice. Contains topic-wise solutions & Implementations I worked on while building foundational problem-solving consistency.
 
 ##  Contents
 - Arrays  
@@ -18,4 +17,4 @@ Contains topic-wise solutions & Implementations I worked on while building found
 - Recursion  
 - Sliding Window  
 - DSU  
-- C++ STL  
+- STL  
