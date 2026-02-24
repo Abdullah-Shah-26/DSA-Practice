@@ -17,7 +17,7 @@ static const int MOD = 1'000'000'007;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-//! 2D Prefix Sum
+//! 2D Difference Array Technique
 
 class Solution {
 public:
