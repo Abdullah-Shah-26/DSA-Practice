@@ -48,7 +48,8 @@
     "**/.*",
     "**/.*/**",
     "**/.vscode",
-    "**/.vscode/**"
+    "**/.vscode/**",
+    "**/.ini/**",
   ],
   "C_Cpp_Runner.useAddressSanitizer": false,
   "C_Cpp_Runner.useUndefinedSanitizer": false,
