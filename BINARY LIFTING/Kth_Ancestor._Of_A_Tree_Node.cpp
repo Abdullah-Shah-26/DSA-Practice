@@ -48,3 +48,75 @@ public:
     } 
 };
 
+//! ----------------------------------------------------------
+/*************************************************************
+
+    Following is the Binary Tree node structure
+
+    class BinaryTreeNode
+    {
+    public :
+        T data;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+
+        BinaryTreeNode(T data) {
+            this -> data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+
+const int MAXN =200005; 
+const int LOG = 30;
+
+int up[MAXN][LOG];
+// Row - Node
+// Col - Kth Ancestor
+
+void dfs(BinaryTreeNode<int> *node, int parent){
+    if(!node){
+        return;
+    }
+
+    up[node->data][0] = parent;
+
+    if(node->left){
+        dfs(node->left, node->data);
+    }
+    if(node->right){
+        dfs(node->right, node->data);
+    }
+}
+
+int jump(int node, int k){
+
+    for(int bit = 0; bit <LOG; bit++){
+        if(k & (1 << bit)){
+            if(node != -1){
+                node = up[node][bit];
+            }
+        }
+    }
+    return node;
+}
+
+int findKthAncestor(BinaryTreeNode<int> *root, int targetNodeVal, int k) {
+    memset(up, -1, sizeof(up));
+
+    dfs(root, -1);
+
+    for(int j = 1; j < LOG; j++){
+        for(int node = 1; node < MAXN; node++){
+            if(up[node][j-1] != -1){
+                up[node][j] = up[ up[node][j-1] ][j-1];
+            }
+        }
+    }
+
+    return jump(targetNodeVal, k);
+}
+
+
+*************************************************************/

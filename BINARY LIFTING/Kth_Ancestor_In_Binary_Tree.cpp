@@ -18,7 +18,7 @@ struct Node{
 class Solution {
   public:
     // TC = O(N)
-    // SC = O(N) = O(N)
+    // SC = O(N) 
   
     void solve(Node* root, int &node, bool &found, vector<int>&values){
         
