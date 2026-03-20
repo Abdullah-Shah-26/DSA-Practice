@@ -91,3 +91,72 @@ public:
     return -1;
     }
 };
+
+//! Same Approach - but storing dist in q instead of explicit Level Order BFS
+class Solution {
+public:
+    int shortestPathAllKeys(vector<string>& grid) {
+    int n = grid.size();
+    int m = grid[0].size();
+    int finalMask = 0;
+    int stRow = -1, stCol = -1;
+
+    for(int i = 0; i < n; i++){
+      for(int j = 0; j < m; j++){
+        if(islower(grid[i][j])){
+          finalMask |= (1 << (grid[i][j] - 'a'));
+        }
+        if(grid[i][j] == '@'){
+          stRow = i;
+          stCol = j;
+        }
+      }
+    }    
+
+    bool vis[31][31][64];
+    queue<tuple<int,int,int,int>>q; // {r,c,mask,dist}
+    memset(vis,0,sizeof(vis));
+
+    q.push({stRow,stCol,0,0});
+    vis[stRow][stCol][0] = 1;
+
+    static int row[4] = {0,0,-1,1};
+    static int col[4] = {1,-1,0,0};
+
+    while(!q.empty()){
+      auto [r,c,mask,dist] = q.front();
+      q.pop();
+
+      // Since BFS ensures shortest dist 
+      if(mask == finalMask) return dist; 
+
+      for(int k = 0; k < 4; k++){
+        int nr = r + row[k];
+        int nc = c + col[k];
+        int newMask = mask;
+
+        // Invalid 
+        if(nr < 0 || nr >= n || nc < 0 || nc >= m) continue;
+
+        char ch = grid[nr][nc];
+
+        // Wall Check
+        if(ch == '#') continue;
+
+        // Dont Have Key For This Lock
+        if(isupper(ch) && !(mask & (1 << (ch - 'A')))) continue;
+
+        // Got Key - Update Mask
+        if(islower(ch)) newMask |= (1 << (ch - 'a'));
+
+        // Already Visited - Skip
+        if(vis[nr][nc][newMask]) continue;
+
+        vis[nr][nc][newMask] = 1;
+
+        q.push({nr,nc,newMask,dist + 1});
+      }
+    }
+    return -1;
+    }
+};
