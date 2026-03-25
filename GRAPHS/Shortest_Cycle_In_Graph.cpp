@@ -30,7 +30,6 @@ public:
         int parent = it.second;
 
         //! Pruning Step
-
         if(dist[node] >= result) continue;
 
         for(auto nei : adj[node]){

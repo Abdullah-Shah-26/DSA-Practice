@@ -24,6 +24,7 @@ public:
     }
     return parent[node] = findUPar(parent[node]);
   }
+  
   void unionBySize(int u, int v)
   {
     int ulp_u = findUPar(u);

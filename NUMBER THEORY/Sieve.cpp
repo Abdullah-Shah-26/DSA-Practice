@@ -12,9 +12,9 @@ class Solution {
         {
             if(isPrime[i])
             {
-                for(int j = 2; i*j <= n;j++)
+                for(int j = i*i; j <= n; j += i)
                 {
-                    isPrime[i*j]= 0;
+                    isPrime[j]= 0;
                 }
             }
         }
