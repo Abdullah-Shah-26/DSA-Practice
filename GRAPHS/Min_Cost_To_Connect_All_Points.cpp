@@ -86,3 +86,50 @@ public:
     return sum;  
     }
 };
+
+//! Greedy - Prims Modified
+//! TC = O(N^2)
+//! SC = O(N)
+class Solution {
+public:
+    int minCostConnectPoints(vector<vector<int>>& p) {
+    int n = p.size();
+
+    vector<int> dist(n,1e9);
+    vector<bool> inMST(n,0);
+
+    dist[0] = 0;
+    long long cost = 0;
+
+    for(int i = 0; i < n; i++){
+      int u = -1;
+      for(int j = 0; j < n; j++){
+        if(!inMST[j] && (u == -1 || dist[j] < dist[u])){
+          u = j;
+        }
+      }
+
+      inMST[u] = 1;
+      cost += dist[u];
+
+      // (in MST) u ----> v (not int MST)
+      for(int v = 0; v < n; v++){
+        if(!inMST[v]){
+
+          int x1 = p[u][0];
+          int y1 = p[u][1];
+
+          int x2 = p[v][0];
+          int y2 = p[v][1];
+
+          int wt = abs(x1-x2) + abs(y1-y2);
+
+          dist[v] = min(dist[v], wt);
+        }
+      }
+
+    }
+
+    return cost;
+    }
+};
