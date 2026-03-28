@@ -9,7 +9,7 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-//! TC = O(Log N)
+//! TC = O(32) = O(1) constant
 //! SC = O(1)
 class Solution {
 public:
@@ -24,4 +24,31 @@ public:
     
     return ans;
     }
+};
+
+//! Reverse Until Highest Bit is set
+/*
+Ex:
+Input  :  11 - 1011
+Output :  13 - 1101
+
+GFG Version
+*/
+
+//! TC = O(Log N)
+//! SC = O(1)
+class Solution{
+  public: 
+
+  unsigned int reverseBits(unsigned int n){
+    unsigned int res = 0;
+
+    while(n > 0){
+      res <<= 1;
+      res |= (n & 1);
+      n >>= 1;
+    }
+
+   return res;
+  }
 };
