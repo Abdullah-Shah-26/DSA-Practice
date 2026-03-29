@@ -1,3 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vll = vector<long long>;
+static const int MOD = 1e9 + 7;
+
+inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+
 class Solution {
     public:
         int subarraysWithKDistinct(vector<int>& nums, int k) {
@@ -26,12 +37,12 @@ class Solution {
          return count;
         }
     };
-//! Mehod - 2 
+//! Method - 2 
 class Solution {
     public:
         int subarraysWithKDistinct(vector<int>& nums, int k) {
            int total = 0;
-            // redefine the question
+        // redefine the question
         // (part 1)count of subarr with atleeast k diff elements - (part 2)subarr (k+1)atleast k+1 diff elem = total no of subarrays having exactly k diff elements
     
         // part 1 
