@@ -28,9 +28,7 @@ public:
       if(nums[l] == maxi) cntMaxi--;
       l++;
      }
-    
     }   
-
     return ans;
     }
 };
