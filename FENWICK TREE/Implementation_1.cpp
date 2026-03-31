@@ -38,7 +38,7 @@ int main()
   for(int i = 1; i <= n; i++)
   {
     cin >> a[i];
-    update(i, a[i]);
+    update(i, a[i]); //! O(N Log N) Fenwick Build
   }
 
   int q;

@@ -12,8 +12,10 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
+
     int maxi = *max_element(begin(nums),end(nums));
     int len = 0, maxLen = 1;
+
     for(int i = 0; i < nums.size(); i++){
       if(nums[i] == maxi){
         len++;
@@ -22,6 +24,7 @@ public:
         len = 0;
       }
     }
+    
     return maxLen;    
     }
 };
