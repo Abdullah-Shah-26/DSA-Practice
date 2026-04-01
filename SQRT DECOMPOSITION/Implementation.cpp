@@ -21,10 +21,9 @@ static const auto fastio = []() {
   return 0;
 }();
 
+//! Sparse Table is better for this problem since there are no updates here
 /*
-
-
-RMQSQ - Range Minimum Query
+RMQSQ - Range Minimum Query 
 no tags 
 
 You are given a list of N numbers and Q queries. Each query is specified by two numbers i and j; the answer to each query is the minimum number between the range [i, j] (inclusive).
@@ -52,6 +51,9 @@ Output:
 
 */
 
+//! TC = O(Q * Sqrt(N)) + O(N)
+//! SC = O(Sqrt(N))
+
 const int N = 1e5 + 14;
 int S = (int) sqrt(N) + 1;
 int n, q, a[N], b[N];
@@ -71,6 +73,7 @@ int main()
     int ans = INF;
     while(l < r)
     {
+      //! Start of current Block & Does this block [L..S) lie in range [L...R) here R is exclusive
       if(l % S == 0 && l + S <= r)
       {
         ans = min(ans, b[l/S]);
