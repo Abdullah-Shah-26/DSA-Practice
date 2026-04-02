@@ -104,3 +104,47 @@ public:
 
 //! DSU -----------------------------------------------------------------
 //* Unnecessary Complicated Here
+
+//! 8 directions 
+class Solution {
+  public:
+    
+    int n,m;
+        
+    int row[8] = {-1,-1,-1, 0, 0, 1, 1, 1};
+    int col[8] = {-1, 0, 1,-1, 1,-1, 0, 1};
+    
+    int dfs(int i,int j, vector<vector<int>> &grid){
+        int cnt = 1;
+        grid[i][j] = 0;
+        
+        for(int k = 0; k < 8; k++){
+            int nr = i + row[k];
+            int nc = j + col[k];
+            
+            if(nr < 0 || nr >= n || n < 0 || nc >= m || grid[nr][nc] == 0) continue;
+            
+            cnt += dfs(nr, nc, grid);
+        }
+        
+        return cnt;
+    }
+    
+    // Function to find unit area of the largest region of 1s.
+    int findMaxArea(vector<vector<int>>& grid) {
+        // Code here
+        n = grid.size();
+        m = grid[0].size();
+        int maxCnt = 0;
+        
+        for(int i = 0; i < n; i++){
+            for(int j = 0;j < m; j++){
+                if(grid[i][j] == 1){
+                    maxCnt = max(maxCnt, dfs(i,j,grid));                    
+                }
+            }
+        }
+        
+        return maxCnt;
+    }
+};  
