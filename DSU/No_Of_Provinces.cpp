@@ -63,3 +63,73 @@ public:
     return dsu.components;
     }
 };
+
+//! DFS 
+//* TC = O(N^2) || SC = O(N)
+class Solution {
+public:
+  int n;
+    void dfs(int u, vector<bool> &vis, vector<vector<int>> &adj){
+      vis[u] = 1;
+
+      for(int v = 0; v < n; v++){
+        if(adj[u][v] == 1 && !vis[v]){
+          dfs(v, vis, adj);
+        }
+      }
+    }
+
+    int findCircleNum(vector<vector<int>>& adj) {
+    n = adj.size(); // adj matrix
+    vector<bool> vis(n, 0);
+    int comp = 0;
+
+    for(int i = 0; i < n; i++){
+      if(!vis[i]){
+        comp++;
+        dfs(i, vis, adj);
+      }
+    }
+
+    return comp;
+    }
+}; 
+
+//! BFS
+//* TC = O(N^2) || SC = O(N)
+class Solution {
+public:
+  int n;
+    void bfs(int u, vector<bool> &vis, vector<vector<int>> &adj){
+      vis[u] = 1;
+      queue<int> q;
+      q.push(u);
+
+      while(!q.empty()){
+        int node = q.front();
+        q.pop();
+
+        for(int v = 0; v < n; v++){
+          if(adj[node][v] == 1 && !vis[v]){
+            vis[v] = 1;
+            q.push(v);
+          }
+        }
+      }
+    }
+
+    int findCircleNum(vector<vector<int>>& adj) {
+    n = adj.size(); // adj matrix
+    vector<bool> vis(n, 0);
+    int comp = 0;
+
+    for(int i = 0; i < n; i++){
+      if(!vis[i]){
+        comp++;
+        bfs(i, vis, adj);
+      }
+    }
+
+    return comp;
+    }
+};
