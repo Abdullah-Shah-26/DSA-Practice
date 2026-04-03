@@ -63,3 +63,58 @@ class Solution {
       return fresh != 0 ? -1 : t;
     }
 };
+
+//! DFS
+// TODO : Compute minimum time to reach each fresh cell, then return the maximum among those times.
+
+class Solution {
+  public:
+    int n,m;
+    int row[4] = {0,0,-1,1};
+    int col[4] = {1,-1,0,0};
+
+    // Min Time To Infect Each Orange
+    void dfs(int r,int c, int t, vector<vector<int>> &grid, vector<vector<int> > &dist){
+    if(r < 0 || r >= n || c < 0 || c >= m || grid[r][c] == 0) return;
+
+    // If we reach with worse time - prune
+    if(t >= dist[r][c]) return;
+
+    dist[r][c] = t;
+
+    for(int k = 0; k < 4; k++){
+      int nr = r + row[k];
+      int nc = c + col[k];
+
+      dfs(nr, nc, t+1, grid, dist);
+    }
+    }
+
+    int orangesRotting(vector<vector<int>>& grid) {
+      n = grid.size();
+      m = grid[0].size();
+
+      vector<vector<int>> dist(n, vector<int> (m, INT_MAX));
+
+      for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+          if(grid[i][j] == 2){
+            dfs(i,j,0,grid,dist);
+          }
+        }
+      }
+
+      int ans = 0;
+
+      for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+          if(grid[i][j] == 1){
+            if(dist[i][j] == INT_MAX) return -1;
+            ans = max(ans, dist[i][j]);
+          }
+        }
+      }
+
+      return ans;    
+    }
+};
