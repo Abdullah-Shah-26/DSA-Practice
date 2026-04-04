@@ -51,3 +51,46 @@ class Solution {
     return ans;
     }
 };
+
+//! BFS 
+
+class Solution {
+public:
+    vector<int> eventualSafeNodes(vector<vector<int>>& adj) {
+    int n = adj.size();
+    vector<vector<int>> adjRev(n);
+    vector<int> inDeg(n,0);
+
+    for(int node = 0; node < n; node++){
+      for(auto &nei : adj[node]){
+        adjRev[nei].push_back(node);
+        inDeg[node]++;
+      }
+    }
+
+    queue<int> q;
+    for(int i = 0; i < n; i++){
+      if(inDeg[i] == 0){
+        q.push(i);
+      }
+    }
+    vector<int> ans;
+
+    while(!q.empty()){
+      int node = q.front();
+      q.pop();
+      ans.push_back(node);
+
+      for(auto &nei : adjRev[node]){
+        inDeg[nei]--;
+
+        if(inDeg[nei] == 0){
+          q.push(nei);
+        }
+      }
+    }
+    
+    sort(begin(ans),end(ans));
+    return ans;
+    }
+};

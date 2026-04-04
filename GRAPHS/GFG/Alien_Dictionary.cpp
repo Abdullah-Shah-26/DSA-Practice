@@ -9,12 +9,8 @@ public:
         // Step 1: Find all unique characters
         unordered_set<char> uniqueChars;
         for (const string &word : words)
-        {
             for (char c : word)
-            {
                 uniqueChars.insert(c);
-            }
-        }
 
         // Step 2: Build the graph (adjacency list)
         vector<int> adj[26]; // For 'a' to 'z'
@@ -36,6 +32,7 @@ public:
             }
 
             // Edge case: word2 is a prefix of word1, invalid input
+            //* word1 > word2 and all are matching - InValid
             if (!foundDifference && word1.size() > word2.size())
             {
                 return ""; // No valid order
