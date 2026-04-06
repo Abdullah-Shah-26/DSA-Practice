@@ -36,3 +36,6 @@
 **/.cph/
 .bin/
 **/.bin/
+
+# Windows folder metadata
+desktop.ini
