@@ -42,19 +42,14 @@ public:
         }
 
         // Step 3: Detect negative weight cycles
-        for (int i = 0; i < n; i++)
-        {
-            if (mat[i][i] < 0)
-            {
-                // Mark all paths involving the negative cycle as unreachable
-                for (int j = 0; j < n; j++)
-                {
-                    for (int k = 0; k < n; k++)
-                    {
-                        if (mat[i][j] < 1e9 && mat[j][k] < 1e9)
-                        {
-                            mat[j][k] = -1;
-                        }
+        for(int k = 0; k < n; k++){
+            if(mat[k][k] < 0) // k is in -ve cycle
+
+            for(int i = 0; i < n; i++){
+                for(int j = 0; j < n; j++){
+
+                    if(mat[i][k] < 0 && mat[k][j] < 0){
+                        mat[i][j] = 1e9; // mark as infected
                     }
                 }
             }
