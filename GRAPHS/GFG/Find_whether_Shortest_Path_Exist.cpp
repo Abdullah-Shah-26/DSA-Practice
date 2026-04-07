@@ -1,5 +1,7 @@
 #include <queue>
 using namespace std;
+
+
 //! BFS - METHOD
 class Solution {
   public:
@@ -56,6 +58,8 @@ class Solution {
         return false;
     }
 };
+
+
 // ! DFS - METHOD
 class Solution {
   public:
@@ -88,7 +92,6 @@ class Solution {
                 {// starting point
                 
                 return dfs(grid, i , j); // call dfs funtion
-                break;
                     
                 }
                     

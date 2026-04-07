@@ -1,11 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+using ll = long long;
+using pii = pair<int, int>;
+using vi = vector<int>;
+using vll = vector<long long>;
+static const int MOD = 1e9 + 7;
+
+inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+
 class Solution
 {
 public:
-    // Function to return Breadth First Traversal of given graph.
     vector<int> bfs(vector<vector<int>> &adj)
     {
         // BFS (Covid) - spreads to those which are in direct contact
-        // TC = O(V + E )
+        // TC = O(V + E)
         // SC = O(V + V)
         // Steps
         // 1 . pop the node from Q & put iin ans
