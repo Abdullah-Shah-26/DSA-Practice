@@ -10,7 +10,7 @@ static const int MOD = 1e9 + 7;
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! TC = O(N Log (LogN))
-//! SC = O()
+//! SC = O(A)
 class Solution {
 public:
     vector<int> primeSieve(int n){
