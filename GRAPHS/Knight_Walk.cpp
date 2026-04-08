@@ -1,4 +1,16 @@
- class Solution { // TC = O(N^2) SC = O(N^2)
+ #include <bits/stdc++.h>
+ using namespace std;
+ 
+ using ll = long long;
+ using pii = pair<int, int>;
+ using vi = vector<int>;
+ using vll = vector<long long>;
+ static const int MOD = 1e9 + 7;
+ 
+ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+ 
+ //! TC = O(N^2) SC = O(N^2)
+ class Solution { 
   // Knight can move in 8 directions
   public:
   int row[8] = {2, 2, -2, -2, 1, -1, 1, -1};

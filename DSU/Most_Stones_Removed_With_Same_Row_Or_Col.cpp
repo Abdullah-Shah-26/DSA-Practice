@@ -59,7 +59,7 @@ class Solution {
       int r = it[0];
       int c = it[1];
       int nodeRow = r;
-      int nodeCol = c + maxR + 1;
+      int nodeCol = c + maxR + 1; // Co-ordinate Shift So that Rows & Cols do not clash in dsu
 
       dsu.unite(nodeRow, nodeCol);
       stoneNodes[nodeRow] = 1;

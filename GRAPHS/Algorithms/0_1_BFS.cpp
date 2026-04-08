@@ -6,15 +6,17 @@ using pii = pair<int, int>;
 using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
-const int INF = 1e9 + 10;
+const int INF = 1e9;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-const int N = 1e8;
+const int N = 1e5;
 vector<pair<int,int>> adj[N];
 vector<int> level(N, INF);
 vector<int> vis(N, 0);
 int n, m;
+
+//* TC = O(V + E)  ||  SC = O(V + E)
 
 int bfs(){
     deque<int>dq;
