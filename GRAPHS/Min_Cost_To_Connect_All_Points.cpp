@@ -67,7 +67,7 @@ public:
       return a[2] < b[2];
     };
 
-    sort(begin(edges), end(edges), cmp); //! O(N^2 Log (N))
+    sort(begin(edges), end(edges), cmp); //! O(N^2 Log (N)) -- worst case E = N^2
     
     DSU dsu(n);
 
@@ -90,6 +90,7 @@ public:
 //! Greedy - Prims Modified
 //! TC = O(N^2)
 //! SC = O(N)
+
 class Solution {
 public:
     int minCostConnectPoints(vector<vector<int>>& p) {
