@@ -66,8 +66,7 @@ class Solution {
   bool dfs(vector<vector<int>>&grid, int x, int y)
   
   {
-      // base case
-
+    // base case
     if (x < 0 || y < 0 || x >= grid.size() || y >= grid[0].size() || grid[x][y] == 0)
       return false;
       
@@ -77,7 +76,7 @@ class Solution {
       // mark as viisted
       grid[x][y] = 0;
       
-      // and reculsively call dfs 
+      //  reculsively call dfs 
       return dfs(grid,x+1,y) || dfs(grid, x-1,y) || dfs(grid, x, y+1) || dfs(grid, x, y-1);
   }
   
