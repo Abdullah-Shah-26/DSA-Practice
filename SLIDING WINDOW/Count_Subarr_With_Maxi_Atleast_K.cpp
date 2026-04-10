@@ -4,19 +4,22 @@ using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
 using vi = vector<int>;
-using vll = vector<long long>;
+using vll = std::vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+}
 
 class Solution {
 public:
     //! TC = O(N)
     //! SC = O(1)
-    long long countSubarrays(vector<int>& nums, int k) {
-    int n = nums.size();
+    long long countSubarrays(std::vector<int>& nums, int k) {
+    int n = static_cast<int>(nums.size());
     long long ans = 0;
-    int maxi = *max_element(begin(nums), end(nums));
+    int maxi = *std::max_element(std::begin(nums), std::end(nums));
     int cntMaxi = 0;
     
     int l = 0;

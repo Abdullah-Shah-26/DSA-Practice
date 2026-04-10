@@ -4,7 +4,7 @@
     {
       "type": "cppbuild",
       "label": "build",
-      "command": "C:/msys64/ucrt64/bin/g++.exe",
+      "command": "C:/msys64/mingw64/bin/g++.exe",
       "args": [
         "-std=c++23",
         "-O2",

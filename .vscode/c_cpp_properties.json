@@ -2,8 +2,18 @@
   "configurations": [
     {
       "name": "windows-gcc-x64",
-      "includePath": ["${workspaceFolder}/**"],
-      "compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "${default}",
+        "C:/msys64/mingw64/include/c++/15.2.0",
+        "C:/msys64/mingw64/include/c++/15.2.0/x86_64-w64-mingw32",
+        "C:/msys64/mingw64/include/c++/15.2.0/backward",
+        "C:/msys64/mingw64/include",
+        "C:/msys64/mingw64/x86_64-w64-mingw32/include"
+      ],
+      "defines": [],
+      "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
+      "compilerArgs": ["-std=c++23"],
       "cStandard": "c17",
       "cppStandard": "c++23",
       "intelliSenseMode": "windows-gcc-x64"

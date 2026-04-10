@@ -88,6 +88,8 @@ public:
 };
 
 //! MULTI-SOURCE BFS + ITERATIVE DFS
+// TODO : Find 1 island, apply dfs & mark that whole group of island as visited and put in q
+
 class Solution {
 public:
     int n;
