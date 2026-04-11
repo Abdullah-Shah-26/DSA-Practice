@@ -2,16 +2,12 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "type": "cppbuild",
+      "type": "process",
       "label": "build",
-      "command": "C:/msys64/mingw64/bin/g++.exe",
+      "command": "C:/msys64/usr/bin/bash.exe",
       "args": [
-        "-std=c++23",
-        "-O2",
-        "-Wall",
-        "${file}",
-        "-o",
-        "${fileDirname}/${fileBasenameNoExtension}.exe"
+        "-lc",
+        "export PATH=/mingw64/bin:/usr/bin:$PATH; cd \"$(cygpath -u \"${fileDirname}\")\" && g++ -std=c++23 -O2 -Wall \"${fileBasename}\" -o \"${fileBasenameNoExtension}.exe\""
       ],
       "options": {
         "cwd": "${fileDirname}"
