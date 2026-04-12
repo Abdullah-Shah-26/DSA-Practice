@@ -9,6 +9,8 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
+//* Note : Graph is Functional & Directed
+
 //! BFS + TopoSort
 //* TC = O(V + E) | SC = O(V)
 
@@ -118,7 +120,7 @@ class Solution {
 public:
     int arrayNesting(vector<int>& edges) {
     int n = edges.size();
-    
+
     //! Simpler Version of Longest Cycle
     vector<bool>vis(n,0);
     int maxLen = 0;

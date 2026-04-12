@@ -5,21 +5,21 @@
   "C_Cpp.errorSquiggles": "enabled",
   "C_Cpp.intelliSenseEngine": "default",
   "editor.quickSuggestions": {
-    "comments": "on",
-    "strings": "on",
-    "other": "on"
+    "comments": "off",
+    "strings": "off",
+    "other": "off"
   },
   "editor.suggestOnTriggerCharacters": true,
-  "editor.inlineSuggest.enabled": true,
+  "editor.inlineSuggest.enabled": false,
   "editor.parameterHints.enabled": true,
   "[cpp]": {
     "editor.quickSuggestions": {
-      "other": true,
+      "other": false,
       "comments": false,
-      "strings": true
+      "strings": false
     },
     "editor.suggestOnTriggerCharacters": true,
-    "editor.inlineSuggest.enabled": true
+    "editor.inlineSuggest.enabled": false
   },
   "terminal.integrated.env.windows": {
     "PATH": "C:\\msys64\\mingw64\\bin;C:\\msys64\\usr\\bin;${env:PATH}"
@@ -63,7 +63,10 @@
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.includeSearch": ["*", "**/*"],
+  "C_Cpp_Runner.includeSearch": [
+    "*",
+    "**/*"
+  ],
   "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
