@@ -37,42 +37,77 @@ class DSU {
     }
 };
 
+
 class Solution {
-  public:
+public:
     int removeStones(vector<vector<int>>& stones) {
     int n = stones.size();
-    int maxR = 0;
-    int maxC = 0;
+    int maxR = 0, maxC = 0;
 
-    for(auto it : stones){
-      int r = it[0];
-      int c = it[1];
+    for(auto &s : stones){
+      int r = s[0];
+      int c = s[1];
+
       maxR = max(maxR, r);
       maxC = max(maxC, c);
-    }     
+    }    
 
     DSU dsu(maxR + maxC + 2);
 
-    unordered_map<int,int> stoneNodes; // Active Nodes
-    
-    for(auto it : stones){
-      int r = it[0];
-      int c = it[1];
+    unordered_set<int> usedNodes;
+
+    for(auto &s : stones){
+      int r = s[0];
+      int c = s[1];
       int nodeRow = r;
-      int nodeCol = c + maxR + 1; // Co-ordinate Shift So that Rows & Cols do not clash in dsu
+      int nodeCol = c + maxR + 1;
 
       dsu.unite(nodeRow, nodeCol);
-      stoneNodes[nodeRow] = 1;
-      stoneNodes[nodeCol] = 1;
+      usedNodes.insert(nodeRow);
+      usedNodes.insert(nodeCol);
     }
 
-    int cnt = 0;
-    for(auto &it: stoneNodes){
-      if(dsu.find(it.first) == it.first){
-        cnt++;
-      }
-    } 
+    int groups = 0;
 
-    return n - cnt;
+    for(auto &it : usedNodes){
+      if(dsu.find(it) == it) 
+        groups++;
+    }
+
+    return n - groups;
+    }
+};
+
+//! DFS
+//!* TC = O(N^2) | SC = O(N)
+
+class Solution {
+  public:
+    void dfs(int idx, vector<vector<int>> &stones, vector<bool> &vis){
+      vis[idx] = 1;
+      int r = stones[idx][0];
+      int c = stones[idx][1];
+
+      for(int i = 0; i < stones.size(); i++){
+        if(!vis[i] && (r == stones[i][0] || c == stones[i][1])){
+          dfs(i, stones, vis);
+        }
+      }
+    }
+
+    int removeStones(vector<vector<int>>& stones) {
+    int n = stones.size();
+    int groups = 0;
+
+    vector<bool> vis(n, false);
+
+    for(int i = 0; i < n; i++){
+      if(!vis[i]){
+        dfs(i, stones, vis);
+        groups++;
+      }
+    }    
+
+    return n - groups;
     }
 };

@@ -53,22 +53,22 @@ void build2(TreeNode* node, TreeNode* p, int st){
   parent[node] = p;
 
   if(node->data == st){
-    st = node->data;
+    stNode = node;
     return;
   }
 
-  build2(node->left, node,  st);
-  build2(node->right, node,  st);
+  build2(node->left, node, st);
+  build2(node->right, node, st);
 }
 
 //* Doing BFS on Tree 
 
 int main(){
-  
+  if(!stNode) return 0;
+
   queue<TreeNode*> q;
   unordered_set<TreeNode*> vis;
 
-  //* Needs start node 
   q.push(stNode);
   vis.insert(stNode);
 
@@ -99,4 +99,6 @@ int main(){
 
     time++;
   }
+
+  return 0;
 }
