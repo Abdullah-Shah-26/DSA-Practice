@@ -3,6 +3,7 @@ using namespace std;
 
 //! TC = O(2N) | SC = O(N)
 
+//! Right to Left
 class Solution {
   public:
     vector<int> nextLargerElement(vector<int>& arr) {
@@ -26,5 +27,28 @@ class Solution {
         st.push(arr[i]);
     }
     return NGE;
+    }
+};
+
+//! Left To Right
+class Solution {
+  public:
+    vector<int> nextLargerElement(vector<int>& arr) {
+    int n = arr.size();
+    
+    vector<int> nge(n, -1);
+    stack<int> st; // storing indices
+    
+    for(int i = 0; i < n; i++){
+
+        while(!st.empty() && arr[i] > arr[st.top()]){
+            nge[st.top()] = arr[i];
+            st.pop();
+        }
+        
+        st.push(i);
+    }
+    
+    return nge;
     }
 };

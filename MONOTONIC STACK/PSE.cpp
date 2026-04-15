@@ -2,24 +2,26 @@
 #include <vector>
 #include <stack>
 using namespace std;
-class Solution
-{
-public:
-  vector<int> prevSmaller(vector<int> &arr)
-  {
-    //  code here
+
+//* Previous Smaller Element
+class Solution {
+  public:
+    vector<int> prevSmaller(vector<int>& arr) {
     int n = arr.size();
-    stack<int> st;
-    vector<int> Pse(n, 0);
-    for (int i = 0; i < n; i++)
-    {
-      while (!st.empty() && st.top() >= arr[i])
-      {
-        st.pop();
-      }
-      Pse[i] = st.size() == 0 ? -1 : st.top();
-      st.push(arr[i]);
+    
+    vector<int> ans(n,-1);
+    stack<int> st; //! Monotonic Increasing Stack
+    
+    for(int i = 0; i < n; i++){
+        while(!st.empty() &&  arr[i] <= arr[st.top()]){
+            st.pop();
+        }
+        
+        ans[i] = (st.empty()) ? -1 : arr[st.top()];
+        
+        st.push(i);
     }
-    return Pse;
-  }
+    
+    return ans; 
+    }
 };
