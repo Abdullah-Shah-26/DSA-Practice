@@ -83,7 +83,7 @@ public:
     }
 };
 
-#include <bits/stdc++.h>
+//! Space Optimized
 int lcs(string s, string t)
 {
     // Write your code here
@@ -109,3 +109,32 @@ int lcs(string s, string t)
     }
     return prev[m];
 }
+
+//! 1D DP - Store Next Diagonal For Next Iteration
+class Solution {
+  public:
+    int longestCommonSubsequence(string s1, string s2) {
+    int n = s1.size();
+    int m = s2.size();
+
+    vector<int> dp(m + 1, 0);
+    
+    for(int i = 1; i <= n; i++){
+      int diag = 0;
+
+      for(int j = 1; j <= m; j++){
+        int temp = dp[j]; //* Diagonal for next dp[j+1]
+
+        if(s1[i-1] == s2[j-1]){
+          dp[j] = 1 +  diag;
+        }
+        else {
+          dp[j] = max(dp[j], dp[j-1]);
+        }
+        diag = temp;
+      }
+    }
+
+    return dp[m];
+    }
+};

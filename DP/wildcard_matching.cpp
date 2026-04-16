@@ -38,7 +38,7 @@ bool f(int i, int j, string &s1, string &s2, vector<vector<int>> &dp)
     
 }
 
-     bool isMatch(string text, string pattern) {
+    bool isMatch(string text, string pattern) {
     int n = pattern.size();
     int m = text.size();
     

@@ -129,6 +129,4 @@ int maximumPath(vector<vector<int>> &mat)
             maxi = max(maxi, prev[j]);
     }
     return maxi;
-}
-}
-;
+};

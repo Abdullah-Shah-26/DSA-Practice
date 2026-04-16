@@ -2,6 +2,7 @@
 using namespace std;
 
 //! Rec + Memo
+
 class Solution {
   public: 
     int dp[1002][1002];
@@ -44,6 +45,7 @@ class Solution {
 };
 
 //! BottomUp  
+
 class Solution {
   public: 
     int minimumDeleteSum(string s1, string s2) {
@@ -91,6 +93,7 @@ class Solution {
 };
 
 //! Space Optimization
+
 class Solution {
   public: 
     int minimumDeleteSum(string s1, string s2) {
