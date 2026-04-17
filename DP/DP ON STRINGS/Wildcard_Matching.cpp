@@ -2,7 +2,7 @@ class Solution {
 public:
  
 bool f(int i, int j, string &s1, string &s2, vector<vector<int>> &dp)
-{
+    {
     // if both of them exhausted 
     if(i < 0 && j < 0)
     return 1;
@@ -36,7 +36,7 @@ bool f(int i, int j, string &s1, string &s2, vector<vector<int>> &dp)
     
     return dp[i][j] = 0; // the char is not * / ?
     
-}
+    }
 
     bool isMatch(string text, string pattern) {
     int n = pattern.size();
