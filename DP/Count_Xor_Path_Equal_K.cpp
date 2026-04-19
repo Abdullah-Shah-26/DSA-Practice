@@ -3,6 +3,7 @@ public:
     static const int MOD = 1e9 + 7;
   // TC = O(N * M * 16)
   // SC = O(M * 16)
+  
     int countPathsWithXorValue(vector<vector<int>>& grid, int k) {
         int n = grid.size();
         int m = grid[0].size();
