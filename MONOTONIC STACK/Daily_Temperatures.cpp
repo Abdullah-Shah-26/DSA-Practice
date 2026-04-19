@@ -10,7 +10,7 @@ class Solution {
     vector<int> dailyTemperatures(vector<int>& temp) {
     int n = temp.size();
 
-    // Using vecto as stack
+    // Using vector as stack
     vector<int> st; // Monotonic Decreasing Stack
     vector<int> ans(n, 0);
 
