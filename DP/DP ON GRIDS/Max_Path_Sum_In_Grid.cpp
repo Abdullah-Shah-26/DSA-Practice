@@ -3,7 +3,7 @@
 class Solution
 {
 public:
-    // recursion + Memoization
+    // recursion + Memo
     int f(int i, int j, vector<vector<int>> &mat, vector<vector<int>> &dp)
     {
         // base case - out of bounds - return something that gets ignored
