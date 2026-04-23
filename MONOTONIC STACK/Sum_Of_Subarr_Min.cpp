@@ -1,44 +1,66 @@
-#include <iostream>
-#include <vector>
-#include <stack>
+#include <bits/stdc++.h>
 using namespace std;
-class Solution
-{
-public:
-  int mod = 1e9 + 7;
-  int sumSubarrayMins(vector<int> &arr)
-  {
-    int n = arr.size();
-    vector<int> left(n, 0), right(n, 0);
-    //        elem,cnt(No of elem to the left of elem > him for left & >= him for right)
-    stack<pair<int, int>> sLeft, sRight;
-    for (int i = 0; i < n; i++)
-    {
-      int cnt = 1;
-      while (!sLeft.empty() && sLeft.top().first > arr[i])
-      {
-        cnt += sLeft.top().second;
-        sLeft.pop();
+
+// TC = O(2N) + O(2N) 
+// SC = O(N) + O(N)
+
+class Solution {
+  public:
+    int n;
+    using ll = long long;
+    static const int MOD = 1e9 + 7;
+
+    vector<int> getNSE(vector<int> &arr){
+      vector<int> nse(n, n);
+      stack<int> st;
+
+      for(int i = n-1; i >= 0; i--){
+
+        while(!st.empty() && arr[i] <= arr[st.top()]){
+          st.pop();
+        }
+
+        nse[i] = st.empty() ? n : st.top();
+
+        st.push(i);
       }
-      sLeft.push({arr[i], cnt});
-      left[i] = cnt;
+
+      return nse;
     }
-    for (int i = n - 1; i >= 0; i--)
-    {
-      int cnt = 1;
-      while (!sRight.empty() && sRight.top().first >= arr[i])
-      {
-        cnt += sRight.top().second;
-        sRight.pop();
+
+    vector<int> getPSEE(vector<int> &arr){
+      vector<int> psee(n, -1);
+      stack<int> st;
+
+      for(int i = 0; i < n; i++){
+
+        while(!st.empty() && arr[i] < arr[st.top()]){
+          st.pop();
+        }
+
+        psee[i] = st.empty() ? -1 : st.top();
+
+        st.push(i);
       }
-      sRight.push({arr[i], cnt});
-      right[i] = cnt;
+
+      return psee; // previous smaller or equal element's idx
     }
-    int res = 0;
-    for (int i = 0; i < n; i++)
-    {
-      res = (res + (arr[i] * (long long)(left[i] * right[i]) % mod) % mod) % mod;
+
+    int sumSubarrayMins(vector<int>& arr) {
+    n = arr.size();
+
+    vector<int> NSE = getNSE(arr);
+    vector<int> PSEE = getPSEE(arr);
+
+    ll ans = 0;
+
+    for(int i = 0; i < n; i++){
+      int l = i - PSEE[i];
+      int r = NSE[i] - i;
+
+      ans = (ans + (l * r * 1LL * arr[i]) % MOD) % MOD;
     }
-    return res;
-  }
+
+    return ans;
+    }
 };
