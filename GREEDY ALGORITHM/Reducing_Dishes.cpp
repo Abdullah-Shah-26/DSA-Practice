@@ -9,7 +9,6 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-
 class Solution {
 public:
     int maxSatisfaction(vector<int>& s) {
@@ -25,7 +24,7 @@ public:
            = (a + b + c) + (b + c) + c
      
      We can do reverse prefix Sum
-     And add in ans each time if it increases our curSum
+     And add it in ans each time if it increases our curSum
 
     newSum = 1*x + 2*a + 3*b + 4*c
            = [x + a + b + c] + OldSum
