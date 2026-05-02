@@ -1,6 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Naive BackTracking 
+
+class Solution {
+public:
+    int ans, n, k;
+    void dfs(int i, vector<int> &jobs, vector<int> &worker){
+      if(i == n){
+        ans = min(ans,*max_element(begin(worker), end(worker)));
+        return;
+      }
+
+      for(int j = 0; j < k; j++){
+        if(j > 0 && worker[j] == worker[j-1]) continue;
+
+        if(worker[j] + jobs[i] >= ans) continue;
+
+        worker[j] += jobs[i];
+        dfs(i + 1, jobs, worker);
+        worker[j] -= jobs[i];
+      }
+    }
+
+    int minimumTimeRequired(vector<int>& jobs, int K) {
+    n = jobs.size();
+    k = K;
+    ans = INT_MAX;
+
+    sort(jobs.rbegin(), jobs.rend());
+    vector<int> worker(k, 0);
+
+    dfs(0, jobs, worker);    
+    
+    return ans;
+    }
+};
+
+
 //! Binary Search + BackTracking
 //* TC = O(Sum) * (k ^ n)
 
