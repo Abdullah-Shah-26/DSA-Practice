@@ -1,7 +1,10 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
-// Top Down Approach 
-    int ways(int n , vector<int>& cost, vector<int> &dp)
+
+   int ways(int n , vector<int>& cost, vector<int> &dp)
     {
         if(n <= 1)
         return 0;
@@ -21,7 +24,7 @@ public:
     }
 };
 
-//!-----------------------------------------------------------------------------
+
 class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
@@ -40,15 +43,16 @@ public:
        return dp[n];
     }
 };
-//!-----------------------------------------------------------------------------
-public:
+
+class Solution{
+
+    public:
     int minCostClimbingStairs(vector<int>& cost) {
         int n = cost.size();
-        vector<int>dp(n + 1, -1);
-       //! Space optimization
-       // we only have to pay when we move from this not when we stand on 0/1st stair
-        int prev = 0; 
-        int prev1 = 0, curr;
+
+        int prev = 0; // represents dp[i-1]
+        int prev1 = 0; // represents dp[i-2]
+        int curr;
 
        for(int i = 2; i <= n; i++)
        {

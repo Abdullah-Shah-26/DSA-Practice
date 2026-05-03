@@ -12,8 +12,7 @@ int count(int i , int n, vector<int>&dp)
     // if already result is stored dont calculate again
     if(dp[i] != -1)
     return dp[i];
-    
-    // store the results while returning 
+
     return dp [i] = count(i+1, n, dp) + count(i+2, n, dp);
 }
 
