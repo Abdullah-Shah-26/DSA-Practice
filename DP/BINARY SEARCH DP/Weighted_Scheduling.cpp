@@ -11,6 +11,8 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! DP + Binary Search 
 //* NLogN
+//* Sort by finish time
+
 class Solution {
   public:
     vector<int>dp;
