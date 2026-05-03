@@ -1,13 +1,15 @@
 class Solution {
-public:
+    public:
     int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid){
 
-        int m = obstacleGrid.size();
-        int n = obstacleGrid[0].size();
-       vector<vector<int>>dp(m, vector<int>(n , 0));     // bottom up
-     dp[0][0] = 1;
-     for(int i = 0; i < obstacleGrid.size(); i++)
-     {
+    int m = obstacleGrid.size();
+    int n = obstacleGrid[0].size();
+    
+    //dp table
+    vector<vector<int>>dp(m, vector<int>(n , 0));     // bottom up
+    dp[0][0] = 1;
+    for(int i = 0; i < obstacleGrid.size(); i++)
+    {
         for(int j = 0; j < obstacleGrid[i].size() ; j++)
         {
             if(obstacleGrid[i][j] == 1)

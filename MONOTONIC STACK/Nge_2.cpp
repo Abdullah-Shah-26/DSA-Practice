@@ -26,7 +26,6 @@ class Solution {
 
       st.push(a[i % n]);
     }
-
     return nge;
     }
 };

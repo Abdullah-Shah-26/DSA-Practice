@@ -12,7 +12,6 @@ public:
     Node(int _val) : val(_val) {}
     Node(int _val, vector<Node*> _children) : val(_val), children(_children) {}
 };
-// Recursive
 
 class Solution{
   public: 
@@ -41,6 +40,3 @@ class Solution{
     return node;
   }
 };
-
-// Iterative 
-
