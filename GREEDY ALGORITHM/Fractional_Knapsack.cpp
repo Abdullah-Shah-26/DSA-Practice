@@ -53,3 +53,47 @@ class Solution {
         
 ;    }
 }
+
+// Another Way of Writing : 
+// TC = O(N Log N) | SC = O(N) 
+
+class Solution {
+  public:
+    double fractionalKnapsack(vector<int>& val, vector<int>& wt, int capacity) {
+    int n = val.size();
+    
+    vector<pair<int,int>> a(n);
+    
+    // Value / Weight = Profit Per Unit Weight
+    // Choosing by per unit wt gives us max profit - Greedy 
+    
+    for(int i = 0; i < n; i++){
+        a[i] = {val[i], wt[i]};    
+    }
+    
+    auto cmp = [&](auto p1, auto p2){
+        return (1.0 * p1.first)/p1.second > (1.0 * p2.first)/p2.second;
+    };
+    
+    sort(a.begin(), a.end(), cmp);
+    
+    double ans = 0.0;
+    
+    for(int i = 0; i < n; i++){
+        int value = a[i].first;
+        int weight = a[i].second;
+        double profitPerUnitWt = (1.0 * value)/weight;
+        
+        if(weight <= capacity){
+            ans += value; // profit = (whole value) can pick the whole item 
+            capacity -= weight; // decrease its capcity
+        }
+        else{
+            ans += profitPerUnitWt * capacity; // Can pick fraction of item
+            break; // Cannot choose anthing further as capcity would become 0 implicity
+        }
+    }
+    
+    return ans;
+    }
+};

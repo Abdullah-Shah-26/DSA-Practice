@@ -65,6 +65,7 @@ ll solve(ll a, ll b)
   // tight --- (1 - bounded) (0 - unbounded)
   // prev ---- (10 - Its like -1 , No past value, since we are memoizing so not using -1 )
   // lz --- (leading zeros - 0 - false - 1 - true)
+  
   memset(dp, -1, sizeof(dp));
   ll resR = f(r, 1, 10, 0, 1);
 
