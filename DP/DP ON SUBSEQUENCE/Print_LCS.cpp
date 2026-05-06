@@ -57,4 +57,6 @@ void lcs(string s, string t)
             j--;
     }
     cout << ans;
+
+    return 0;
 }
