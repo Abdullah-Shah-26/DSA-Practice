@@ -13,7 +13,7 @@ class Solution {
       if(dp[n] != -1) return dp[n];
 
       for(int i = 1; i*i <= n; i++){
-        if(f(n-(i*i)) == 0) // Bob Lost - means Alice Won 
+        if(f(n-(i*i)) == 0) // If opponent lose this means we win
           return dp[n] = 1;
       }
 

@@ -138,3 +138,71 @@ class Solution {
     
     }
 };
+
+//! More Intutive Way Of Writing Rec + Memo
+
+class Solution {
+  public:
+    int n;
+    int dp[500005];
+    int f(int i, vector<int> &s){
+      if(i >= n) return 0;
+      if(dp[i] != -1) return dp[i];
+
+      int ans = INT_MIN;
+
+      ans = max(ans, s[i] - f(i + 1, s));
+      if(i + 1 < n)
+        ans = max(ans, s[i] + s[i+1] - f(i + 2, s));
+      if(i + 2 < n)
+        ans = max(ans, s[i] + s[i+1] + s[i+2] - f(i + 3, s));
+
+      return dp[i] = ans;
+    }
+
+    string stoneGameIII(vector<int>& stones) {
+    n = stones.size();
+    
+    memset(dp, -1, sizeof(dp));
+    int alice = f(0, stones);
+
+    if(alice > 0) return "Alice";
+    else if(alice == 0) return "Tie";
+    else return "Bob";
+
+    }
+};
+
+//! Space Optimization
+
+class Solution {
+  public:
+    string stoneGameIII(vector<int>& s) {
+    int n = s.size();    
+
+    int i = n-1;
+    int prev3 = 0, prev2 = 0, prev1 = 0;
+    
+    while(i >= 0){
+      int ans = INT_MIN;
+      ans = max(ans, s[i] - prev1);
+      if(i + 1 < n)
+        ans = max(ans, s[i] + s[i+1] - prev2);
+      if(i + 2 < n)
+        ans = max(ans, s[i] + s[i+1] + s[i+2] - prev3);
+
+      prev3 = prev2;
+      prev2 = prev1;
+      prev1 = ans;
+
+      i--;
+    }
+
+    int alice = prev1;
+
+    if(alice > 0) return "Alice";
+    else if(alice == 0) return "Tie";
+    else return "Bob";
+
+    }
+};
