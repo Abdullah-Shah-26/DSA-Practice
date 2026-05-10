@@ -4,6 +4,8 @@ using namespace std;
 // TC = O(NLogN)
 // SC = O(1) 
 
+// Greedy : Perform min necessary adjustments on min necessary elements
+
 class Solution {
   public:
     long long minOperationsToMakeMedianK(vector<int>& nums, int k) {
