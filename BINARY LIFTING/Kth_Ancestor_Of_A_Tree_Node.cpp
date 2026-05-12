@@ -49,7 +49,7 @@ public:
 };
 
 //! ----------------------------------------------------------
-/*************************************************************
+/*
 
     Following is the Binary Tree node structure
 
@@ -119,4 +119,4 @@ int findKthAncestor(BinaryTreeNode<int> *root, int targetNodeVal, int k) {
 }
 
 
-*************************************************************/
+*/
