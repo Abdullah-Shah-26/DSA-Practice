@@ -42,3 +42,6 @@ desktop.ini
 
 # VS Code
 .vscode/
+
+# Ignored folders
+BASICS/
