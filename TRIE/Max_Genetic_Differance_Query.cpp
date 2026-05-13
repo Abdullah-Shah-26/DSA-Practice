@@ -8,7 +8,7 @@ using namespace std;
 class TrieNode{
   public:
   TrieNode* child[2];
-  int cnt ;
+  int cnt;
 
   TrieNode(){
     child[0] = child[1] = NULL;
@@ -59,6 +59,7 @@ class Trie{
     for(int i = 31; i >= 0; i--){
       int bit = (num >> i) & 1;
 
+      // To maximize xor - we should prefer opposite bit's first
       if(cur->child[!bit] != NULL && cur->child[!bit]->cnt > 0){
         ans |= (1 << i);
         cur = cur->child[!bit];

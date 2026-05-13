@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// DFS on Trie
+
 class TrieNode{
   public:
   TrieNode* child[26];

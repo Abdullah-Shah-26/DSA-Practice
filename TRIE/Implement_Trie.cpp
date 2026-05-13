@@ -35,7 +35,7 @@ class Trie {
       for(char ch : word){
         int idx = ch - 'a';
 
-        // create if missing
+        // create node if missing
         if(cur->child[idx] == NULL){
           cur->child[idx] = new TrieNode();
         }
