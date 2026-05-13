@@ -2,7 +2,8 @@
 using namespace std;
 
 // TC = O(No of words * Len of each word) + O(N*M) * 3^(Len of word) 
-// -> Since we cannot go back to prev character so at each pos we have 3 directions * L depth of trie (Max Word Len)
+// -> Since we cannot go back to prev character so at each pos we have 3 directions * L depth of trie (Max Word Len)  
+// -> In Worst Case all 3^L characters form a word.
 
 class TrieNode{
   public:

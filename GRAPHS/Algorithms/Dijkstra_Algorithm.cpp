@@ -9,7 +9,7 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-//! Using PQ - (Faster cause heap is internally implemented as array & set as RBT)
+//! Using PQ - (Faster cause heap is internally implemented as array & set as RedBlackTree)
 //* TC = O((V + E) LogV)  || SC = O(V + E)
 
 class Solution {

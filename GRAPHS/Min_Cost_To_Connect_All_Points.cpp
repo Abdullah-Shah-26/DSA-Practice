@@ -12,6 +12,7 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 //! Kruskal Algorithm
 //! Overall TC = O(N^2 Log N)
 //! SC = O(N^2)
+
 struct DSU{
   vector<int> parent,sz;
 
