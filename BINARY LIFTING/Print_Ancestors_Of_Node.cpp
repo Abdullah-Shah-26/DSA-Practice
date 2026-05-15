@@ -18,9 +18,8 @@ struct Node
      struct Node* right;
 };
 
-
 // TC = O(N)
-// SC = O(Ht of Tree  )
+// SC = O(Ht of Tree)
 
 class Solution {
   public:

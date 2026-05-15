@@ -4,6 +4,7 @@ using ll = long long;
 #define fastio                 \
   ios::sync_with_stdio(false); \
   cin.tie(nullptr);
+  
 /*
 Problem: Find 2 workers with maximum common available days
 
