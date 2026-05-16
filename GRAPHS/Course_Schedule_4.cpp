@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// DFS / BFS ---> TC = O(N * Q) | SC = O(N)
+
+class Solution {
+public:
+    bool dfs(vector<int> adj[], int src, int dst, vector<bool> &vis){
+      vis[src] = 1;
+
+      if(src == dst) return true;
+
+      for(int nei : adj[src]){
+        if(!vis[nei]){
+          if(dfs(adj, nei, dst, vis)){
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+
+    bool bfs(vector<int> adj[], int src, int dst, vector<bool> &vis){
+      vis[src] = 1;
+      queue<int> q;
+      q.push(src);
+
+      while(!q.empty()){
+        int node = q.front();
+        q.pop();
+
+        if(node == dst) return true;
+
+        for(int nei : adj[node]){
+          if(!vis[nei]){
+            vis[nei] = 1;
+            q.push(nei);
+          }
+        }
+      }
+      return false;
+    }
+
+    vector<bool> checkIfPrerequisite(int n, vector<vector<int>>& edges, vector<vector<int>>& queries) {
+    vector<int> adj[n];
+
+    for(auto &e : edges){
+      int u = e[0];
+      int v = e[1];
+
+      adj[u].push_back(v);
+    }
+
+    int q = queries.size();
+    vector<bool> ans(q, 0);
+    for(int i = 0; i < q; i++){
+      
+      auto &q = queries[i];
+      int src = q[0];
+      int dst = q[1];
+
+      vector<bool> vis(n, 0);
+      ans[i] = dfs(adj, src, dst, vis);
+    }
+
+    return ans;
+    }
+};

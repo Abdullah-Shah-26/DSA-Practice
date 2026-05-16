@@ -93,6 +93,4 @@ int main(){
       ft.update(id, delta); // updated new val in Fenwick Tree
     }
   }
-
-  
 }
