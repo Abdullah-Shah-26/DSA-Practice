@@ -69,3 +69,58 @@ class Solution {
     return ans;
   }
 };
+
+// Optimal DFS - Run From Borders Of Pacific & Atlantic Ocean
+// TC = O(N * M) | SC = O(N * M)
+
+class Solution {
+public:
+    int n, m;
+    int row[4] = {0, 0, -1, 1};
+    int col[4] = {1, -1, 0, 0};
+
+    void dfs(int r, int c, vector<vector<bool>> &vis, vector<vector<int>> &heights){
+      vis[r][c] = 1;
+
+      for(int k = 0; k < 4; k++){
+        int nr = r + row[k];
+        int nc = c + col[k];
+
+        if(nr >= 0 && nr < n && nc >= 0 && nc < m && !vis[nr][nc]){
+          if(heights[nr][nc] >= heights[r][c]){
+            dfs(nr, nc, vis, heights);
+          }
+        }
+      }
+    }
+
+    vector<vector<int>> pacificAtlantic(vector<vector<int>>& heights) {
+    n = heights.size();
+    m = heights[0].size();
+
+    vector<vector<bool>> pac(n, vector<bool> (m, 0));
+    vector<vector<bool>> atl(n, vector<bool> (m, 0));
+
+    // Avoid re-running dfs on already vis cells
+    for(int i = 0; i < n; i++){
+      if(!pac[i][0]) dfs(i, 0, pac, heights);
+      if(!atl[i][m-1]) dfs(i, m-1, atl, heights);
+    }
+
+    for(int j = 0; j < m; j++){
+      if(!pac[0][j]) dfs(0, j, pac, heights);
+      if(!atl[n-1][j]) dfs(n-1, j, atl, heights);
+    }
+
+    vector<vector<int>> ans;
+    for(int i = 0; i < n; i++){
+      for(int j = 0; j < m; j++){
+        if(pac[i][j] && atl[i][j]){
+          ans.push_back({i, j});
+        }
+      }
+    }
+    
+    return ans;
+    }
+};

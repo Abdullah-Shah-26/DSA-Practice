@@ -45,9 +45,10 @@ class Solution {
   return ans;
       }
   };
+
   // ! Same approach - 
   bool isValid(vector<int>&arr, int n , int m , int maxallowedPages)
-{ // tc = O(n)
+  { // tc = O(n)
     int stu = 1, pages = 0 ;
     for(int i = 0 ; i < n ; i++)
     {   
