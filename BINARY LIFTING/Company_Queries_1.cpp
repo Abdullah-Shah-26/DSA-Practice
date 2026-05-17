@@ -22,6 +22,7 @@ int jump(int node, int k){
   } 
   return node;
 }
+
 //! TC = (n + Q)Log N = (n + Q)Log(1e9) = (n + Q)*30
 //! SC = O(n LogN)
 void solve(){

@@ -50,6 +50,7 @@ public:
     // solve(root,res);  
     stack<pair<Node*,bool>>st;
     st.push({root,false});
+    
     while(!st.empty())
     {
       Node* node = st.top().first;
