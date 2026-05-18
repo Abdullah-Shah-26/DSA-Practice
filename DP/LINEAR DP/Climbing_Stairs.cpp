@@ -1,6 +1,7 @@
 class Solution {
 public:
-//! Top DOWN APPROACH
+
+//! Top Down
 int count(int i , int n, vector<int>&dp)
 {
     if(i == n)
@@ -21,6 +22,7 @@ int count(int i , int n, vector<int>&dp)
         return count(0,n,dp);
     }
 };
+
 //!-----------------------------------------------------------------------------
 class Solution {
 public:
@@ -39,6 +41,7 @@ public:
         return dp[0];
     }
 };
+
 //!-----------------------------------------------------------------------------
 class Solution {
 public:
