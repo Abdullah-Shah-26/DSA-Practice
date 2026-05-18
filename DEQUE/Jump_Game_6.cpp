@@ -18,8 +18,10 @@ class Solution {
 public:
     int maxResult(vector<int>& nums, int k) {
     int n = nums.size();
+
     vector<int> dp(n,0);
     dp[0] = nums[0];
+    
     deque<int> dq;
     dq.push_back(0);
 
@@ -46,9 +48,10 @@ class Solution {
 public:
     int maxResult(vector<int>& nums, int k) {
     int n = nums.size();
-    // dp value, idx
-    deque<pair<int,int>> dq;
+    
+    deque<pair<int,int>> dq; // dp Value/curScore, idx
     dq.push_back({nums[0], 0}); 
+
     int cur = nums[0];
     for(int i = 1; i  < n; i++){
       // Remove out of bound elements

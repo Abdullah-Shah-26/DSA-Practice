@@ -12,9 +12,12 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 class Solution {
 public:
     long long continuousSubarrays(vector<int>& a) {
+    
     long long cnt = 0;
-    int n = a.size();    
+    int n = a.size();   
+
     deque<int>dqMax,dqMin;
+    
     int l = 0;
     for(int r = 0 ; r < n; r++){
       

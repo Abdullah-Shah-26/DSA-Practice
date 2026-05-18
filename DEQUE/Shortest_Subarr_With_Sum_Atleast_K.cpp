@@ -9,4 +9,4 @@ static const int MOD = 1e9 + 7;
 
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
-// Monotonic Dequeue
+// Monotonic Deque
