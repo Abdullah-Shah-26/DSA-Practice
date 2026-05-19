@@ -2,6 +2,7 @@
 using namespace std;
 
 // TC = O(N) = SC
+// Window - [i - maxJump, i - minJump]
 
 class Solution {
 public:
@@ -9,7 +10,7 @@ public:
     int n = s.size();
 
     vector<bool> dp(n, false);
-    dp[0] = true;
+    dp[0] = true; // Base Case 
 
     int reachable = 0;
 
