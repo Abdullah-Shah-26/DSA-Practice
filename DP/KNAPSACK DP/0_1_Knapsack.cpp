@@ -1,6 +1,9 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
   public:
-  // Recursion + Memoization
+
   int f(int idx, int W, vector<int> &wt, vector<int> &val, vector<vector<int>> &dp)
   {
      // Base case
@@ -33,11 +36,10 @@ class Solution {
 };
 
 
-
 #include <bits/stdc++.h> 
 int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight) 
 {
-	// BOTTOM UP APPROACH 
+	// Bottom Up
 	vector<vector<int>> dp(n, vector<int>(maxWeight + 1, 0));
 
 	for(int w = weight[0]; w <= maxWeight; w++)
@@ -62,10 +64,13 @@ int knapsack(vector<int> weight, vector<int> value, int n, int maxWeight)
 return dp[n-1][maxWeight];
 }
 
-int Solution::solve(vector<int> &val, vector<int> &wt, int maxwt) {
+int solve(vector<int> &val, vector<int> &wt, int maxwt) {
+
     vector<int>prev(maxwt+1, 0);
     vector<int>curr(maxwt +1, 0);
-    //! Spacee Optimized Code
+  
+    //! Space Optimized
+
     for(int W = wt[0] ; W <= maxwt; W++)
     prev[W] = val[0];
     
@@ -88,24 +93,25 @@ return prev[maxwt];
 
 
 //!  Single array Space Optimization
- int Solution::solve(vector<int> &val, vector<int> &wt, int maxwt) {
+
+int solve(vector<int> &val, vector<int> &wt, int maxwt) {
     vector<int>prev(maxwt+1, 0);
     
     for(int W = wt[0] ; W <= maxwt; W++)
     prev[W] = val[0];
-    1
+    
     for(int idx = 1; idx < val.size(); idx++)
     {
-    //! instead of going L to R we will go R to L and overwrite prev values repeatedly instead of creating a curr
+    //! Instead of going L to R we will go R to L and overwrite prev values repeatedly instead of creating a curr
         for(int w = maxwt ; w >= wt[0]; w--)
         {
-            int notTake = 0 + prev[W];
+            int notTake = 0 + prev[w];
             int take = INT_MIN;
             
-            if(wt[idx] <= W)
-            take = val[idx] + prev[W- wt[idx]];
+            if(wt[idx] <= w)
+            take = val[idx] + prev[w- wt[idx]];
             
-            prev[W] = max(take, notTake);
+            prev[w] = max(take, notTake);
         }
     
 

@@ -1,7 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
+
 //! Top Down Approach
-int dp[301][5001]; // according to question constraints
+
+int dp[301][5001];
 int find(int idx, int amt , vector<int> &coins, int n)
 {
     // Base case
