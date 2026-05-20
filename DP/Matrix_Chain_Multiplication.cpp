@@ -1,12 +1,10 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
+using namespace std;
 
 int matrixMultiplication(vector<int> &arr, int n)
 {
     vector<vector<long long>>dp(n,vector<long long>(n,0));
-    // for(int i = 0;i < n;i++)
-    // {
-    //     dp[i][i] = 0;
-    // }
+    
     for(int i = n-1;i >= 1 ;i--)
     {
         for(int j = i+1;j < n;j++)

@@ -26,4 +26,30 @@ public:
 };
 
 
-// 
+// Greedy + Bottom Up - TC = O(N^2)
+
+class Solution {
+public:
+  int minSteps(int n) {
+  if(n == 1) return 0;
+
+  vector<long long> dp(n + 1, 0);
+  dp[1] = 0;
+  dp[2] = 2; // Need 1 copy + 1 paste
+
+  for(long long i = 3; i <= n; i++){
+  long long factor = i / 2;
+  
+    while(factor >= 1){
+      if(i % factor == 0){
+        dp[i] = dp[factor] + (i / factor);
+        break;
+      }
+
+      factor--;
+    }
+  }
+
+  return dp[n];
+  }
+};
