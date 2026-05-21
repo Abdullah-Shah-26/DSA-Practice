@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:// Top down 
     int Robber(int index, vector<int>& nums, vector<int> &dp)
@@ -23,8 +26,6 @@ public:// Top down
         return Robber(n-1, nums, dp);
     }
 };
-
-
 
 
     int rob(vector<int>& nums) {
@@ -66,8 +67,6 @@ public:// Top down
 
         vector<int>dp(n + 1, -1);
         int curr, prev = max(nums[0], nums[1]) , prev2 = nums[0] ;
-
-
         
         for(int i = 2; i <n ;i++)
         {

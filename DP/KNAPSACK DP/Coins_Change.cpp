@@ -1,6 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// ! BOTTOM UP APPROACH
+
 class Solution {
 public:
-// ! BOTTOM UP APPROACH
+
 int f(int idx, vector<int>&coins, int amt , vector<vector<int>> &dp)
 {
     // Base Case
@@ -64,17 +70,16 @@ int f(int idx, vector<int>&coins, int amt , vector<vector<int>> &dp)
 
 };
 
+//! Space Optimized
+
 class Solution {
   public:
     int count(vector<int>& nums, int target) {
-        // code here.
-        // space optimized
         
         vector<int>prev(target +1, 0), curr(target +1, 0);
         
         int n = nums.size();
-        
-        // BASE case
+
         for(int T = 0; T <= target ; T++)
         {
             if(T % nums[0] == 0)// if its divisible store how many times we need totake it
@@ -98,9 +103,8 @@ class Solution {
             }
             prev = curr;
         }
-    // note
     int ans = prev[target];
     
-return ans >= 1e9 ? -1 : ans;
-    }
+  return ans >= 1e9 ? -1 : ans;
+  }
 };
