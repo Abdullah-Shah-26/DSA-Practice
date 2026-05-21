@@ -36,7 +36,7 @@ class Solution {
   }
 };
 
-//! Bottom UP approach
+//! Bottom Up approach
 class Solution {
   public:
     int editDistance(string s1, string s2){

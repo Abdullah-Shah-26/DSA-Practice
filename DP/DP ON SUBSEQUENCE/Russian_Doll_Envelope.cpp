@@ -10,6 +10,7 @@ static const int MOD = 1e9 + 7;
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! Patience Sorting + Custom Sorting 
+
 class Solution {
 public:
    static bool cmp(const vector<int>& a, const vector<int>& b) {
