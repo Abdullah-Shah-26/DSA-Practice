@@ -4,7 +4,7 @@ public:
        vector<vector<int>>ans;
        int i = 0; 
        int n = intervals.size();
-                    // newinterval st > oldinterval end
+         // newinterval st > oldinterval end
        while(i < n && newInterval[0] > intervals[i][1]){
         ans.push_back(intervals[i]); // no overlap
         i++;

@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
   public:
     double fractionalKnapsack(vector<int>& val, vector<int>& wt, int capacity) {
@@ -51,8 +54,8 @@ class Solution {
         
         return std::round(totalvalue * 1e6)/1e6;
         
-;    }
-}
+    }
+};
 
 // Another Way of Writing : 
 // TC = O(N Log N) | SC = O(N) 

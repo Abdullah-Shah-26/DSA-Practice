@@ -1,30 +1,29 @@
 class Solution {
   public:
   // Node class 
-    class Node{
-            
-            public:
-            
-            int freq;
-            char c;
-            Node *left, *right;
-            
-            Node(int frequency, char name)
-            {
-                freq = frequency;
-                c = name;
-                left = right = NULL;
-            }
-        };
+    class Node{  
+          public:
         
-        // Customized comparision 
-        class comp{
-            public:
-            bool operator()(Node *a , Node *b){
-                //Kya a and b ka order sahi hay a before b if a < b
-                return a->freq > b->freq; // in heap reverse this logic
-            }
-        };
+        int freq;
+        char c;
+        Node *left, *right;
+        
+        Node(int frequency, char name)
+        {
+            freq = frequency;
+            c = name;
+            left = right = NULL;
+        }
+      };
+      
+      // Customized comparision 
+      class comp{
+          public:
+          bool operator()(Node *a , Node *b){
+              //Kya a and b ka order sahi hay a before b if a < b
+              return a->freq > b->freq; // in heap reverse this logic
+          }
+      };
         
         
           // Traverse and store code for each character in map

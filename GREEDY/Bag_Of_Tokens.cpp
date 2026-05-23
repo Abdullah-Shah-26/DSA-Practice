@@ -12,6 +12,7 @@ inline void fastio()
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 }
+
 //! Greedy + 2 Pointer
 class Solution
 {
