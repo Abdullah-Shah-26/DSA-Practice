@@ -11,6 +11,7 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
+
 // Splits Never Increase Subarr Sum so check feasibilty <= k
     bool isPossible(long long x, int k, vector<int>& nums) {
         long long curSum = 0;
