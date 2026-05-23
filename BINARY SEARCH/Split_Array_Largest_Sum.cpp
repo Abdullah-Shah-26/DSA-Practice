@@ -2,44 +2,41 @@
 using namespace std;
 
 class Solution {
-public:// TC = O(Nlog(n))
-
-int splitArray(int arr[] ,int n, int k) {
-    // code here
-    // binary search approach same as book allocation
+public:
+  bool check(int x, vector<int> &nums, int k){
+    int subarr = 1;
     int sum = 0;
-    for(int i = 0; i < n ; i++)
-    sum += arr[i];
-    int ans = -1;
-    int maxelem = *max_element(arr,arr+n);
-    
-    int st = maxelem , end = sum;
-                            // n
-    while(st <= end) // O(log(range))
-    {
-    // prob - find min possible max allowed subarray sum
-        // mid = max allowed subarray sum
-        int mid = st + (end - st)/2;
-        int subarrsum = 0, Noofsubarrays = 1;
-        for(int i = 0 ; i < n ; i++) // O(N)
-        {
-            subarrsum += arr[i];
-            if(subarrsum > mid)
-            {
-                // we will need 1 more subarray
-                Noofsubarrays++;
-                subarrsum = arr[i];
-            }
-        }
-        if(Noofsubarrays <= k)
-        {
-            // store the valid max no of subarrays and find its minpossible
-        ans = mid ;
-        end = mid - 1;
-        }
-        else
-        st = mid + 1; // increase the max allowed subarray sum
+
+    for(int i = 0; i < nums.size(); i++){
+      if(sum + nums[i] > x){
+        sum = nums[i];
+        subarr++;
+        continue;
+      }
+      sum += nums[i];
     }
-    return ans;
-}
+
+    return subarr <= k;
+  }
+
+  int splitArray(vector<int>& nums, int k) {
+  int l = *max_element(begin(nums), end(nums));
+  int r = accumulate(begin(nums), end(nums), 0);
+
+  int ans = r;
+
+  while(l <= r){
+    int mid = l + (r - l)/2;
+
+    if(check(mid, nums, k)){
+      ans = mid;
+      r = mid - 1;
+    }
+    else{
+      l = mid + 1;
+    }
+  }   
+
+  return ans;
+  }
 };
