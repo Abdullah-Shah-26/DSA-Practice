@@ -16,6 +16,7 @@ class Node
         data = val;
     }
 };
+
 //! N L R - printing order
 void PreOrder(Node* root)
 {
@@ -31,6 +32,7 @@ void PreOrder(Node* root)
     PreOrder(root->right);
 
 }
+
 //! L R N - printing order
 void PostOrder(Node* root)
 {
@@ -47,6 +49,7 @@ void PostOrder(Node* root)
     cout<<root->data<<" ";
     
 }
+
 //!  L N R - printing order 
 void InOrder(Node* root)
 {
@@ -86,6 +89,7 @@ Node* BinaryTree(){
     return temp;
 
 }
+
 int main()
 {
     cout<<"Enter the root Node : ";

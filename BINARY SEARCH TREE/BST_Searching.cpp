@@ -1,79 +1,84 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
-// recursion use karke 
-// TC of creating tree = O(n square)   Sc = O(N)
-class Node{
-    public:
-    int data;
-    Node* left;
-    Node* right;
 
-    Node(int val){
-        data = val;
-        left = right = NULL;
-    }
+// TC = O(H) | SC = O(H) (due to call stack)
+
+class TreeNode {
+public:
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
-//! function to insert values in BST - TC = O(N)
-Node* insert(Node* root, int target)
-{
-    // base case 
-    if(!root) // null par pahucnche create node
-    {
-        Node* temp = new Node(target);
-        return temp;
-    }
 
-    if(target < root->data) // new node left side dalo
+TreeNode *insert(TreeNode *root, int target)
+{
+  if (!root)
+  {
+    return new TreeNode(target);
+  }
+
+  if (target < root->val)
+  {
     root->left = insert(root->left, target);
-
-    else // target >= root ->data  -- right side dalo 
+  }
+  else
+  {
     root->right = insert(root->right, target);
+  }
 
-    return root;
+  return root;
 }
-// inorder traversal - sorted aayega 
-void inorder(Node *root)
+
+void inorder(TreeNode *root)
 {
-    if(!root)
+  if (!root)
+  {
     return;
+  }
 
-    // left 
-    inorder(root->left);
-
-    // Node
-    cout<<root->data<<" ";
-
-    // right
-    inorder(root->right);
+  inorder(root->left);
+  cout << root->val << " ";
+  inorder(root->right);
 }
-//! Search function - searches element in BST - TC = O(N) = SC 
-bool search(Node* root, int target)
+
+// Function to search element in BST
+bool search(TreeNode *root, int target)
 {
-    if(!root) // null tak pahunch gai yaani target nai mila 
+  if (!root)
+  {
     return 0;
+  }
 
-    if(root->data == target)
+  if (root->val == target)
+  {
     return 1;
+  }
 
-    if( target < root->data) // search left side
-    {
-        return search(root->left , target); // ans return karderna 
-    }
-    else // right side
+  // Search left subtree
+  if (target < root->val)
+  {
+    return search(root->left, target);
+  }
+  // Search right subtree
+  else
+  {
     return search(root->right, target);
+  }
 }
 
-int main(){
-    int arr[] = {6,3,17,5,11,18,2,1,20,14};
-    Node* root = NULL;
+int main()
+{
+  int arr[] = {6, 3, 17, 5, 11, 18, 2, 1, 20, 14};
+  TreeNode *root = NULL;
 
-    for(int i = 0; i<10; i++)
-        root = insert(root, arr[i]);
+  for (int i = 0; i < 10; i++)
+  {
+    root = insert(root, arr[i]);
+  }
 
-        cout<<endl;
-
-        cout<<search(root,6);
-
-        // Traverse
-        // inorder(root);
+  cout << endl;
+  cout << search(root, 6);
 }

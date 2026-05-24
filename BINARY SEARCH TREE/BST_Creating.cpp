@@ -1,61 +1,54 @@
-#include<iostream>
+#include <bits/stdc++.h>
 using namespace std;
-// recursion use karke 
-// TC of creating tree = O(n square)   Sc = O(N)
-class Node{
-    public:
-    int data;
-    Node* left;
-    Node* right;
 
-    Node(int val){
-        data = val;
-        left = right = NULL;
-    }
+// TC = O(N^2) worst case, O(NlogN) average | SC = O(H)
+
+class TreeNode {
+public:
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right)
+      : val(x), left(left), right(right) {}
 };
-// function to insert values in BST
-Node* insert(Node* root, int target)
-{
-    // base case 
-    if(!root) // null par pahucnche create node
-    {
-        Node* temp = new Node(target);
-        return temp;
-    }
 
-    if(target < root->data) // new node left side dalo
+TreeNode *insert(TreeNode *root, int target) {
+  // Base case: null node found, create new node here
+  if (!root) {
+    return new TreeNode(target);
+  }
+
+  // Insert left
+  if (target < root->val) {
     root->left = insert(root->left, target);
-
-    else // target >= root ->data  -- right side dalo 
+  }
+  // Insert right
+  else {
     root->right = insert(root->right, target);
+  }
 
-    return root;
+  return root;
 }
-// inorder traversal - sorted aayega 
-void inorder(Node *root)
-{
-    if(!root)
+
+void inorder(TreeNode *root) {
+  if (!root)
     return;
 
-    // left 
-    inorder(root->left);
-
-    // Node
-    cout<<root->data<<" ";
-
-    // right
-    inorder(root->right);
+  inorder(root->left);
+  cout << root->val << " ";
+  inorder(root->right);
 }
 
+int main() {
+  int arr[] = {6, 3, 17, 5, 11, 18, 2, 1, 20, 14};
+  TreeNode *root = NULL;
 
-int main(){
-    int arr[] = {6,3,17,5,11,18,2,1,20,14};
-    Node* root = NULL;
+  for (int i = 0; i < 10; i++) {
+    root = insert(root, arr[i]);
+  }
 
-    for(int i = 0; i<10; i++)
-        root = insert(root, arr[i]);
-
-
-        // Traverse
-        inorder(root);
+  // Traverse
+  inorder(root);
 }

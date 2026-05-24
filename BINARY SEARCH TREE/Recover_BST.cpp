@@ -1,13 +1,8 @@
+// TC = O(N) | SC = O(N)
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
-#define fastio                 \
-  ios::sync_with_stdio(false); \
-  cin.tie(nullptr);
 
-class TreeNode
-{
-
+class TreeNode {
 public:
   int val;
   TreeNode *left;
@@ -28,7 +23,9 @@ public:
   void inorder(TreeNode *root)
   {
     if (!root)
+    {
       return;
+    }
 
     inorder(root->left);
 
@@ -57,9 +54,13 @@ public:
     inorder(root);
 
     if (first && last)
+    {
       swap(first->val, last->val);
+    }
     else if (first && middle)
+    {
       swap(first->val, middle->val);
+    }
     return;
   }
 };

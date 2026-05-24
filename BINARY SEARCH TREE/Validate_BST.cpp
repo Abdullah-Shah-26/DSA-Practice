@@ -1,11 +1,8 @@
+// TC = O(N) | SC = O(N)
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
-#define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
 
-class TreeNode
-{
-
+class TreeNode {
 public:
   int val;
   TreeNode *left;
@@ -21,10 +18,14 @@ public:
   bool isValid(TreeNode *root, long long mini, long long maxi)
   {
     if (!root)
+    {
       return 1;
+    }
 
     if (root->val >= maxi || root->val <= mini)
+    {
       return 0;
+    }
 
     return isValid(root->left, mini, root->val) && isValid(root->right, root->val, maxi);
   }
