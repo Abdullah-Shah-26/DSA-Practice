@@ -1,20 +1,26 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
-#define fastio ios::sync_with_stdio(false); cin.tie(nullptr);
 
 class Solution {
 public:
-    int numberOfSubstrings(string s) {
-    int lastSeen[3] = {-1,-1,-1};
-    int cnt = 0;
-    int n = s.size();
-    for(int i = 0;i < n; i++)
-    {
-      lastSeen[s[i]-'a'] = i;
-      
-      cnt += (1 + min({lastSeen[0], lastSeen[1], lastSeen[2]}));
+  int numberOfSubstrings(string s) {
+  int n = s.size();
+
+  int ans = 0;
+  int freq[3] = {0,0,0};
+
+  int l = 0;
+  for(int r = 0; r < n; r++){
+    freq[s[r] - 'a']++;
+
+    while(freq[0] > 0 && freq[1] > 0 && freq[2] > 0){
+      ans += (n - r);
+
+      freq[s[l] - 'a']--;
+      l++;
     }
-    return cnt;
-    }
+  }   
+
+  return ans;
+  }
 };

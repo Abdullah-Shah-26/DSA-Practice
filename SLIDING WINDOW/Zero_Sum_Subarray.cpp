@@ -1,37 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
-#define fastio                   \
-    ios::sync_with_stdio(false); \
-    cin.tie(nullptr);
-
-class Solution
-{
-public:
-    int findSubarray(vector<int> &arr)
-    {
-        // brute force - TC = O(n cube)
-        int total = 0;
-        int n = arr.size();
-        for (int i = 0; i < n; i++)
-        {
-            for (int j = i; j < n; j++)
-            {
-                int sum = 0;
-
-                for (int k = i; k <= j; k++)
-                {
-                    sum += arr[k];
-                }
-                if (sum == 0)
-                    total++;
-            }
-        }
-        return total;
-    }
-};
-
-//!____________________________________________
 
 class Solution
 {
