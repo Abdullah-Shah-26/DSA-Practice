@@ -84,7 +84,6 @@ void update(Node *node, int st, int end,int l,int r, int val){
 }
 
 // TC = O(N*Log(Range)) = O(N * log(1e9)) = O(N*30)
-
 // SC = O(N*Log(Range))
 
 class MyCalendarThree {

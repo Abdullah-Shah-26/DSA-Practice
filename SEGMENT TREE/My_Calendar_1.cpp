@@ -18,11 +18,13 @@ static const int MOD = 1'000'000'007;
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! In MyCalendar I we query before update → children don't exist → segfault.
+
 class MyCalendar {
 public:
   //! Dynamic Segment Tree with lazy propogation
   // TC = O(N log (10^9))
   // SC = O(N log (10^9)) // Atmost these many nodes get created
+  
   struct Node{
   int val;
   int lazy;
