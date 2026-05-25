@@ -1,17 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
-//!  TC = O(log N) 
+//!  TC = O(log N)
 //!  SC = O(4N)
 
-//! RMIQ 
+//! RMIQ
 vector<int> arr = {1, 2, 3, 4, 5};
 int n = arr.size();
 vector<int> segTree(4 * n);
 
-void buildTree(int i, int l, int r)
-{
-  if (l == r)
-  {
+void buildTree(int i, int l, int r) {
+  if (l == r) {
     segTree[i] = l; // or arr[l];
     return;
   }
@@ -22,24 +20,18 @@ void buildTree(int i, int l, int r)
   int leftMaxIdx = segTree[2 * i + 1];
   int rightMaxIdx = segTree[2 * i + 2];
 
-  if (arr[leftMaxIdx] >= arr[rightMaxIdx])
-  {
+  if (arr[leftMaxIdx] >= arr[rightMaxIdx]) {
     segTree[i] = leftMaxIdx;
-  }
-  else
-  {
+  } else {
     segTree[i] = rightMaxIdx;
   }
 }
 
-int QuerySegTree(int st, int end, int i, int l, int r)
-{
-  if (l > end || r < st)
-  {
+int QuerySegTree(int st, int end, int i, int l, int r) {
+  if (l > end || r < st) {
     return -1;
   }
-  if (l >= st && r <= end)
-  {
+  if (l >= st && r <= end) {
     return segTree[i];
   }
   int mid = (l + r) >> 1;
@@ -53,12 +45,9 @@ int QuerySegTree(int st, int end, int i, int l, int r)
   if (rightMaxIdx == -1)
     return leftMaxIdx;
 
-  if (arr[leftMaxIdx] >= rightMaxIdx)
-  {
+  if (arr[leftMaxIdx] >= rightMaxIdx) {
     return leftMaxIdx;
-  }
-  else
-  {
+  } else {
     return rightMaxIdx;
   }
 }

@@ -1,19 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class SGTree
-{
+class SGTree {
 public:
   vector<int> seg;
-  SGTree(int n)
-  {
-    seg.resize(4 * n + 1);
-  }
+  SGTree(int n) { seg.resize(4 * n + 1); }
 
-  void build(int idx, int low, int high, int arr[])
-  {
-    if (low == high)
-    {
+  void build(int idx, int low, int high, int arr[]) {
+    if (low == high) {
       seg[idx] = arr[low];
       return;
     }
@@ -23,8 +17,7 @@ public:
     seg[idx] = min(seg[2 * idx + 1], seg[2 * idx + 2]);
   }
 
-  int query(int idx, int low, int high, int l, int r)
-  {
+  int query(int idx, int low, int high, int l, int r) {
     if (r < low || high < l)
       return 1e9;
 
@@ -32,13 +25,12 @@ public:
       return seg[idx];
 
     int mid = (low + high) >> 1;
-    return min(query(2 * idx + 1, low, mid, l, r), query(2 * idx + 2, mid + 1, high, l, r));
+    return min(query(2 * idx + 1, low, mid, l, r),
+               query(2 * idx + 2, mid + 1, high, l, r));
   }
 
-  void update(int idx, int low, int high, int i, int val)
-  {
-    if (low == high)
-    {
+  void update(int idx, int low, int high, int i, int val) {
+    if (low == high) {
       seg[idx] = val;
       return;
     }
@@ -52,8 +44,7 @@ public:
   }
 };
 
-void solve()
-{
+void solve() {
   int n;
   cin >> n;
   int arr[n];
@@ -73,29 +64,22 @@ void solve()
   int q;
   cin >> q;
 
-  while (q--)
-  {
+  while (q--) {
     int type;
     cin >> type;
-    if (type == 1)
-    {
+    if (type == 1) {
       int l1, r1, l2, r2;
       cin >> l1 >> r1 >> l2 >> r2;
       int min1 = sg1.query(0, 0, n - 1, l1, r1);
       int min2 = sg2.query(0, 0, n2 - 1, l2, r2);
       cout << min(min1, min2) << endl;
-    }
-    else
-    {
+    } else {
       int arrNo, i, val;
       cin >> arrNo >> i >> val;
-      if (arrNo == 1)
-      {
+      if (arrNo == 1) {
         sg1.update(0, 0, n - 1, i, val);
         arr[i] = val;
-      }
-      else
-      {
+      } else {
         sg2.update(0, 0, n2 - 1, i, val);
         arr2[i] = val;
       }
@@ -103,8 +87,7 @@ void solve()
   }
 }
 
-int main()
-{
+int main() {
   cout << "Enter:" << endl;
   solve();
   return 0;
