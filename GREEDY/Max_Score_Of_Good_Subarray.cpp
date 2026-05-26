@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//! Greedy + 2 pointer center expansion - Choose side with larger neighbour
+// Greedy + 2 pointer center expansion - Choose side with larger neighbour
 //* TC = O(N) | SC = O(1)
 
 class Solution {
