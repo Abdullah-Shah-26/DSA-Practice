@@ -1,34 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
 
-class Solution { // balance cond ht(l) - ht(r) = 1 , 0 , or -1
-    public:
-    
-    int height(Node* root, bool &valid)
-    {
-        if(root == NULL) // ht will be 0
-        return 0;
-        
-        int L = height(root->left, valid);
-        // if left part mein all nodes are satisfyng balancing cond 
-        // then only check right part
-        if(valid)
-        {
-          int R = height(root->right, valid);
-          // absolute fun converts -ve to +ve
-          if(abs(L-R)>1) // balance cond not satasfied
-          valid = 0;
-        
-          return 1 + max(L,R); 
-        }
-    // else 
-    return -1;
-    }
-    
-      bool isBalanced(Node* root) {
-          // Code here
-          
-          bool valid = 1; // assuming its balance tree initially
-          
-          height(root , valid);
-          return valid;
-      }
-  };
+class Solution {
+public:
+  // Return ht if subtree is balanced else -1
+  int dfs(TreeNode* root){   
+    if(!root) return 0;
+
+    int leftHt = dfs(root->left);
+    if(leftHt == -1)
+      return -1;
+
+    int rightHt = dfs(root->right);
+    if(rightHt == -1)
+      return -1;
+
+    if(abs(leftHt - rightHt) > 1) return -1;
+
+    return max(leftHt, rightHt) + 1;
+  }
+
+  bool isBalanced(TreeNode* root) {
+    return dfs(root) != -1;   
+  }
+};

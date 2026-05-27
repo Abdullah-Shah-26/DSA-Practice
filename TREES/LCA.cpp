@@ -1,4 +1,7 @@
-/**
+#include <bits/stdc++.h>
+using namespace std;
+
+/*
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -7,6 +10,7 @@
  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
  * };
  */
+
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
