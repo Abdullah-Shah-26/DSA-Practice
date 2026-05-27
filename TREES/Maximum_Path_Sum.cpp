@@ -1,48 +1,40 @@
-
-//  Definition for a binary tree node.
- struct TreeNode
- {
-   int val;
-   TreeNode *left;
-   TreeNode *right;
-   TreeNode() : val(0), left(nullptr), right(nullptr) {}
-   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- };
-
 #include <bits/stdc++.h>
- using namespace std;
- using ll = long long;
-#define fastio                 \
-   ios::sync_with_stdio(false); \
-   cin.tie(nullptr);
+using namespace std;
 
- class Solution
- {
- public:
-   int solve(TreeNode *root, int &maxi)
-   {
-     if (!root)
-       return 0;
+struct TreeNode{
+  int val;
+  TreeNode *left;
+  TreeNode *right;
+  TreeNode() : val(0), left(nullptr), right(nullptr) {}
+  TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
-     int ls = solve(root->left, maxi);
-     int rs = solve(root->right, maxi);
+class Solution {
+public:
+  int dfs(TreeNode* node, int &maxi){
+    if(!node)
+     return 0;
 
-     // Edge cases -- >> -ve path sum from anywhere will only decrease overall sum
-     if (ls < 0)
-       ls = 0;
-     if (rs < 0)
-       rs = 0;
+    int left = dfs(node->left, maxi);
+    int right = dfs(node->right, maxi);
 
-     maxi = max(maxi, ls + rs + root->val);
+    if(left < 0)
+      left = 0;
+    
+    if(right < 0)
+      right = 0;
+    
+    maxi = max(maxi, left + right + node->val);
+    
+    return node->val + max(left, right);
+  }
 
-     return root->val + max(ls, rs);
-   }
+  int maxPathSum(TreeNode* root) {
+  int maxi = -1e9;
 
-   int maxPathSum(TreeNode *root)
-   {
-     int maxi = INT_MIN;
-     solve(root, maxi);
-     return maxi;
-   }
- };
+  dfs(root, maxi);
+  
+  return maxi;
+  }
+};
