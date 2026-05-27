@@ -3,34 +3,24 @@ using namespace std;
 
 class Solution {
 public:
-  int maxDepth(TreeNode* root) {
-  if(!root) return 0;
+  vector<vector<int>> levelOrder(TreeNode* root) {
+  vector<vector<int>> ans;
 
-  int lh = maxDepth(root->left);
-  int rh = maxDepth(root->right);
-
-  return 1 + max(lh, rh);      
-  }
-};
-
-// Using Level Order 
-
-class Solution {
-public:
-  int maxDepth(TreeNode* root) {
-  if(!root) return 0;
+  if(!root) 
+    return ans;
 
   queue<TreeNode*> q;
   q.push(root);
 
-  int depth = 0;
-
   while(!q.empty()){
     int sz = q.size();
+    vector<int> temp;
 
     while(sz--){
       TreeNode* node = q.front();
       q.pop();
+
+      temp.push_back(node->val);
 
       if(node->left)
         q.push(node->left);
@@ -39,9 +29,9 @@ public:
         q.push(node->right);
     }
 
-    depth++;
-  }    
+    ans.push_back(temp);
+  }
 
-  return depth;
+  return ans;
   }
 };

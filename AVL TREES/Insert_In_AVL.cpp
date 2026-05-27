@@ -18,6 +18,7 @@ public:
         left = right = NULL;
     }
 };
+
 //! funciton to get height
 int getheight(Node *root)
 {

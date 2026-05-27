@@ -1,3 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// defining a node
+class Node
+{
+public:
+    int data;
+    int height;
+    Node *left;
+    Node *right;
+
+    // structure of a single node
+    Node(int value)
+    {
+        data = value;
+        height = 1;
+        left = right = NULL;
+    }
+};
+
 // function to get height 
 int getheight(Node* root)
 {
