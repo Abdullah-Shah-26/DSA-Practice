@@ -1,7 +1,7 @@
-// TC = O(n) SC = O(1)
 #include<bits/stdc++.h>
 #include<vector>
 using namespace std;
+
 class Node{
     public:
     int data;
@@ -14,6 +14,7 @@ class Node{
         data = val;
     }
 };
+
 // L R N
 vector<int>postOrder(Node* root){
     //we will traverse the tree in order N - R - L
