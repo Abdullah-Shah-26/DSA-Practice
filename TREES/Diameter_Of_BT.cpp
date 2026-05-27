@@ -11,10 +11,12 @@ struct TreeNode
   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+  
+// TC = O(N)
+// SC = O(N)
+
 class Solution{
 public:
-  // TC = O(N)
-  // SC = O(N)
   int height(TreeNode *root, int &maxi)
   {
     if (!root)
