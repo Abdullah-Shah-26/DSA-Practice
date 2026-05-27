@@ -1,4 +1,5 @@
 // TC = O(N) | SC = O(N)
+
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -9,18 +10,15 @@ public:
   TreeNode *right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right)
+      : val(x), left(left), right(right) {}
 };
 
-class Solution
-{ // method 1 - TC = O(n) SC = O(n)
-  // method 2 - TC = O(n) SC = O(1)
+class Solution { // method 1 - TC = O(n) SC = O(n)
 public:
-  void inorder(TreeNode *root, vector<int> &ans)
-  {
+  void inorder(TreeNode *root, vector<int> &ans) {
     // inorder traversal
-    if (!root)
-    {
+    if (!root) {
       return;
     }
 
@@ -29,13 +27,12 @@ public:
     inorder(root->right, ans); // R
   }
   // Function to check whether a Binary Tree is BST or not.
-  bool isBST(TreeNode *root)
-  {
+  bool isBST(TreeNode *root) {
     vector<int> ans;
-    inorder(root, ans); // if inorder is in strictly ascending order then its BST
+    inorder(root,
+            ans); // if inorder is in strictly ascending order then its BST
 
-    for (int i = 1; i < ans.size(); i++)
-    {
+    for (int i = 1; i < ans.size(); i++) {
       if (ans[i] <= ans[i - 1]) // prev should be >= curr
       {
         return 0;
@@ -45,16 +42,14 @@ public:
     return 1;
   }
 };
-//!------------------------------------------------------------------------
-class Solution2
-{
-  // method  2 - TC = O(n) SC = O(1)
-public:
-  bool BST(TreeNode *root, int &prev)
-  {
 
-    if (!root)
-    {
+//!------------------------------------------------------------------------
+class Solution2 {
+// method  2 - TC = O(n) SC = O(1)
+public:
+  bool BST(TreeNode *root, int &prev) {
+
+    if (!root) {
       return 1;
     }
 
@@ -62,13 +57,11 @@ public:
     //   bool l = BST(root->left , prev);
     //   if(l == 0)
 
-    if (!BST(root->left, prev))
-    {
+    if (!BST(root->left, prev)) {
       return 0;
     }
 
-    if (root->val <= prev)
-    {
+    if (root->val <= prev) {
       return 0;
     }
 
@@ -79,8 +72,7 @@ public:
   }
 
   // Function to check whether a Binary Tree is BST or not.
-  bool isBST(TreeNode *root)
-  {
+  bool isBST(TreeNode *root) {
     int prev = INT_MIN;
     return BST(root, prev); // func tells if its BST
   }
