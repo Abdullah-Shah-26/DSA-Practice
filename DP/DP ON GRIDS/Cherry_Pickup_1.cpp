@@ -3,8 +3,7 @@ using namespace std;
 using ll = long long;
 const ll mod = 1e9 + 7;
 
-class Solution
-{
+class Solution{
 public: 
     // same row for alice and bob just diff col
     // recursion + memoization
