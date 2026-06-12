@@ -17,6 +17,7 @@ int phiNaive(int n){
 }
 
 /* 
+
 Obsv : 
 
 phi(2) = 1
