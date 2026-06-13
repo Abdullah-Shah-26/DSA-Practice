@@ -106,8 +106,8 @@ void solve(){
 
   for(int k = 1; k < 20; k++){ // n Log N = n Log(2e18) = n * 18
     for(int node = 1; node <= n; node++){
-      if(up[node][ k - 1] !=  -1 ){
-        up[node][k] = up[ up[node][ k - 1]][k - 1];
+      if(up[node][k - 1] !=  -1 ){
+        up[node][k] = up[up[node][k - 1]][k - 1];
       }
     }
   }
