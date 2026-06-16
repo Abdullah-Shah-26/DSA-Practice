@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// BFS Level wise 
+// BFS Level wise : TC = O(N) | SC = O(N) 
 
 class Solution {
   public:
