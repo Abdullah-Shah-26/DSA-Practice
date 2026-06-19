@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+using ull = unsigned long long;
+
+// Known CP Trick : 
+// Convert a numerical constraint problem into a string pattern matching problem by encoding relationships instead of values.
+
+class RabinKarp{
+private:
+  static const ull MOD1 = 1000000007ULL;
+  static const ull MOD2 = 1000000009ULL;
+
+  static const ull BASE1 = 313ULL;
+  static const ull BASE2 = 317ULL;
+
+public:
+  static vector<int> find(string &text, string &pattern){
+    int n = text.size();
+    int m = pattern.size();
+
+    if(m > n)
+      return {};
+
+    vector<int> ans;
+
+    ull pat1 = 0, pat2 = 0;
+    ull hash1 = 0, hash2 = 0;
+    ull pow1 = 1, pow2 = 1;
+
+    for(int i = 0; i < m; i++){
+      pat1 = (pat1 * BASE1 + pattern[i]) % MOD1;
+      pat2 = (pat2 * BASE2 + pattern[i]) % MOD2;
+
+      hash1 = (hash1 * BASE1 + text[i]) % MOD1;
+      hash2 = (hash2 * BASE2 + text[i]) % MOD2;
+
+      if(i){
+        pow1 = (pow1 * BASE1) % MOD1;
+        pow2 = (pow2 * BASE2) % MOD2;
+      }
+    }
+
+    ull patHash = (pat2 << 32) | pat1;
+
+    for(int l = 0; l <= n - m; l++){
+
+      ull textHash = (hash2 << 32) | hash1;
+
+      if(textHash == patHash &&
+        text.compare(l, m, pattern) == 0)
+        ans.push_back(l);
+
+      if(l == n - m)
+        break;
+
+      hash1 = ((hash1 + MOD1 - text[l] * pow1 % MOD1) * BASE1 + text[l + m]) % MOD1;
+      hash2 = ((hash2 + MOD2 - text[l] * pow2 % MOD2) * BASE2 + text[l + m]) % MOD2;
+    }
+
+    return ans;
+  }
+};
+
+class Solution {
+public:
+  int countMatchingSubarrays(vector<int>& nums, vector<int>& pattern) {   
+    int n = nums.size();
+
+    string text(n - 1, 'x');
+    for(int i = 0; i < n-1; i++){
+      if(nums[i + 1] > nums[i]) text[i] = 'a';
+      if(nums[i + 1] < nums[i]) text[i] = 'b';
+      if(nums[i + 1] == nums[i]) text[i] = 'c'; 
+    }
+
+    string patt = "";
+    for(auto i : pattern){
+      if(i == 1) patt += 'a';
+      if(i == -1) patt += 'b';
+      if(i == 0) patt += 'c';
+    }
+  
+  RabinKarp rk;
+  return rk.find(text, patt).size();  
+  }
+};
