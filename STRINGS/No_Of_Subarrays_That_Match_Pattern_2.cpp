@@ -66,7 +66,7 @@ public:
   int countMatchingSubarrays(vector<int>& nums, vector<int>& pattern) {   
     int n = nums.size();
 
-    string text(n - 1, 'x');
+    string text(n - 1, 'x'); // Encoding relationship not no's, Ex : 5 No's -> 4 Pairs
     for(int i = 0; i < n-1; i++){
       if(nums[i + 1] > nums[i]) text[i] = 'a';
       if(nums[i + 1] < nums[i]) text[i] = 'b';
