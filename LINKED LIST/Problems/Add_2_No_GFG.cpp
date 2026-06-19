@@ -1,4 +1,6 @@
-// BULLSHIT PROBLEM BUT EASY JUST REMOVE LEADING ZEROS
+#include <bits/stdc++.h>
+using namespace std;
+
 Node* reverse(Node* head)
 {
     if(head == NULL) return head;
@@ -29,7 +31,7 @@ void insertattail(Node* &head, Node* &tail, int x)
 }
 Node* add(Node* first, Node* second)
 {
-        int carry =0;
+    int carry =0;
     Node* anshead = NULL, *anstail= NULL;
     while(first != NULL || second != NULL || carry!= 0)
     {
