@@ -32,7 +32,7 @@ public:
       continue;
     }
 
-   // Find segment of zeros
+    // Find segment of zeros
     int j = i;
     while(j < n && diff[j] == 0) 
       j++;
