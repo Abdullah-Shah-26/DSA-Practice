@@ -13,7 +13,7 @@ dp[1][1] -> First taken, last taken
 */
 
 using ll = long long;
-const ll NEG = -1e18;
+const ll NLINF = -1e18;
 const int MOD = 1e9 + 7;
 
 class SegTree{
@@ -25,7 +25,7 @@ public:
     Node(){
       for(int i = 0; i < 2; i++){
         for(int j = 0; j < 2; j++){
-          dp[i][j] = NEG;
+          dp[i][j] = NLINF;
         }
       }
     }
