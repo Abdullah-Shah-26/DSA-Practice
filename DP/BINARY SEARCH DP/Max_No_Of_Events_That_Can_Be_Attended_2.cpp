@@ -10,6 +10,7 @@ static const int MOD = 1e9 + 7;
 inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! Binary Search + DP
+
 class Solution {
 public:
     int maxValue(vector<vector<int>>& events, int k) {

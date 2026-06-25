@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 
   public:
@@ -35,7 +38,7 @@ class Solution {
         
         
         int mini = 1e9;
-      // instead of making another subarray and calculatingits sum 
+      // instead of making another subarray and calculating its sum 
       // we are finding it from totalsum 
         for(int s1 = 0; s1 <= totsum/2; s1++)
         {
