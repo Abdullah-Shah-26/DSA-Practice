@@ -4,6 +4,8 @@ using namespace std;
 using ll = long long;
 const ll INF = 1e18;
 
+// Track the current phase/state while scanning (e.g., before/inside/after, holding/sold). Like stock problems
+
 class Solution {
 public:  
   long long maxSubarraySum(vector<int>& nums, int k) {
