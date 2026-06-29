@@ -10,17 +10,15 @@ public:
   TreeNode *right;
   TreeNode() : val(0), left(nullptr), right(nullptr) {}
   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-  TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+  TreeNode(int x, TreeNode *left, TreeNode *right)
+      : val(x), left(left), right(right) {}
 };
 
-class Solution
-{
+class Solution {
 public:
   // Create a BST from a sorted array and return its root
-  TreeNode *ArrayToBST(vector<int> &ans, int start, int end)
-  {
-    if (start > end)
-    {
+  TreeNode *ArrayToBST(vector<int> &ans, int start, int end) {
+    if (start > end) {
       return NULL;
     }
 
@@ -34,8 +32,7 @@ public:
     return root;
   }
 
-  TreeNode *sortedArrayToBST(vector<int> &nums)
-  {
+  TreeNode *sortedArrayToBST(vector<int> &nums) {
     return ArrayToBST(nums, 0, nums.size() - 1);
   }
 };
