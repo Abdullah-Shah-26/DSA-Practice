@@ -17,7 +17,7 @@ int sz[N];    // size of subtree rooted at this node
 int heavy[N]; // child with largest subtree (-1 if none)
 
 int head[N]; // first node of heavy chain
-int pos[N];  // position of node in HLD/base arr
+int pos[N];  // idx in HLD order (root->node path)
 
 int curPos;  // next available pos in base arr
 
