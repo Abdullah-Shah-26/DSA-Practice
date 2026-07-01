@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
   public:
   // Function to find the maximum number of meetings that can
@@ -5,8 +8,6 @@ class Solution {
   bool comp(pair<int, int>a , pair<int, int>b){
     return a.second < b.second;
   }
-
-
   int maxMeetings(vector<int>& start, vector<int>& end) {
     // Your code here
     int n = start.size();

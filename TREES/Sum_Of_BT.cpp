@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 //           // method 1 = preorder approach
 // void Total(Node *root, int &sum)
 // {

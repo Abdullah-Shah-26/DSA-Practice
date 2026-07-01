@@ -13,29 +13,29 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    string makeLargestSpecial(string s) {
-    vector<string> specials;
+  string makeLargestSpecial(string s) {
+  vector<string> specials;
 
-    int st = 0;
-    int sum = 0;
+  int st = 0;
+  int sum = 0;
 
-    for(int i = 0; i < s.size(); i++){
-      sum += s[i] == '1' ? 1 : -1;
+  for(int i = 0; i < s.size(); i++){
+   sum += s[i] == '1' ? 1 : -1;
     
-      if(sum == 0){
-        string inner = s.substr(st + 1, i - st - 1);
-        specials.push_back("1" + makeLargestSpecial(inner) + "0");
-        st = i + 1;
-      }
-    }    
+   if(sum == 0){
+    string inner = s.substr(st + 1, i - st - 1);
+    specials.push_back("1" + makeLargestSpecial(inner) + "0");
+    st = i + 1;
+   }
+  }    
 
-    sort(begin(specials), end(specials), greater<string>());
+  sort(begin(specials), end(specials), greater<string>());
 
-    string ans;
-    for(auto &str : specials){
-      ans +=  str;
-    }
+  string ans;
+  for(auto &str : specials){
+   ans +=  str;
+  }
 
-    return ans;
-    }
+  return ans;
+  }
 };

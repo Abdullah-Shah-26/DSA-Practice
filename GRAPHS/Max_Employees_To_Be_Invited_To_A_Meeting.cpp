@@ -2,13 +2,10 @@
 using namespace std;
 
 // BFS + CycleDetection
-
 // CycleLen == 2 -> Can Form Chains 
 // CycleLen > 2  -> Only Cycle Matters
-
 // TC = O(N^2) in WC cause of multiple BFS calls
 // SC = O(N)
-
 class Solution {
   public:
     int bfs(int start, vector<vector<int>> &adj, vector<bool> &vis){ // To Find Max Chain Len

@@ -11,35 +11,35 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    int maxSatisfaction(vector<int>& s) {
-    sort(s.begin(),s.end());
-    int n = s.size();
-    int prefSum = 0;
-    int ans = 0;
-    /*
-    Observation : 
-    When we add something to front
-    [x,a,b,c]
-    oldSum = 1*a + 2*b + 3*c
-           = (a + b + c) + (b + c) + c
+  int maxSatisfaction(vector<int>& s) {
+  sort(s.begin(),s.end());
+  int n = s.size();
+  int prefSum = 0;
+  int ans = 0;
+  /*
+  Observation : 
+  When we add something to front
+  [x,a,b,c]
+  oldSum = 1*a + 2*b + 3*c
+      = (a + b + c) + (b + c) + c
      
-     We can do reverse prefix Sum
-     And add it in ans each time if it increases our curSum
+  We can do reverse prefix Sum
+  And add it in ans each time if it increases our curSum
 
-    newSum = 1*x + 2*a + 3*b + 4*c
-           = [x + a + b + c] + OldSum
+  newSum = 1*x + 2*a + 3*b + 4*c
+      = [x + a + b + c] + OldSum
 
-    gain = x + PrefixSum
-    */
-    for(int i = n - 1; i>= 0; i--){
-      prefSum += s[i];
+  gain = x + PrefixSum
+  */
+  for(int i = n - 1; i>= 0; i--){
+   prefSum += s[i];
 
-      if(prefSum <= 0){
-        break;
-      }
+   if(prefSum <= 0){
+    break;
+   }
 
-      ans += prefSum;
-    }
-    return ans;
-    }
+   ans += prefSum;
+  }
+  return ans;
+  }
 };

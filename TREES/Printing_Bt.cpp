@@ -1,35 +1,34 @@
-//! BINARY TREE - method 2 
-#include<iostream>
-#include<queue>
+#include <bits/stdc++.h>
 using namespace std;
 
+//! BINARY TREE - method 2 
 class Node
 {
-    public:
-    int data;
-    Node* left;
-    Node* right;
+  public:
+  int data;
+  Node* left;
+  Node* right;
 
-    Node(int val){
+  Node(int val){
 
-        left = right = NULL;
-        data = val;
-    }
+    left = right = NULL;
+    data = val;
+  }
 };
 
 //! N L R - printing order
 void PreOrder(Node* root)
 {
-    // base case
-    if(root == NULL)
-    return;
+  // base case
+  if(root == NULL)
+  return;
 
-    //node 
-    cout<<root->data<<" ";
-    //left
-    PreOrder(root->left);
-    //right
-    PreOrder(root->right);
+  //node 
+  cout<<root->data<<" ";
+  //left
+  PreOrder(root->left);
+  //right
+  PreOrder(root->right);
 
 }
 
@@ -37,77 +36,77 @@ void PreOrder(Node* root)
 void PostOrder(Node* root)
 {
 
-    //base case
-    if(root == NULL)
-    return; 
+  //base case
+  if(root == NULL)
+  return; 
 
-    // left 
-    PostOrder(root->left);
-    // right
-    PostOrder(root->right);
-    // Node
-    cout<<root->data<<" ";
+  // left 
+  PostOrder(root->left);
+  // right
+  PostOrder(root->right);
+  // Node
+  cout<<root->data<<" ";
     
 }
 
 //!  L N R - printing order 
 void InOrder(Node* root)
 {
-    //base case
-    if(root == NULL)
-    return;
+  //base case
+  if(root == NULL)
+  return;
     
-    //left
-    InOrder(root->left);
-    //Node
-    cout<<root->data<<" ";
-    //right
-    InOrder(root->right);
+  //left
+  InOrder(root->left);
+  //Node
+  cout<<root->data<<" ";
+  //right
+  InOrder(root->right);
 
 }
 
 // recursive function to create binary tree 
 Node* BinaryTree(){
 
-    int x;
-    cin >>x;
+  int x;
+  cin >>x;
 
-    if(x == -1)
-    return NULL;
+  if(x == -1)
+  return NULL;
 
-    Node* temp = new Node(x);
+  Node* temp = new Node(x);
 
-    //! first recursively call fun to create left side  
-    cout<< "Enter the left child of "<<x<<" : ";
-    temp ->left = BinaryTree();   // returns address to prev calls 
+  //! first recursively call fun to create left side  
+  cout<< "Enter the left child of "<<x<<" : ";
+  temp ->left = BinaryTree();   // returns address to prev calls 
    
 
-    //! then call for right side
-    cout<< "Enter the right child of "<<x<<" : ";
-    temp->right = BinaryTree();   // returns address to prev calls 
+  //! then call for right side
+  cout<< "Enter the right child of "<<x<<" : ";
+  temp->right = BinaryTree();   // returns address to prev calls 
 
-    return temp;
+  return temp;
 
 }
 
 int main()
 {
-    cout<<"Enter the root Node : ";
-    Node* root;
-    root = BinaryTree(); // at last fun will return address of root node 
+  cout<<"Enter the root Node : ";
+  Node* root;
+  root = BinaryTree(); // at last fun will return address of root node 
 
 
-    // PreOrder print
+  // PreOrder print
 
-    cout<<"Pre Order : ";
-    PreOrder(root);
+  cout<<"Pre Order : ";
+  PreOrder(root);
 
-    // InOrder Print
+  // InOrder Print
 
-    cout<<"\nIn order : ";
-    InOrder(root);
+  cout<<"\nIn order : ";
+  InOrder(root);
 
-    // PostOrder Print
-    cout<<"\nPostorder : ";
-    PostOrder(root);
+  // PostOrder Print
+  cout<<"\nPostorder : ";
+  PostOrder(root);
 }

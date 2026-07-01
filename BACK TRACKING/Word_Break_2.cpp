@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 vector<string>solve(string &s,unordered_set<string>&st){
 
     if(s.empty()){

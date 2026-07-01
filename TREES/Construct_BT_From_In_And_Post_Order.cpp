@@ -3,10 +3,8 @@ using namespace std;
 
 // Postorder tells which node comes next
 // Inorder tells where left & right split happens
-
 // Post-Order : Left Right Root 
 // So we need to create -> Root Right Left since we are traversing Postorder backwards
-
 class Solution{
   public:
 

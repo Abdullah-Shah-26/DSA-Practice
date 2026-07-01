@@ -11,152 +11,152 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    // BFS + BitMasking
-    //! TC = O(N * M)
-    //! SC = O(N * M * (2 ^ K)) 
-    int shortestPathAllKeys(vector<string>& grid) {
-    int n = grid.size();
-    int m = grid[0].size();
+  // BFS + BitMasking
+  //! TC = O(N * M)
+  //! SC = O(N * M * (2 ^ K)) 
+  int shortestPathAllKeys(vector<string>& grid) {
+  int n = grid.size();
+  int m = grid[0].size();
 
-    int row[4] = {0,0,1,-1};
-    int col[4] = {1,-1,0,0};
+  int row[4] = {0,0,1,-1};
+  int col[4] = {1,-1,0,0};
 
-    int stRow = -1, stCol = -1;
-    int finalMask = 0;
-    for(int i = 0; i < n; i++){
-      for(int j = 0; j < m; j++){
-        if(islower(grid[i][j])){
-          finalMask |= (1 << (grid[i][j] - 'a'));
-        }
-        if(grid[i][j] == '@'){
-          stRow = i;
-          stCol = j;
-        }
-      }
+  int stRow = -1, stCol = -1;
+  int finalMask = 0;
+  for(int i = 0; i < n; i++){
+   for(int j = 0; j < m; j++){
+    if(islower(grid[i][j])){
+     finalMask |= (1 << (grid[i][j] - 'a'));
     }
-    // 6 keys - 2^6 = 64 states
-    bool vis[31][31][64];
-    memset(vis, 0, sizeof(vis));
-    /*
-    int finalMask = (1 << totalKeys) - 1; 
-    only works if keys are contiguous : Ex : abc 
-    */
-    queue<tuple<int,int,int>>q;
-    q.push({stRow,stCol,0});
-    vis[stRow][stCol][0] = 1;
+    if(grid[i][j] == '@'){
+     stRow = i;
+     stCol = j;
+    }
+   }
+  }
+  // 6 keys - 2^6 = 64 states
+  bool vis[31][31][64];
+  memset(vis, 0, sizeof(vis));
+  /*
+  int finalMask = (1 << totalKeys) - 1; 
+  only works if keys are contiguous : Ex : abc 
+  */
+  queue<tuple<int,int,int>>q;
+  q.push({stRow,stCol,0});
+  vis[stRow][stCol][0] = 1;
 
-    int steps = 0;
+  int steps = 0;
 
-    while(!q.empty()){
-      int sz = q.size();
-      while(sz--){
-        auto [r,c,mask] = q.front();
-        q.pop();
+  while(!q.empty()){
+   int sz = q.size();
+   while(sz--){
+    auto [r,c,mask] = q.front();
+    q.pop();
 
-        if(mask == finalMask){
-          return steps;
-        }
+    if(mask == finalMask){
+     return steps;
+    }
 
-        for(int k = 0; k < 4; k++){
-          int nr = r + row[k];
-          int nc = c + col[k];
-          int newMask = mask;
+    for(int k = 0; k < 4; k++){
+     int nr = r + row[k];
+     int nc = c + col[k];
+     int newMask = mask;
 
-          if(nr >= 0 && nr < n && nc >= 0 && nc < m){
+     if(nr >= 0 && nr < n && nc >= 0 && nc < m){
           
-          // wall check
-          if(grid[nr][nc] == '#') continue;
+     // wall check
+     if(grid[nr][nc] == '#') continue;
 
-          // Lock Check
-          if(isupper(grid[nr][nc]) && !(newMask & (1 << (grid[nr][nc] - 'A'))))
-            continue;
+     // Lock Check
+     if(isupper(grid[nr][nc]) && !(newMask & (1 << (grid[nr][nc] - 'A'))))
+      continue;
           
-          // Key Check
-          if(islower(grid[nr][nc])){
-            newMask |= (1 << (grid[nr][nc] - 'a'));
-          }
+     // Key Check
+     if(islower(grid[nr][nc])){
+      newMask |= (1 << (grid[nr][nc] - 'a'));
+     }
 
-          // Vis Check
-          if(vis[nr][nc][newMask]) continue;
+     // Vis Check
+     if(vis[nr][nc][newMask]) continue;
 
-          // Mark Visited
-          vis[nr][nc][newMask] = 1;
+     // Mark Visited
+     vis[nr][nc][newMask] = 1;
 
-          q.push({nr, nc, newMask});
-          }
-        }
-      }
-      steps++;
+     q.push({nr, nc, newMask});
+     }
     }
-    return -1;
-    }
+   }
+   steps++;
+  }
+  return -1;
+  }
 };
 
 //! Same Approach - but storing dist in q instead of explicit Level Order BFS
 class Solution {
 public:
-    int shortestPathAllKeys(vector<string>& grid) {
-    int n = grid.size();
-    int m = grid[0].size();
-    int finalMask = 0;
-    int stRow = -1, stCol = -1;
+  int shortestPathAllKeys(vector<string>& grid) {
+  int n = grid.size();
+  int m = grid[0].size();
+  int finalMask = 0;
+  int stRow = -1, stCol = -1;
 
-    for(int i = 0; i < n; i++){
-      for(int j = 0; j < m; j++){
-        if(islower(grid[i][j])){
-          finalMask |= (1 << (grid[i][j] - 'a'));
-        }
-        if(grid[i][j] == '@'){
-          stRow = i;
-          stCol = j;
-        }
-      }
-    }    
-
-    bool vis[31][31][64];
-    queue<tuple<int,int,int,int>>q; // {r,c,mask,dist}
-    memset(vis,0,sizeof(vis));
-
-    q.push({stRow,stCol,0,0});
-    vis[stRow][stCol][0] = 1;
-
-    static int row[4] = {0,0,-1,1};
-    static int col[4] = {1,-1,0,0};
-
-    while(!q.empty()){
-      auto [r,c,mask,dist] = q.front();
-      q.pop();
-
-      // Since BFS ensures shortest dist 
-      if(mask == finalMask) return dist; 
-
-      for(int k = 0; k < 4; k++){
-        int nr = r + row[k];
-        int nc = c + col[k];
-        int newMask = mask;
-
-        // Invalid 
-        if(nr < 0 || nr >= n || nc < 0 || nc >= m) continue;
-
-        char ch = grid[nr][nc];
-
-        // Wall Check
-        if(ch == '#') continue;
-
-        // Dont Have Key For This Lock
-        if(isupper(ch) && !(mask & (1 << (ch - 'A')))) continue;
-
-        // Got Key - Update Mask
-        if(islower(ch)) newMask |= (1 << (ch - 'a'));
-
-        // Already Visited - Skip
-        if(vis[nr][nc][newMask]) continue;
-
-        vis[nr][nc][newMask] = 1;
-
-        q.push({nr,nc,newMask,dist + 1});
-      }
+  for(int i = 0; i < n; i++){
+   for(int j = 0; j < m; j++){
+    if(islower(grid[i][j])){
+     finalMask |= (1 << (grid[i][j] - 'a'));
     }
-    return -1;
+    if(grid[i][j] == '@'){
+     stRow = i;
+     stCol = j;
     }
+   }
+  }    
+
+  bool vis[31][31][64];
+  queue<tuple<int,int,int,int>>q; // {r,c,mask,dist}
+  memset(vis,0,sizeof(vis));
+
+  q.push({stRow,stCol,0,0});
+  vis[stRow][stCol][0] = 1;
+
+  static int row[4] = {0,0,-1,1};
+  static int col[4] = {1,-1,0,0};
+
+  while(!q.empty()){
+   auto [r,c,mask,dist] = q.front();
+   q.pop();
+
+   // Since BFS ensures shortest dist 
+   if(mask == finalMask) return dist; 
+
+   for(int k = 0; k < 4; k++){
+    int nr = r + row[k];
+    int nc = c + col[k];
+    int newMask = mask;
+
+    // Invalid 
+    if(nr < 0 || nr >= n || nc < 0 || nc >= m) continue;
+
+    char ch = grid[nr][nc];
+
+    // Wall Check
+    if(ch == '#') continue;
+
+    // Dont Have Key For This Lock
+    if(isupper(ch) && !(mask & (1 << (ch - 'A')))) continue;
+
+    // Got Key - Update Mask
+    if(islower(ch)) newMask |= (1 << (ch - 'a'));
+
+    // Already Visited - Skip
+    if(vis[nr][nc][newMask]) continue;
+
+    vis[nr][nc][newMask] = 1;
+
+    q.push({nr,nc,newMask,dist + 1});
+   }
+  }
+  return -1;
+  }
 };

@@ -7,7 +7,7 @@ public:
 // TC = O(N)
 // SC = O(N)
 int f(int n, int k){
-   // Recursive Approach
+  // Recursive Approach
     if(n == 1)
     {
       return 0; // Only 1 element is left
@@ -49,7 +49,7 @@ int f(int n, int k){
     return arr[0];
 
 
-   Queue Simulation 
+  Queue Simulation 
     TC = O(N * K)
     SC = O(N)
 

@@ -1,49 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 using ll = long long;
 #define fastio                   \
-    ios::sync_with_stdio(false); \
-    cin.tie(nullptr);
+  ios::sync_with_stdio(false); \
+  cin.tie(nullptr);
 
 class Node
 {
 public:
-    int data;
-    Node *left;
-    Node *right;
+  int data;
+  Node *left;
+  Node *right;
 
-    Node(int val) : data(val), left(nullptr), right(nullptr) {}
+  Node(int val) : data(val), left(nullptr), right(nullptr) {}
 };
 
 class Solution
 {        
 public:
-    Node *buildTreee(vector<int> &preorder, int preSt, int preEnd, vector<int> &inorder, int inSt, int inEnd, map<int, int> &m)
+  Node *buildTreee(vector<int> &preorder, int preSt, int preEnd, vector<int> &inorder, int inSt, int inEnd, map<int, int> &m)
+  {
+    if (preSt > preEnd || inSt > inEnd)
+      return NULL;
+
+    Node *root = new Node(preorder[preSt]);
+
+    int inRoot = m[root->data];
+    int numsOnLeft = inRoot - inSt;
+
+    root->left = buildTreee(preorder, preSt + 1, preSt + numsOnLeft, inorder, inSt, inRoot - 1, m);
+
+    root->right = buildTreee(preorder, preSt + numsOnLeft + 1, preEnd, inorder, inRoot + 1, inEnd, m);
+
+    return root;
+  }
+
+  Node *buildTree(vector<int> &inorder, vector<int> &preorder)
+  {
+    map<int, int> m;
+
+    for (int i = 0; i < inorder.size(); i++)
     {
-        if (preSt > preEnd || inSt > inEnd)
-            return NULL;
-
-        Node *root = new Node(preorder[preSt]);
-
-        int inRoot = m[root->data];
-        int numsOnLeft = inRoot - inSt;
-
-        root->left = buildTreee(preorder, preSt + 1, preSt + numsOnLeft, inorder, inSt, inRoot - 1, m);
-
-        root->right = buildTreee(preorder, preSt + numsOnLeft + 1, preEnd, inorder, inRoot + 1, inEnd, m);
-
-        return root;
+      m[inorder[i]] = i;
     }
-
-    Node *buildTree(vector<int> &inorder, vector<int> &preorder)
-    {
-        map<int, int> m;
-
-        for (int i = 0; i < inorder.size(); i++)
-        {
-            m[inorder[i]] = i;
-        }
-        Node *root = buildTreee(preorder, 0, preorder.size() - 1, inorder, 0, inorder.size() - 1, m);
-        return root;
-    }
+    Node *root = buildTreee(preorder, 0, preorder.size() - 1, inorder, 0, inorder.size() - 1, m);
+    return root;
+  }
 };

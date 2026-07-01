@@ -1,7 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <unordered_map>
+#include <bits/stdc++.h>
 using namespace std;
 
 void print(int arr[], int idx, int n, int sum, vector<int> &ans)

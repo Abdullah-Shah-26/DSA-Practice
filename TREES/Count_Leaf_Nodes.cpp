@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 //! method 1 - preorder traversal
 // void CountLeaf(Node* root, int &count)
 // {   //base case

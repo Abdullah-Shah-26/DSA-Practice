@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class DisjointSet
 {
   vector<int> size, parent;

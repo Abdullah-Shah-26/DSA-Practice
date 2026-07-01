@@ -1,12 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 /**
- * Definition for binary tree
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
- */ 
+  * Definition for binary tree
+  * struct TreeNode {
+  *     int val;
+  *     TreeNode *left;
+  *     TreeNode *right;
+  *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+  * };
+  */ 
 
 bool f(TreeNode* root, int val , vector<int>&res)
 {

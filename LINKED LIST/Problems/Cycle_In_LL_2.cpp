@@ -1,15 +1,15 @@
 
-    /**
-    * Definition for singly-linked list.
-    * struct ListNode {
-    *     int val;
-    *     ListNode *next;
-    *     ListNode(int x) : val(x), next(NULL) {}
-    * };
-    */
-   class Solution {     // slow fast pointer Time & Space Complexity
-    //Time Complexity: O(N) (Both pointers traverse the list once)
-   //Space Complexity: O(1) (Only two pointers are used)
+  /**
+  * Definition for singly-linked list.
+  * struct ListNode {
+  *     int val;
+  *     ListNode *next;
+  *     ListNode(int x) : val(x), next(NULL) {}
+  * };
+  */
+  class Solution {     // slow fast pointer Time & Space Complexity
+  //Time Complexity: O(N) (Both pointers traverse the list once)
+  //Space Complexity: O(1) (Only two pointers are used)
 public:
 ListNode *detectCycle(ListNode *head) {
 ListNode* slow = head;
@@ -22,8 +22,8 @@ slow = slow->next;
 fast = fast->next->next;
 
 if(slow == fast){
-   iscycle = true;
-   break;
+  iscycle = true;
+  break;
 }
 }
 

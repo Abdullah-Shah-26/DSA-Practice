@@ -1,8 +1,7 @@
-//! Functional Graph
-
 #include <bits/stdc++.h>
 using namespace std;
 
+//! Functional Graph
 using ll = long long;
 using pii = pair<int, int>;
 using vi = vector<int>;

@@ -14,61 +14,61 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    int n, m;
-    int row[4] = {0, 0, 1, -1};
-    int col[4] = {1, -1, 0, 0};
+  int n, m;
+  int row[4] = {0, 0, 1, -1};
+  int col[4] = {1, -1, 0, 0};
 
-    bool canReach(int maxEffort, vector<vector<int>> &mat){
-    vector<vector<bool>> vis(n, vector<bool> (m, 0));
-    queue<tuple<int,int>> q;
+  bool canReach(int maxEffort, vector<vector<int>> &mat){
+  vector<vector<bool>> vis(n, vector<bool> (m, 0));
+  queue<tuple<int,int>> q;
 
-    q.push({0,0});
-    vis[0][0] = 1;
+  q.push({0,0});
+  vis[0][0] = 1;
 
-    while(!q.empty()){
-      auto [r,c] = q.front();
-      q.pop();
+  while(!q.empty()){
+    auto [r,c] = q.front();
+    q.pop();
 
-      if(r == n-1 && c == m-1) return true;
+    if(r == n-1 && c == m-1) return true;
 
-      for(int k = 0; k < 4; k++){
-        int nr = r + row[k];
-        int nc = c + col[k];
+    for(int k = 0; k < 4; k++){
+    int nr = r + row[k];
+    int nc = c + col[k];
 
-        if(nr >= 0 && nr < n && nc >= 0 && nc < m && !vis[nr][nc]){
-          int diff = abs(mat[nr][nc] - mat[r][c]);
+    if(nr >= 0 && nr < n && nc >= 0 && nc < m && !vis[nr][nc]){
+      int diff = abs(mat[nr][nc] - mat[r][c]);
 
-          if(diff <= maxEffort){
-            vis[nr][nc] = 1;
-            q.push({nr,nc});
-          }
-        }
+      if(diff <= maxEffort){
+      vis[nr][nc] = 1;
+      q.push({nr,nc});
       }
     }
-    return false;
     }
+  }
+  return false;
+  }
 
-    int minimumEffortPath(vector<vector<int>>& mat) {
-    n = mat.size();
-    m = mat[0].size();
+  int minimumEffortPath(vector<vector<int>>& mat) {
+  n = mat.size();
+  m = mat[0].size();
 
-    int low = 0, high = 0;
+  int low = 0, high = 0;
 
-    for(auto &row : mat){
-      for(auto &x : row){
-        high = max(x, high); // Max - Difference
-      }
+  for(auto &row : mat){
+    for(auto &x : row){
+    high = max(x, high); // Max - Difference
     }
+  }
 
-    while(low <= high){
-      int mid = (low + high)/2;
+  while(low <= high){
+    int mid = (low + high)/2;
 
-      if(canReach(mid, mat)) 
-        high = mid - 1;
-      else 
-        low = mid + 1;
-    }
+    if(canReach(mid, mat)) 
+    high = mid - 1;
+    else 
+    low = mid + 1;
+  }
 
-    return low;
-    }
+  return low;
+  }
 };

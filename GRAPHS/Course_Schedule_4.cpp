@@ -2,7 +2,6 @@
 using namespace std;
 
 // DFS / BFS ---> TC = O(N * Q) | SC = O(N)
-
 class Solution {
 public:
     bool dfs(vector<int> adj[], int src, int dst, vector<bool> &vis){

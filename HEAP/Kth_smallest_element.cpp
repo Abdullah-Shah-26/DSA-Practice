@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution { // TC = O(nlogk)
     public:
       // arr : given array

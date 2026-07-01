@@ -3,7 +3,6 @@ using namespace std;
 
 // TC = O(MN Log(MN)) + MN
 // SC = MN
-
 class Solution {
   public:
     // If the lowest boundary is not letting water escape, no one will

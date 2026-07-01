@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
     public:
     //since ht and burn both are int we will denote burn as -ve nos 

@@ -13,18 +13,18 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    int minNumberOperations(vector<int>& target) {
-    int cnt = target[0];
-    int n = target.size();
+  int minNumberOperations(vector<int>& target) {
+  int cnt = target[0];
+  int n = target.size();
     
-    // Local Optimal == Global Optimal
+  // Local Optimal == Global Optimal
 
-    for(int i = 1; i < n; i++){
-      if(target[i] > target[i-1]){
-        cnt += (target[i] - target[i-1]);
-      }
-    }    
+  for(int i = 1; i < n; i++){
+   if(target[i] > target[i-1]){
+    cnt += (target[i] - target[i-1]);
+   }
+  }    
 
-    return cnt;
-    }
+  return cnt;
+  }
 };

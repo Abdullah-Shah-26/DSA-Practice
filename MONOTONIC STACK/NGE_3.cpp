@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 using ll = long long;
 
 //! TC = O(Log(N)) | SC = O(Log(N)) where LogN = No of digits in N

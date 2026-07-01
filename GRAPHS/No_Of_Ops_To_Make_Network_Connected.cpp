@@ -14,146 +14,146 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    void dfs(int node, vector<vector<int>> &adj, vector<bool>&vis){
-      vis[node] = 1;
+  void dfs(int node, vector<vector<int>> &adj, vector<bool>&vis){
+   vis[node] = 1;
 
-      for(auto &nei : adj[node]){
-        if(!vis[nei]){
-          dfs(nei, adj, vis);
-        }
-      }
+   for(auto &nei : adj[node]){
+    if(!vis[nei]){
+     dfs(nei, adj, vis);
     }
+   }
+  }
 
-    int makeConnected(int n, vector<vector<int>>& edges) {
+  int makeConnected(int n, vector<vector<int>>& edges) {
     
-    if(edges.size() < n - 1) return -1;
+  if(edges.size() < n - 1) return -1;
 
-    int components = 0;
+  int components = 0;
 
-    vector<vector<int>> adj(n);
+  vector<vector<int>> adj(n);
 
-    for(auto &e : edges){
-      int u = e[0];
-      int v = e[1];
+  for(auto &e : edges){
+   int u = e[0];
+   int v = e[1];
 
-      adj[u].push_back(v);
-      adj[v].push_back(u);
-    }
+   adj[u].push_back(v);
+   adj[v].push_back(u);
+  }
 
-    vector<bool> vis(n,0);
+  vector<bool> vis(n,0);
 
-    for(int i = 0; i < n; i++){
-      if(!vis[i]){
-        components++;
-        dfs(i, adj, vis);
-      }
-    }
+  for(int i = 0; i < n; i++){
+   if(!vis[i]){
+    components++;
+    dfs(i, adj, vis);
+   }
+  }
 
-    return components - 1;
-    }
+  return components - 1;
+  }
 };
 
 //! DFS Iterative
 
 class Solution {
 public:
-    void dfsIt(int start, vector<vector<int>> &adj, vector<bool> &vis){
-      stack<int> st;
-      st.push(start);
+  void dfsIt(int start, vector<vector<int>> &adj, vector<bool> &vis){
+   stack<int> st;
+   st.push(start);
       
-      while(!st.empty()){
-        int node = st.top();
-        st.pop();
+   while(!st.empty()){
+    int node = st.top();
+    st.pop();
 
-        if(vis[node]) continue;
+    if(vis[node]) continue;
 
-        vis[node] = 1;
+    vis[node] = 1;
 
-        for(auto &nei : adj[node]){
-          if(!vis[nei]){
-            st.push(nei);
-          }
-        }
-      }
+    for(auto &nei : adj[node]){
+     if(!vis[nei]){
+      st.push(nei);
+     }
     }
+   }
+  }
 
-    int makeConnected(int n, vector<vector<int>>& edges) {
+  int makeConnected(int n, vector<vector<int>>& edges) {
     
-    if(edges.size() < n - 1) return -1;
+  if(edges.size() < n - 1) return -1;
 
-    int components = 0;
+  int components = 0;
 
-    vector<vector<int>> adj(n);
+  vector<vector<int>> adj(n);
 
-    for(auto &e : edges){
-      int u = e[0];
-      int v = e[1];
+  for(auto &e : edges){
+   int u = e[0];
+   int v = e[1];
 
-      adj[u].push_back(v);
-      adj[v].push_back(u);
-    }
+   adj[u].push_back(v);
+   adj[v].push_back(u);
+  }
 
-    vector<bool> vis(n,0);
+  vector<bool> vis(n,0);
 
-    for(int i = 0; i < n; i++){
-      if(!vis[i]){
-        components++;
-        dfsIt(i, adj, vis);
-      }
-    }
+  for(int i = 0; i < n; i++){
+   if(!vis[i]){
+    components++;
+    dfsIt(i, adj, vis);
+   }
+  }
 
-    return components - 1;
-    }
+  return components - 1;
+  }
 };
 
 //! BFS 
 
 class Solution {
 public:
-    void bfs(int st, vector<vector<int>> &adj, vector<bool> &vis){
-      queue<int> q;
-      q.push(st);
-      vis[st] = 1;
+  void bfs(int st, vector<vector<int>> &adj, vector<bool> &vis){
+   queue<int> q;
+   q.push(st);
+   vis[st] = 1;
 
-      while(!q.empty()){
-        int node = q.front();
-        q.pop();
+   while(!q.empty()){
+    int node = q.front();
+    q.pop();
 
-        for(auto &nei : adj[node]){
-          if(!vis[nei]){
-            vis[nei] = 1;
-            q.push(nei);
-          }
-        }
-      }
-
+    for(auto &nei : adj[node]){
+     if(!vis[nei]){
+      vis[nei] = 1;
+      q.push(nei);
+     }
     }
+   }
 
-    int makeConnected(int n, vector<vector<int>>& edges) {
+  }
+
+  int makeConnected(int n, vector<vector<int>>& edges) {
     
-    if(edges.size() < n - 1) return -1;
+  if(edges.size() < n - 1) return -1;
 
-    int components = 0;
+  int components = 0;
 
-    vector<vector<int>> adj(n);
+  vector<vector<int>> adj(n);
 
-    for(auto &e : edges){
-      int u = e[0];
-      int v = e[1];
+  for(auto &e : edges){
+   int u = e[0];
+   int v = e[1];
 
-      adj[u].push_back(v);
-      adj[v].push_back(u);
-    }
+   adj[u].push_back(v);
+   adj[v].push_back(u);
+  }
 
-    vector<bool> vis(n,0);
+  vector<bool> vis(n,0);
 
-    for(int i = 0; i < n; i++){
-      if(!vis[i]){
-        components++;
-        bfs(i, adj, vis);
-      }
-    }
+  for(int i = 0; i < n; i++){
+   if(!vis[i]){
+    components++;
+    bfs(i, adj, vis);
+   }
+  }
 
-    return components - 1;
-    }
+  return components - 1;
+  }
 };

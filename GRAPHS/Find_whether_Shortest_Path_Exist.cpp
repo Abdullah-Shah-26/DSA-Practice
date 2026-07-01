@@ -1,6 +1,5 @@
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
-
 
 //! BFS - METHOD
 class Solution {

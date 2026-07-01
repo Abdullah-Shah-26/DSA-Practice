@@ -2,11 +2,9 @@
 using namespace std;
 
 // TC = O(N) | SC = O(N)
-
 // tin[u] = start idx in euler
 // tout[u] = end idx in euler
 // flat[i] = depth of node whose euler idx is i 
-
 class Solution {
 public:
   vector<int> tin;

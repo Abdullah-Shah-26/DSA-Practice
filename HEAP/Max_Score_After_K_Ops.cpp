@@ -11,22 +11,22 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    long long maxKelements(vector<int>& nums, int k) {
-    priority_queue<long long> pq(begin(nums), end(nums)); // MaxHeap // O(N)
+  long long maxKelements(vector<int>& nums, int k) {
+  priority_queue<long long> pq(begin(nums), end(nums)); // MaxHeap // O(N)
 
-    long long score = 0;
+  long long score = 0;
 
-    while(!pq.empty() && k--){ // (K Log N)
-      long long maxi = pq.top();
-      pq.pop();  
+  while(!pq.empty() && k--){ // (K Log N)
+   long long maxi = pq.top();
+   pq.pop();  
 
-      score += maxi;
+   score += maxi;
 
-      maxi = ceil(maxi/3.0);
+   maxi = ceil(maxi/3.0);
 
-      pq.push(maxi);
-    } 
+   pq.push(maxi);
+  } 
 
-    return score;   
-    }
+  return score;   
+  }
 };

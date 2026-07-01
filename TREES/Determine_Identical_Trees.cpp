@@ -1,5 +1,8 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {  // TC = O(n) - we are traversing BT
-    // SC = o(n) - rec call stack
+  // SC = o(n) - rec call stack
 public:
 // Function to check if two trees are identical.
 bool isIdentical(Node *r1, Node *r2) {

@@ -2,7 +2,6 @@
 using namespace std;
 
 // Dijkstra + DP
-
 using ll = long long;
 const ll INF = 1e18;
 using T = tuple<ll,int,int>;

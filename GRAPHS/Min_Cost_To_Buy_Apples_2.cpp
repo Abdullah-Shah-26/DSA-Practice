@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 using ll = long long;
 const ll INF = 1e18;
 
@@ -60,7 +61,8 @@ public:
 
       ll temp = 1e9;
       for (int j = 0; j < n; j++) {
-        // [Travelling cost] + cost of apples at city j + cost to reach city i from j with apples
+        // [Travelling cost] + cost of apples at city j + cost to reach city i
+        // from j with apples
         temp = min(temp, dist[0][j] + prices[j] + dist[1][j]);
       }
       ans[i] = (int)temp;

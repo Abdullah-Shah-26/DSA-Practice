@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
     public:
       vector<int> leftView(Node *root) {
@@ -41,16 +44,16 @@ class Solution {
 
 void Lview(Node* root, int level, vector<int> &ans)
 {
- if(root == NULL)
- return;
+  if(root == NULL)
+  return;
  
- if(level == ans.size()) // yaani we are visiting that level first time and that node push in ans 
- ans.push_back(root->data);
+  if(level == ans.size()) // yaani we are visiting that level first time and that node push in ans 
+  ans.push_back(root->data);
  
- // left jao phir right jao null mile return hojao
- // har recursive call pe next level jaaate yani level++
- Lview(root->left, level + 1, ans);
- Lview(root->right, level + 1, ans);
+  // left jao phir right jao null mile return hojao
+  // har recursive call pe next level jaaate yani level++
+  Lview(root->left, level + 1, ans);
+  Lview(root->right, level + 1, ans);
 }
 
 class Solution {

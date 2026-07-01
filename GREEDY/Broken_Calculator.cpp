@@ -13,15 +13,15 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    int brokenCalc(int s, int e) {
-    int steps = 0;
+  int brokenCalc(int s, int e) {
+  int steps = 0;
 
-    while(e > s){
-      if((e & 1) == 0) e = e/2;
-      else e += 1;
-      steps++;
-    }
+  while(e > s){
+   if((e & 1) == 0) e = e/2;
+   else e += 1;
+   steps++;
+  }
 
-    return steps + (s - e);
-    }
+  return steps + (s - e);
+  }
 };

@@ -2,7 +2,6 @@
 using namespace std;
 
 // Post - Order DFS
-
 class Solution {
 public:
   vector<vector<int>> adj;

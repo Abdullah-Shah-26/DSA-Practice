@@ -11,38 +11,38 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 //! BFS - Level Order 
 int minMutation(string start, string end, vector<string>& bank) {
-    unordered_set<string> st(bank.begin(), bank.end());
+  unordered_set<string> st(bank.begin(), bank.end());
 
-    if(!st.count(end)) return -1; // small pruning
+  if(!st.count(end)) return -1; // small pruning
 
-    queue<string> q;
-    q.push(start);
+  queue<string> q;
+  q.push(start);
 
-    int level = 0;
+  int level = 0;
 
-    while(!q.empty()){
-        int size = q.size();
+  while(!q.empty()){
+    int size = q.size();
 
-        while(size--){
-            string cur = q.front();
-            q.pop();
+    while(size--){
+      string cur = q.front();
+      q.pop();
 
-            if(cur == end) return level;
+      if(cur == end) return level;
 
-            for(char ch : {'A','C','G','T'}){
-                for(int i = 0; i < cur.size(); i++){
-                    string nei = cur;
-                    nei[i] = ch;
+      for(char ch : {'A','C','G','T'}){
+        for(int i = 0; i < cur.size(); i++){
+          string nei = cur;
+          nei[i] = ch;
 
-                    if(st.count(nei)){
-                        st.erase(nei);   // mark visited HERE
-                        q.push(nei);
-                    }
-                }
-            }
+          if(st.count(nei)){
+            st.erase(nei);   // mark visited HERE
+            q.push(nei);
+          }
         }
-        level++;
+      }
     }
+    level++;
+  }
 
-    return -1;
+  return -1;
 }

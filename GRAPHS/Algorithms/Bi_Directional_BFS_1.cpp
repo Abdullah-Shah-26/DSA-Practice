@@ -13,52 +13,52 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    int ladderLength(string st, string end, vector<string>& wordList) {
-    unordered_set<string> wordSet(wordList.begin(), wordList.end());
+  int ladderLength(string st, string end, vector<string>& wordList) {
+  unordered_set<string> wordSet(wordList.begin(), wordList.end());
 
-    if(!wordSet.count(end)) return 0;
+  if(!wordSet.count(end)) return 0;
 
-    unordered_set<string> beginSet, endSet;
+  unordered_set<string> beginSet, endSet;
     
-    beginSet.insert(st);
-    endSet.insert(end);   
+  beginSet.insert(st);
+  endSet.insert(end);   
     
-    int level = 1;
+  int level = 1;
 
-    while(!beginSet.empty() && !endSet.empty()){
+  while(!beginSet.empty() && !endSet.empty()){
 
-      // Always Expand Smaller Set
-      if(beginSet.size() > endSet.size()) swap(beginSet, endSet);
+   // Always Expand Smaller Set
+   if(beginSet.size() > endSet.size()) swap(beginSet, endSet);
 
-      unordered_set<string> nextLevel;
+   unordered_set<string> nextLevel;
 
-      for(auto word : beginSet){
-        for(int i = 0; i < word.size(); i++){
-          char original = word[i];
+   for(auto word : beginSet){
+    for(int i = 0; i < word.size(); i++){
+     char original = word[i];
 
-          for(char ch = 'a'; ch <= 'z'; ch++){
-            word[i] = ch;
+     for(char ch = 'a'; ch <= 'z'; ch++){
+      word[i] = ch;
 
-            // Meeting Point
-            if(endSet.count(word)) 
-              return level+1;
+      // Meeting Point
+      if(endSet.count(word)) 
+       return level+1;
 
-            // Normal Expansion
-            if(wordSet.count(word)){
-              nextLevel.insert(word);
-              wordSet.erase(word);
-            }
-          }
-
-          word[i] = original;
-        }
+      // Normal Expansion
+      if(wordSet.count(word)){
+       nextLevel.insert(word);
+       wordSet.erase(word);
       }
+     }
 
-    beginSet = nextLevel;
-    level++;
-
+     word[i] = original;
     }
+   }
 
-    return 0;
-    }
+  beginSet = nextLevel;
+  level++;
+
+  }
+
+  return 0;
+  }
 };

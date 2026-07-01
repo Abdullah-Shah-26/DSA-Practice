@@ -2,7 +2,6 @@
 using namespace std;
 
 // Rec
-
 class Solution {
 public:
   TreeNode* invertTree(TreeNode* root) {

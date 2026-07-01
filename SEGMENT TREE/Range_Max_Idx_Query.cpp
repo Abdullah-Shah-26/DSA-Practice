@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 //!  TC = O(log N)
 //!  SC = O(4N)
 

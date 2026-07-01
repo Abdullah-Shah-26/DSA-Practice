@@ -2,7 +2,6 @@
 using namespace std;
 
 // TC = O(N)
-
 using ll = long long;
 
 class Solution {

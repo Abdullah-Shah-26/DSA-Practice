@@ -2,115 +2,115 @@
 #include<iostream>
 using namespace std;
 class Node{
-    public:
-    int data;
-    Node* next;
+  public:
+  int data;
+  Node* next;
 
-    Node(int val){
-        data = val;
-        next = NULL;
-    }
+  Node(int val){
+    data = val;
+    next = NULL;
+  }
 };
 class List{
-    public:
-    Node* head;
-    Node* tail;
+  public:
+  Node* head;
+  Node* tail;
 
-    List(){
-        head = tail = NULL;
-    }
+  List(){
+    head = tail = NULL;
+  }
 
-    void push_front(int val){
-        Node* newNode = new Node(val);   //*syntax to create node dynamically (new keyword is used)
-        if(head == NULL){ //! when we dont have any node head will point to null
-            head = tail = newNode;       //we create a node now both head and tail will point to it 
-            return;
-        }
-        else{ //means we have atleast one node and head is pointing to it
-            //?newNode->next = head;
-            (*newNode).next = head; //! newnode ka jo next node ptr hay it will point to head then we will change head
-            head = newNode;
-        }
+  void push_front(int val){
+    Node* newNode = new Node(val);   //*syntax to create node dynamically (new keyword is used)
+    if(head == NULL){ //! when we dont have any node head will point to null
+      head = tail = newNode;       //we create a node now both head and tail will point to it 
+      return;
     }
+    else{ //means we have atleast one node and head is pointing to it
+      //?newNode->next = head;
+      (*newNode).next = head; //! newnode ka jo next node ptr hay it will point to head then we will change head
+      head = newNode;
+    }
+  }
 
 
-    void push_back(int val){
-        Node* newNode = new Node(val); // allocates memory space in heap of type Node and space value like// new int[5]
-        if(head == NULL){
-            head = tail = newNode;
-            return ;
-        }
-        else{
-            tail->next = newNode;
-            tail = newNode;
-        }
+  void push_back(int val){
+    Node* newNode = new Node(val); // allocates memory space in heap of type Node and space value like// new int[5]
+    if(head == NULL){
+      head = tail = newNode;
+      return ;
     }
+    else{
+      tail->next = newNode;
+      tail = newNode;
+    }
+  }
 
-    //! POP FRONT LOGIC
-    void pop_front() {
-        if(head == NULL ){
-            cout<<" LL is empty "<<endl;
-            return ; 
-        }
-        Node* temp = head;
-        head = head->next;
-        temp->next = NULL;
-        delete temp;
+  //! POP FRONT LOGIC
+  void pop_front() {
+    if(head == NULL ){
+      cout<<" LL is empty "<<endl;
+      return ; 
     }
-    //! POP BACK LOGIC
-    void pop_back(){
-        if(head == NULL ){
-            cout<<" LL is empty "<<endl;
-            return ; 
-        }
-        Node* temp = head;
-        while(temp->next!= tail){
-            temp = temp->next;
-        }
-        temp->next = NULL;
-        delete tail;
-        tail = temp;
+    Node* temp = head;
+    head = head->next;
+    temp->next = NULL;
+    delete temp;
+  }
+  //! POP BACK LOGIC
+  void pop_back(){
+    if(head == NULL ){
+      cout<<" LL is empty "<<endl;
+      return ; 
     }
-        //! LOGIC OF INSERT
-        void insert(int val,int pos){
-            if(pos < 0)
-            return;
-            if(pos == 0)     // push front wala case
-            push_front(val);
-            return;
+    Node* temp = head;
+    while(temp->next!= tail){
+      temp = temp->next;
+    }
+    temp->next = NULL;
+    delete tail;
+    tail = temp;
+  }
+    //! LOGIC OF INSERT
+    void insert(int val,int pos){
+      if(pos < 0)
+      return;
+      if(pos == 0)     // push front wala case
+      push_front(val);
+      return;
             
-            Node* temp = head;
+      Node* temp = head;
 
-            for(int i=0;i<pos-1;i++){
-                temp = temp->next;  
-            }
-                Node* newNode = new Node(val); 
+      for(int i=0;i<pos-1;i++){
+        temp = temp->next;  
+      }
+        Node* newNode = new Node(val); 
              newNode->next = temp->next;
 
              temp->next = newNode;
-        }
+    }
         
-        void printLL(){
-            Node* temp = head;
-            while(temp != NULL){
-                cout<< temp->data <<" -> ";
-                temp = temp->next;
-            }
-            cout<<"NULL"<<endl;
-        }
+    void printLL(){
+      Node* temp = head;
+      while(temp != NULL){
+        cout<< temp->data <<" -> ";
+        temp = temp->next;
+      }
+      cout<<"NULL"<<endl;
+    }
     
 
 };
 int main(){
-    List ll;
+  List ll;
    
-    ll.push_front(1);
-    ll.push_front(2);
-    ll.push_front(3);
-    ll.push_back(4);
+  ll.push_front(1);
+  ll.push_front(2);
+  ll.push_front(3);
+  ll.push_back(4);
 
-    ll.insert(10,1);
-    ll.printLL(); 
+  ll.insert(10,1);
+  ll.printLL(); 
 
 
 

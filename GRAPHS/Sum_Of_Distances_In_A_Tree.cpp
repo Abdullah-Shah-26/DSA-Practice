@@ -14,67 +14,67 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    int n,m;
+  int n,m;
 
-    int bfs(int st, vector<vector<int>> &adj){
-      vector<bool> vis(n, 0);
-      queue<pair<int,int>> q;
+  int bfs(int st, vector<vector<int>> &adj){
+   vector<bool> vis(n, 0);
+   queue<pair<int,int>> q;
 
-      q.push({st, 0}); // node, dist
-      vis[st] = 1;
+   q.push({st, 0}); // node, dist
+   vis[st] = 1;
 
-      int sum = 0;
+   int sum = 0;
 
-      while(!q.empty()){
-        auto [node, dist] = q.front();
-        q.pop();
+   while(!q.empty()){
+    auto [node, dist] = q.front();
+    q.pop();
 
-        sum += dist;
+    sum += dist;
 
-        for(auto &nei : adj[node]){
-          if(!vis[nei]){
-            vis[nei] = 1; 
-            q.push({nei, dist + 1});
-          }
-        }
-      }
-
-      return sum;
+    for(auto &nei : adj[node]){
+     if(!vis[nei]){
+      vis[nei] = 1; 
+      q.push({nei, dist + 1});
+     }
     }
+   }
 
-    int dfs(int node, int parent, int depth, vector<vector<int>> &adj){
-      int sum = depth;
+   return sum;
+  }
 
-      for(auto &nei: adj[node]){
-        if(nei == parent) continue;
-        sum += dfs(nei, node, depth + 1, adj);
-      }
+  int dfs(int node, int parent, int depth, vector<vector<int>> &adj){
+   int sum = depth;
 
-      return sum;
-    }
+   for(auto &nei: adj[node]){
+    if(nei == parent) continue;
+    sum += dfs(nei, node, depth + 1, adj);
+   }
 
-    vector<int> sumOfDistancesInTree(int _n, vector<vector<int>>& edges) {
-    n = _n;
-    m = edges.size();
+   return sum;
+  }
 
-    vector<vector<int>> adj(n);
+  vector<int> sumOfDistancesInTree(int _n, vector<vector<int>>& edges) {
+  n = _n;
+  m = edges.size();
 
-    for(auto &e : edges){
-      int u = e[0];
-      int v = e[1];
+  vector<vector<int>> adj(n);
 
-      adj[u].push_back(v);
-      adj[v].push_back(u);
-    }
+  for(auto &e : edges){
+   int u = e[0];
+   int v = e[1];
 
-    vector<int> ans(n,0);
+   adj[u].push_back(v);
+   adj[v].push_back(u);
+  }
 
-    for(int i = 0; i < n; i++){
-      ans[i] = dfs(i,-1,0,adj);
-    }
+  vector<int> ans(n,0);
 
-    return ans;
-    }
+  for(int i = 0; i < n; i++){
+   ans[i] = dfs(i,-1,0,adj);
+  }
+
+  return ans;
+  }
 };
 
 //! Rerooting DP

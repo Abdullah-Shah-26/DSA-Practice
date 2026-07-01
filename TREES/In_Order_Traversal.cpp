@@ -8,27 +8,27 @@ public:
 // SC = O(n)  -- recursive call stack 
 // Inorder - L N R 
 
-    void Inorder(TreeNode* root, vector<int> &ans)
-    {
-        //base case
-        if(root == NULL)
-        return;
+  void Inorder(TreeNode* root, vector<int> &ans)
+  {
+    //base case
+    if(root == NULL)
+    return;
 
-        // left
-        Inorder(root->left, ans);
+    // left
+    Inorder(root->left, ans);
 
-        // Node
-        ans.push_back(root->val);
+    // Node
+    ans.push_back(root->val);
 
-        // right
-        Inorder(root->right , ans);
+    // right
+    Inorder(root->right , ans);
 
-    }
+  }
 
 
-    vector<int> inorderTraversal(TreeNode* root) {
-        vector<int>ans;
-        Inorder(root , ans);
-        return ans;
-    }
+  vector<int> inorderTraversal(TreeNode* root) {
+    vector<int>ans;
+    Inorder(root , ans);
+    return ans;
+  }
 };

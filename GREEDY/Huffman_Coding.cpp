@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
   public:
   // Node class 
@@ -30,17 +33,14 @@ class Solution {
     void preorder(Node* root, string temp, unordered_map<char, string> &codeMap) {
         if (!root)
             return;
-
         // If it's a leaf node, store the code for character
         if (!root->left && !root->right) {
             codeMap[root->c] = temp;
             return;
         }
-
         preorder(root->left, temp + '0', codeMap);
         preorder(root->right, temp + '1', codeMap);
     }
-
   
     vector<string> huffmanCodes(string S, vector<int> f, int N) {
         

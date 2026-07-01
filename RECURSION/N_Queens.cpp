@@ -1,6 +1,4 @@
-#include<iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Solution {
@@ -34,7 +32,7 @@ bool isSafe(vector<string> &board, int row, int col,int n){  //! all these func 
             return false;
         }
     }
- return true; // Safe to place a queen if all 4 are false
+  return true; // Safe to place a queen if all 4 are false
 }
 
 //! part 1

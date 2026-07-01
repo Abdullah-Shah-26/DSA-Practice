@@ -2,7 +2,6 @@
 using namespace std;
 
 // BFS Level wise : TC = O(N) | SC = O(N) 
-
 class Solution {
   public:
   int minJumps(vector<int>& arr) {

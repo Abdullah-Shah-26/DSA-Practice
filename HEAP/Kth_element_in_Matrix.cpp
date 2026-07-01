@@ -1,14 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 int kthSmallest(int mat[MAX][MAX], int n, int k)
 { // TC = O(klogn + n)
-   vector <pair<int,pair<int,int>>>temp;
-   for(int i = 0; i < n; i++)
-   {
+  vector <pair<int,pair<int,int>>>temp;
+  for(int i = 0; i < n; i++)
+  {
     // first push all elements of 0th col along with its (row,col) into vec
-   // & push them in pq - min heap
-   // pop the smallest element from heap and push its next elment of same 
-   // row along with its (row,col) in heap do this until k = 0 we get kth smalest and store it in variable
+  // & push them in pq - min heap
+  // pop the smallest element from heap and push its next elment of same 
+  // row along with its (row,col) in heap do this until k = 0 we get kth smalest and store it in variable
        temp.push_back(make_pair(mat[i][0] ,make_pair(i,0)));
-   }
+  }
   // create min heap - use iterators then - TC = O(N)
   priority_queue<pair<
   int,pair<int,int>>,
@@ -45,13 +48,10 @@ int kthSmallest(int mat[MAX][MAX], int n, int k)
   
 // create a visited matrix to avoid pushing same element
 bool visited[MAX][MAX] = {false};
-
 // start by pushing the first element (0,0)
 p.push({mat[0][0], {0,0}});
 visited[0][0] = true; // mark as visited
-
 int ans = -1;
-
 while(k--)
 {
     auto element = p.top();
@@ -76,19 +76,16 @@ while(k--)
         visited[i][j+1] = true;
     }
     
-   }
+  }
     return ans;
   }
 //!________________________________________________________________________________________________
 // Method 3 - BInary search approach sc = o(1)  TC = O(N*log(max - min))
-
-
- // counting no of elements <= mid 
- int count(int mat[MAX][MAX], int n , int mid ){
+  // counting no of elements <= mid 
+  int count(int mat[MAX][MAX], int n , int mid ){
         
     int count = 0;
     int i = n-1,j = 0; // start from bottom left corner
-
 while(i >= 0 && j < n)
 {
 // logic is agar koi column ka last element (us col ka sabse bada is smaller than mid)
@@ -103,8 +100,6 @@ i--; // move up current element > mid hay
 }  
 return count;
 }
-
-
 int kthSmallest(int mat[MAX][MAX], int n, int k)
 {  
   //Binary Search Approach

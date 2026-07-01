@@ -1,23 +1,23 @@
 // SC = O(1)  TC = O(n^2 m )
 // problem similar to merge 2 sorted LL
 class Solution {
-    public:
-    // merge funciton
-    Node* merge(Node* head1, Node* head2)
-    {
-        // create a dummy node to avoid writing multiple cond'n like head/tail can be null
-        Node* head = new Node(0);
-        Node* tail = head;;
+  public:
+  // merge funciton
+  Node* merge(Node* head1, Node* head2)
+  {
+    // create a dummy node to avoid writing multiple cond'n like head/tail can be null
+    Node* head = new Node(0);
+    Node* tail = head;;
         
-        while(head1 && head2)
-        {
-            if(head1->data <= head2->data)
-            { // think bottom like next ptr
-                tail->bottom = head1;  // tail ka next will pt to smaller head
-                head1 = head1->bottom; // update that head
-                tail = tail->bottom; // update tail 
+    while(head1 && head2)
+    {
+      if(head1->data <= head2->data)
+      { // think bottom like next ptr
+        tail->bottom = head1;  // tail ka next will pt to smaller head
+        head1 = head1->bottom; // update that head
+        tail = tail->bottom; // update tail 
                tail->bottom = NULL;  
-            }
+      }
              else{
                  // head1 > head2
                  tail->bottom = head2;
@@ -25,16 +25,16 @@ class Solution {
                  tail = tail->bottom;
                  tail->bottom = NULL; 
              }   
-            }
-            // if any one of LL is exhausted connect left out list directly to merged list
-            if(head1)
-            tail->bottom = head1;
-            else 
-            tail->bottom = head2;
+      }
+      // if any one of LL is exhausted connect left out list directly to merged list
+      if(head1)
+      tail->bottom = head1;
+      else 
+      tail->bottom = head2;
             
             
-            return head->bottom; // since we started from dummy node return its next(ie head of merged list)
-    }
+      return head->bottom; // since we started from dummy node return its next(ie head of merged list)
+  }
     
       // Function which returns the  root of the flattened linked list.
       Node *flatten(Node *root) {

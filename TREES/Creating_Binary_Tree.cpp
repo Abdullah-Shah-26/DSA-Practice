@@ -1,8 +1,7 @@
-//! BINARY TREE - method 1 -- LEVEL ORDER WISE
-#include<iostream>
-#include<queue>
+#include <bits/stdc++.h>
 using namespace std;
 
+//! BINARY TREE - method 1 -- LEVEL ORDER WISE
 class Node
 {
     public:
@@ -61,4 +60,4 @@ int main()
              4      5   6      7
                              8
                             
- */                            
+  */                            

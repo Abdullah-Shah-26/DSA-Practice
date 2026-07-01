@@ -1,6 +1,6 @@
-#include<iostream>   //! MERGE SORT _ TC = O(nlogn)    SC = O(n) // extra temp arr used 
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
+
 //! TO merge sorted parts
 void merge(vector<int> &arr, int st, int mid, int end){ 
 vector<int> temp;  // sorted values are first stored in temp
@@ -19,21 +19,21 @@ while (i <= mid && j <= end){
 }
 // for left out elements in 
 
- //left half
- while( i<= mid){
+  //left half
+  while( i<= mid){
     temp.push_back(arr[i]);
     i++;
- }
- // for left out elements in 
- //right half
- while(j <= end){
+  }
+  // for left out elements in 
+  //right half
+  while(j <= end){
     temp.push_back(arr[j]);
     j++;
- }
- // now copy temp in original array
- for(int idx = 0; idx< temp.size(); idx++){
+  }
+  // now copy temp in original array
+  for(int idx = 0; idx< temp.size(); idx++){
     arr[idx + st] = temp[idx];
- }
+  }
 }
 
 

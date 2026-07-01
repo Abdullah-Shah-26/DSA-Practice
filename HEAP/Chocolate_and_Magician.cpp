@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 //! interview Bit
 int Solution::nchoc(int A, vector<int> &B) {
     
@@ -25,5 +28,5 @@ int Solution::nchoc(int A, vector<int> &B) {
      return MaxChoc% 1000000007; // to avoid int overflow
      
      
- }
+  }
  

@@ -1,3 +1,6 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution{
     public:
     long long sumBetweenTwoKth( long long arr[], long long N, long long k1, long long k2)
@@ -7,7 +10,6 @@ class Solution{
     // & create another  k2-1 elements and push k2 -1 elements in it  
     //dono ka sum noikalke minus kardo 
     // we get sumofnos bw k1 and k2
-
     priority_queue<long long >p1;
     
     for(long long i = 0; i < k1; i++)
@@ -26,7 +28,7 @@ class Solution{
     
     for(long long i = 0; i< k2 -1; i++)
         p2.push(arr[i]);
- // find k2-1  smallest  element in array       
+  // find k2-1  smallest  element in array       
     for(long long i = k2-1; i < N; i++)
     {
         if(arr[i] < p2.top())

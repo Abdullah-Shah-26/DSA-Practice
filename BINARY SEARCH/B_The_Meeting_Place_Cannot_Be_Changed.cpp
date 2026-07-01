@@ -32,9 +32,9 @@ const int MOD = 1e9 + 7;
 
 // ---------- Fast IO ----------
 static const auto fastio = [](){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    return 0;
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+  return 0;
 }();
 
 // ---------- GCD / LCM ----------
@@ -45,13 +45,13 @@ ll lcmll(ll a,ll b){ return a/gcdll(a,b)*b; }
 
 // ---------- Modular arithmetic ----------
 ll modPow(ll a,ll b,ll m=MOD){
-    ll res=1;
-    while(b){
-        if(b&1) res=res*a%m;
-        a=a*a%m;
-        b>>=1;
-    }
-    return res;
+  ll res=1;
+  while(b){
+    if(b&1) res=res*a%m;
+    a=a*a%m;
+    b>>=1;
+  }
+  return res;
 }
 ll modInv(ll a,ll m=MOD){ return modPow(a,m-2,m); }
 ll modAdd(ll a,ll b,ll m=MOD){ return (a%m+b%m)%m; }
@@ -65,49 +65,49 @@ int lsbIndex(ll x){ return __builtin_ctzll(x); }
 
 // ---------- Divisors ----------
 vector<ll> getDivisors(ll n){
-    vector<ll> d;
-    for(ll i=1;i*i<=n;i++){
-        if(n%i==0){
-            d.push_back(i);
-            if(i*i!=n) d.push_back(n/i);
-        }
+  vector<ll> d;
+  for(ll i=1;i*i<=n;i++){
+    if(n%i==0){
+      d.push_back(i);
+      if(i*i!=n) d.push_back(n/i);
     }
-    sort(d.begin(), d.end());
-    return d;
+  }
+  sort(d.begin(), d.end());
+  return d;
 }
 
 // ---------- Primes (Sieve) ----------
 // Usage: vector<int> spf; auto primes = linearSieve(N, spf);
 // spf[x] = smallest prime factor of x (for x>=2)
 vector<int> linearSieve(int n, vector<int>& spf){
-    spf.assign(n+1, 0);
-    vector<int> primes;
-    for(int i=2;i<=n;i++){
-        if(spf[i]==0){ spf[i]=i; primes.push_back(i); }
-        for(int p: primes){
-            if(p>spf[i] || 1LL*i*p>n) break;
-            spf[i*p]=p;
-        }
+  spf.assign(n+1, 0);
+  vector<int> primes;
+  for(int i=2;i<=n;i++){
+    if(spf[i]==0){ spf[i]=i; primes.push_back(i); }
+    for(int p: primes){
+      if(p>spf[i] || 1LL*i*p>n) break;
+      spf[i*p]=p;
     }
-    return primes;
+  }
+  return primes;
 }
 bool isPrimeSieve(int x, const vector<int>& spf){
-    return x>=2 && x<(int)spf.size() && spf[x]==x;
+  return x>=2 && x<(int)spf.size() && spf[x]==x;
 }
 
 // ---------- Primality (sqrt) ----------
 bool isPrime(ll n){
-    if(n<2) return false;
-    for(ll i=2;i*i<=n;i++) if(n%i==0) return false;
-    return true;
+  if(n<2) return false;
+  for(ll i=2;i*i<=n;i++) if(n%i==0) return false;
+  return true;
 }
 
 // ---------- Prefix sum ----------
 vector<ll> prefixSum(const vector<ll>& a){
-    int n=a.size();
-    vector<ll> pref(n+1,0);
-    for(int i=0;i<n;i++) pref[i+1]=pref[i]+a[i];
-    return pref;
+  int n=a.size();
+  vector<ll> pref(n+1,0);
+  for(int i=0;i<n;i++) pref[i+1]=pref[i]+a[i];
+  return pref;
 }
 
 // ---------- Newline helper ----------
@@ -128,38 +128,38 @@ inline void nl(){ cout << '\n'; }
 
 // ---------- Solve ---------
 void solve(){
-    ll n;
-    cin  >> n;
-    vi x(n), v(n);
-    rv(x);
-    rv(v);
+  ll n;
+  cin  >> n;
+  vi x(n), v(n);
+  rv(x);
+  rv(v);
 
-    auto check = [&](ld T){
-      ld L = -1e18, R = 1e18;
+  auto check = [&](ld T){
+    ld L = -1e18, R = 1e18;
 
-      rep(i,0,n){
-        L = max(L, x[i] - v[i]*T);
-        R = min(R, x[i] + v[i]*T);
-      }
-      return L <= R;
-    };
-
-    ld l = 0, r = 1e18;
-    int it = 100;
-    while(it--){
-      ld mid = l + (r-l)/2;
-
-      if(check(mid)){
-        r = mid;
-      }else{
-        l = mid;
-      }
+    rep(i,0,n){
+    L = max(L, x[i] - v[i]*T);
+    R = min(R, x[i] + v[i]*T);
     }
-    cout << fixed << setprecision(12) << r << endl;
+    return L <= R;
+  };
+
+  ld l = 0, r = 1e18;
+  int it = 100;
+  while(it--){
+    ld mid = l + (r-l)/2;
+
+    if(check(mid)){
+    r = mid;
+    }else{
+    l = mid;
+    }
+  }
+  cout << fixed << setprecision(12) << r << endl;
 }
 
 // ---------- Main ----------
 int main(){
-    solve();
-    return 0;
+  solve();
+  return 0;
 }

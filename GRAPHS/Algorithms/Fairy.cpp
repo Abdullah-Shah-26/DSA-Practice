@@ -1,9 +1,8 @@
-#pragma GCC optimize("O3")
-#pragma GCC optimize("unroll-loops")
-
 #include <bits/stdc++.h>
 using namespace std;
 
+#pragma GCC optimize("O3")
+#pragma GCC optimize("unroll-loops")
 using ll = long long;
 using ull = unsigned long long;
 using ld = long double;

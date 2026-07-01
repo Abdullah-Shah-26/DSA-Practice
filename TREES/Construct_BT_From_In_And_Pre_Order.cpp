@@ -3,7 +3,6 @@ using namespace std;
 
 // Preorder tells which node comes next
 // Inorder tells where left/right split happens
-
 class Solution {
 public:
   unordered_map<int,int> pos; // rootVal, Idx in Inorder

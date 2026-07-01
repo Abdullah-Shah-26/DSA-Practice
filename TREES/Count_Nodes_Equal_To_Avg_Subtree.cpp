@@ -14,23 +14,23 @@ inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
 
 class Solution {
 public:
-    pair<int,int> dfs(TreeNode* root, int &ans){
-        if(!root) return {0,0};
+  pair<int,int> dfs(TreeNode* root, int &ans){
+    if(!root) return {0,0};
 
-        auto left = dfs(root->left, ans);
-        auto right = dfs(root->right, ans);
+    auto left = dfs(root->left, ans);
+    auto right = dfs(root->right, ans);
 
-        int sum = left.first + right.first + root->val;
-        int cnt = left.second + right.second + 1;
+    int sum = left.first + right.first + root->val;
+    int cnt = left.second + right.second + 1;
 
-        if(sum / cnt == root->val) ans++;
+    if(sum / cnt == root->val) ans++;
 
-        return {sum, cnt};
-    }
+    return {sum, cnt};
+  }
 
-    int averageOfSubtree(TreeNode* root) {
-        int ans = 0;
-        dfs(root, ans);
-        return ans;
-    }
+  int averageOfSubtree(TreeNode* root) {
+    int ans = 0;
+    dfs(root, ans);
+    return ans;
+  }
 };

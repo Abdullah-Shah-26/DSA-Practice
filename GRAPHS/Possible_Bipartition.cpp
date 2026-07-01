@@ -3,7 +3,6 @@ using namespace std;
 
 //! Check if graph is Bipartite
 //* DFS
-
 class Solution {
   public:
     bool dfs(int node, int parent, vector<int> adj[], vector<int> &color){  

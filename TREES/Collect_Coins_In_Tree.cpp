@@ -2,9 +2,7 @@
 using namespace std;
 
 // TC = O(N) | SC = O(N)
-
 /*
-
 1) Peel no-coin leaves.
 2) Peel leaves once.
 3) Peel leaves again.
