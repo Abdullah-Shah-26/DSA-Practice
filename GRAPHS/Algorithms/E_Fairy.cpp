@@ -160,13 +160,13 @@ void solve() {
 
   // Undirected Graph
   // Only 2 kinds of edge possible
+  
   // Tree edge :
   // parent[u] == v || parent[v] == u
   // Back edge :
   // neither parent[u] == v nor parent[v] == u
 
   // Back edge :
-
   // same colored end pts
   // tree path has even len
   // + this edge from Odd cycle
