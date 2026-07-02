@@ -1,5 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
+
 bool checkMirror(int n, vector<vector<int>> &A, vector<vector<int>> &B)
  {
      unordered_map<int, stack<int>>m;
