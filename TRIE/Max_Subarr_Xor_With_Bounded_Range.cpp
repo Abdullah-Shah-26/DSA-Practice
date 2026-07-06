@@ -2,6 +2,8 @@
 using namespace std;
 
 // Xor Trie + Sliding window monotonic dq
+// TC = O(N * (No of bits (15 Here))) = SC 
+
 class TrieNode {
 public:
   TrieNode *child[2];
