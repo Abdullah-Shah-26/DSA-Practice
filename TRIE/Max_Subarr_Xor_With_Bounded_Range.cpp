@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Sliding Window - 2 Pointer + Xor Trie
-// TC = O(NLogN + N*20) | SC = O(N * 20)
-
+// Xor Trie + Sliding window monotonic dq
 class TrieNode {
 public:
   TrieNode *child[2];
-  int cnt; // Each bit should now how many no's used me
+  int cnt = 0; // Each bit should now how many no's used me
 
   TrieNode() {
     child[0] = NULL;
@@ -26,12 +24,13 @@ public:
   void insert(int num) {
     TrieNode *cur = root;
 
-    for (int i = 20; i >= 0; i--) {
+    for (int i = 15; i >= 0; i--) {
       int bit = (num >> i) & 1;
 
       if (cur->child[bit] == NULL) {
         cur->child[bit] = new TrieNode();
       }
+
       cur = cur->child[bit];
       cur->cnt++;
     }
@@ -41,7 +40,7 @@ public:
     TrieNode *cur = root;
     int ans = 0;
 
-    for (int i = 20; i >= 0; i--) {
+    for (int i = 15; i >= 0; i--) {
       int bit = (num >> i) & 1;
 
       if (cur->child[!bit] != NULL && cur->child[!bit]->cnt > 0) {
@@ -51,13 +50,14 @@ public:
         cur = cur->child[bit];
       }
     }
+
     return ans;
   }
 
   void remove(int num) {
     TrieNode *cur = root;
 
-    for (int i = 20; i >= 0; i--) {
+    for (int i = 15; i >= 0; i--) {
       int bit = (num >> i) & 1;
       cur = cur->child[bit];
       cur->cnt--;
@@ -65,37 +65,53 @@ public:
   }
 };
 
-/*
-
-Sort :
-x = a[i], y = a[j]
-Now x <= y so min(x,y) = x
-Now |x - y| = y - x
-Condition Transforms from |x-y| <= min(x,y) to
-[ y  -  x ] <= x
-a[j] - a[i] <= a[i] is Valid Pair
-a[j] - a[i] > a[i] is Invalid Pair
-
-*/
-
 class Solution {
 public:
-  int maximumStrongPairXor(vector<int> &nums) {
+  int maxXor(vector<int> &nums, int k) {
     int n = nums.size();
-    sort(nums.begin(), nums.end());
+    int ans = 0;
 
     Trie trie;
+    deque<int> dqMin;
+    deque<int> dqMax;
+    vector<int> pref(n + 1, 0);
 
-    int ans = 0;
+    // XOR(L,R) = pref[R + 1] ^ pref[L]
+    pref[0] = 0;
+    trie.insert(pref[0]); // Insert empty pref
+
+    for (int i = 1; i <= n; i++)
+      pref[i] = pref[i - 1] ^ nums[i - 1];
+
     int l = 0;
     for (int r = 0; r < n; r++) {
-      trie.insert(nums[r]);
 
-      while (nums[r] - nums[l] > nums[l]) {
-        trie.remove(nums[l]);
+      while (!dqMax.empty() && nums[r] > dqMax.back())
+        dqMax.pop_back();
+
+      dqMax.push_back(nums[r]);
+
+      while (!dqMin.empty() && nums[r] < dqMin.back())
+        dqMin.pop_back();
+
+      dqMin.push_back(nums[r]);
+
+      // Shrink window if invalid
+      while (!dqMax.empty() && !dqMin.empty() &&
+             dqMax.front() - dqMin.front() > k && l <= r) {
+
+        if (nums[l] == dqMax.front())
+          dqMax.pop_front();
+
+        if (nums[l] == dqMin.front())
+          dqMin.pop_front();
+
+        trie.remove(pref[l]);
         l++;
       }
-      ans = max(ans, trie.getMaxXor(nums[r]));
+
+      ans = max(ans, trie.getMaxXor(pref[r + 1]));
+      trie.insert(pref[r + 1]);
     }
 
     return ans;

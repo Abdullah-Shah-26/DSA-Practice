@@ -5,38 +5,36 @@ using namespace std;
 
 using ll = long long;
 
-class TrieNode{
-  public: 
-  unordered_map<int, TrieNode*> child;
+class TrieNode {
+public:
+  unordered_map<int, TrieNode *> child;
   int cnt = 0;
 };
 
-class Trie{
-  private:
-  TrieNode* root;
+class Trie {
+private:
+  TrieNode *root;
 
-  public:
-  Trie(){
-     root = new TrieNode();
-  }
+public:
+  Trie() { root = new TrieNode(); }
 
-  ll insertAndCnt(string &s){
+  ll insertAndCnt(string &s) {
     int n = s.size();
     ll matches = 0;
 
-    TrieNode* cur = root;
+    TrieNode *cur = root;
 
-    for(int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
       int front = s[i] - 'a';
-      int back = s[n-i-1] - 'a';
+      int back = s[n - i - 1] - 'a';
 
       // unique key for {frontChar, backChar}
       int key = front * 26 + back;
 
-      if(cur->child.find(key) == cur->child.end()){
+      if (cur->child.find(key) == cur->child.end()) {
         cur->child[key] = new TrieNode();
       }
-      
+
       cur = cur->child[key];
       matches += cur->cnt;
     }
@@ -47,14 +45,14 @@ class Trie{
 
 class Solution {
 public:
-    ll countPrefixSuffixPairs(vector<string>& words) {
+  ll countPrefixSuffixPairs(vector<string> &words) {
     ll ans = 0;
     Trie trie;
 
-    for(string &s : words){
+    for (string &s : words) {
       ans += trie.insertAndCnt(s);
-    } 
-
-    return ans; 
     }
+
+    return ans;
+  }
 };
