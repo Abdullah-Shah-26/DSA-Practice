@@ -1,10 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//! Brute force
+// TC = O(n ^ 2)
+
 class Solution {
 public:
-  // TC = O(n ^ 2)
   int minSubArrayLen(int target, vector<int> &nums) {
     int n = nums.size();
     int minsize = INT_MAX;
@@ -24,11 +24,11 @@ public:
   }
 };
 
+// TC = O(n) SC = O(1)
 
 class Solution {
 public:
   int minSubArrayLen(int target, vector<int> &nums) {
-    //! optimized approach - slidiing window - TC = O(n) SC = O(1)
 
     int n = nums.size();
     int sum = 0, st = 0, end = 0, total = INT_MAX;
@@ -44,6 +44,7 @@ public:
       }
       end++; // if sum < target increase the window size
     }
+
     // handles the edge case
     return total == INT_MAX ? 0 : total;
   }
