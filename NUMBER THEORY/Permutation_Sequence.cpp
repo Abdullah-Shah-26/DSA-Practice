@@ -4,13 +4,13 @@ using namespace std;
 // TC = O(N^2) |  SC = O(N)
 
 class Solution {
-  public:
-    string getPermutation(int n, int k) {
+public:
+  string getPermutation(int n, int k) {
 
-    // Compute Factorial 
+    // Compute Factorial
     vector<int> numbers;
-    int fact = 1; 
-    for(int i = 1; i < n; i++){
+    int fact = 1;
+    for (int i = 1; i < n; i++) {
       fact *= i;
       numbers.push_back(i); // Push (n) digits
     }
@@ -22,11 +22,11 @@ class Solution {
     // k / fact = chooses block
     // nums[k/fact] = chooses digit
 
-    while(true){
-      ans = ans + to_string(numbers[k/fact]);
-      numbers.erase(numbers.begin() + k/fact);
+    while (true) {
+      ans = ans + to_string(numbers[k / fact]);
+      numbers.erase(numbers.begin() + k / fact);
 
-      if(numbers.size() == 0){
+      if (numbers.size() == 0) {
         break;
       }
 
@@ -35,5 +35,5 @@ class Solution {
     }
 
     return ans;
-    }
+  }
 };

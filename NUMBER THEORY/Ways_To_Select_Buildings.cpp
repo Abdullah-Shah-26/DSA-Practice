@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using ll = long long;
-
 class Solution {
 public:
   long long numberOfWays(string s) {
@@ -16,7 +14,7 @@ public:
       pref1[i + 1] = pref1[i] + (s[i] == '1');
     }
 
-    ll ans = 0;
+    long long ans = 0;
 
     for (int i = 0; i < n; i++) {
 
@@ -25,6 +23,7 @@ public:
 
       // [L...R] - [i+1 ...... n-1]
       // pref[R + 1] - pref[L] = pref[(n-1)+1] - pref[i+1]
+
       int right0 = pref0[n] - pref0[i + 1];
       int right1 = pref1[n] - pref1[i + 1];
 
