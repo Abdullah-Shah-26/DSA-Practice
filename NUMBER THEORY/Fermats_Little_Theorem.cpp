@@ -12,6 +12,8 @@ inline void fastio() {
   cin.tie(nullptr);
 }
 
+// To compute NCR % MOD
+
 int fact(int n) {
   int f = 1;
   for (int i = 2; i <= n; i++) {
