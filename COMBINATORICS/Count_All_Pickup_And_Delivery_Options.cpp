@@ -14,7 +14,8 @@ public:
 
     for (int i = 2; i <= n; i++) {
       ll spaces = (i - 1) * 2 + 1;
-      ll possiblities = (spaces * (spaces + 1) / 2) % MOD;
+      // spacesC2/2, divide by 2 because half set of choices where di before pi are invalid
+      ll possiblities = (spaces * (spaces + 1) / 2) % MOD; 
       res = (res * possiblities) % MOD;
     }
 
