@@ -1,16 +1,21 @@
-//! TO CALCULATE MAX SUB ARRAY SUM - KADANS ALGORITHM - TC = O(N) - SINGLE LOOP 
-class Solution {  //! SC = O(1)
-    public:
-        int maxSubArray(vector<int>& nums) {
-            int currSum = 0 , maxSum = 0;
+#include <bits/stdc++.h>
+using namespace std;
 
-            for(int val : nums){
-                currSum += val;
-                maxSum = max(currSum, maxSum);
-                if(currSum < 0){ //since if subarr sum is -ve reset it to 0 beacuse -ve values will further decrease currSum
-                    currSum = 0;
-                }
-            }
-            return maxSum;
-        }
+// KADANE'S ALGORITHM
+// TC = O(n)
+// SC = O(1)
+
+class Solution {
+public:
+  int maxSubArray(vector<int>& nums) {
+    int currSum = nums[0];
+    int maxSum = nums[0];
+
+    for (int i = 1; i < nums.size(); i++) {
+      currSum = max(nums[i], currSum + nums[i]);
+      maxSum = max(maxSum, currSum);
+    }
+
+    return maxSum;
+  }
 };

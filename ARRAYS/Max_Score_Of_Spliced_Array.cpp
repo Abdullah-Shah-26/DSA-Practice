@@ -10,7 +10,7 @@ public:
     int cur = 0, best = 0;
 
     for(int i = 0; i < nums1.size(); i++){
-      // No swap, Start new swap at i, Extend prev swap
+      // No swap, start new swap at i, Extend prev swap
       cur = max({0, nums2[i] - nums1[i],cur + nums2[i] - nums1[i]});
       best = max(best, cur);
     }

@@ -5,6 +5,7 @@ using ll = long long;
 
 class Solution {
 public:
+
   // Range [1..n] [1..m]
   // No of odd no's in range from 1..N = Ceil(N/2)
   // Every odd sum causes alice to win
