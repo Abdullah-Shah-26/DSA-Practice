@@ -27,9 +27,16 @@ phi(7) = 6
 phi(11) = 10
 
 phi(p) = p-1 where p = primeNo
-*/
+phi(p^x) = No of int not co-prime with prime p 
+         = p^x - (p^x)/p
 
-/* 
 
-phi(p^x) = No of int not co-prime with p
+- a,b must be co-prime
+  phi(a * b) = phi(a) * phi(b); 
+
+
+- a,b need not be co-prime
+  phi(a + b) = phi(a) + phi(b) + gcd(a,b)/phi(gcd(a,b)); 
+
+
 */
