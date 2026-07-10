@@ -2,9 +2,11 @@
 using namespace std;
 
 using ll = long long;
+
 class Solution {
 public:
   int fourSumCount(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3, vector<int>& nums4) {
+
   unordered_map<ll, int> mp;
 
   for(int a : nums1){

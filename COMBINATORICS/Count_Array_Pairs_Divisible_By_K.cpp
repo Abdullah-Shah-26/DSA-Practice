@@ -1,25 +1,44 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+using ll = long long;
+
 class Solution {
 public:
-  long long countPairs(vector<int>& nums, int k) {
-    
-  long long ans = 0;
-  unordered_map<int,int> freq;
+  long long countPairs(vector<int> &nums, int k) {
+    ll ans = 0;
+    unordered_map<int, int> freq;
 
-  for(int x : nums){
-    long long g = gcd(x, k);
+    for (int &x : nums) {
+      ll curGcd = __gcd(x, k);
 
-    // Cnt all valid prev groups
-    for(auto &[oldGcd, cnt] : freq){
-      if((oldGcd * g) % k == 0)
-        ans += cnt;
+      for (auto &[prevGcd, cnt] : freq)
+        if ((prevGcd * curGcd) % k == 0)
+          ans += freq[prevGcd];
+
+      freq[curGcd]++;
     }
 
-    freq[g]++;
-  }
-
-  return ans;
+    return ans;
   }
 };
+
+/*
+
+12 = 2^2 * 3
+18 = 2 * 3^2
+
+Common part = 2*3 = 6
+gcd(12, 18) = 6
+
+k = 12                 New Guy
+arr[] =  [6, 18, 30 42]  8
+g(x,k) = [6, 6,  6, 6]   4
+
+Map : 
+[6] - [4]
+
+prevGcd = 6, curGcd = 4
+(6 * 4) = 24 % 12 == 0
+cnt += freq[prevGcd]
+*/
