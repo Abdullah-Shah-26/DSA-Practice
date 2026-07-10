@@ -1,25 +1,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// KMP
-class KMP{
+class KMP {
 private:
-  vector<int> buildLps(string &pat){
+  vector<int> buildLps(string &pat) {
     int m = pat.size();
 
     vector<int> lps(m);
 
-    for(int i = 1, len = 0; i < m; ){
+    for (int i = 1, len = 0; i < m;) {
 
-      if(pat[i] == pat[len]){
+      if (pat[i] == pat[len]) {
         lps[i++] = ++len;
       }
 
-      else if(len){
+      else if (len) {
         len = lps[len - 1];
       }
 
-      else{
+      else {
         lps[i++] = 0;
       }
     }
@@ -28,30 +27,29 @@ private:
   }
 
 public:
-  vector<int> find(string &text, string &pat){
+  vector<int> find(string &text, string &pat) {
     int n = text.size();
     int m = pat.size();
 
-    vector<int> lps =
-      buildLps(pat);
+    vector<int> lps = buildLps(pat);
 
     vector<int> ans;
 
-    for(int i = 0, j = 0; i < n; ){
+    for (int i = 0, j = 0; i < n;) {
 
-      if(text[i] == pat[j]){
+      if (text[i] == pat[j]) {
         i++;
         j++;
       }
 
-      if(j == m){
+      if (j == m) {
         ans.push_back(i - m);
         j = lps[j - 1];
       }
 
-      else if(i < n && text[i] != pat[j]){
+      else if (i < n && text[i] != pat[j]) {
 
-        if(j)
+        if (j)
           j = lps[j - 1];
 
         else
