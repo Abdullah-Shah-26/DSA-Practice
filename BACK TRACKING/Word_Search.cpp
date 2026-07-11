@@ -34,6 +34,7 @@ public:
   bool exist(vector<vector<char>> &board, string word) {
     n = board.size();
     m = board[0].size();
+    
     for (int i = 0; i < n; i++) {
       for (int j = 0; j < m; j++) {
         if (board[i][j] == word[0] && find(i, j, 0, board, word))
