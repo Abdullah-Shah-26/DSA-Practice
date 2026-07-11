@@ -70,8 +70,7 @@ public:
   int zigZagArrays(int n, int l, int r) {
     int m = (r - l + 1);
 
-    // vector<vector<vector<ll>>> dp(n + 1, vector<vector<ll>> (m + 1,
-    // vector<ll> (2, 0)));
+    // vector<vector<vector<ll>>> dp(n + 1, vector<vector<ll>> (m + 1, vector<ll> (2, 0)));
     vector<array<ll, 2>> nxt(m + 1);
     vector<array<ll, 2>> cur(m + 1);
 
