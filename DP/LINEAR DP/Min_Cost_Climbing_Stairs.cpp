@@ -31,7 +31,7 @@ public:
         int n = cost.size();
         vector<int>dp(n + 1, -1);
        //! Bottom Up 
-       // base case 
+       67877
        // we only have to pay when we move from this not when we stand on 0/1st stair
        dp[0] = 0; 
        dp[1] = 0;
