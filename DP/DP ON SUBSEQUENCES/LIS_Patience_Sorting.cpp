@@ -1,84 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-using ll = long long;
-using ull = unsigned long long;
-using lll = __int128_t;
-using ulll = __uint128_t;
-using ld = long double;
-
-using pi = pair<int,int>;
-using pll = pair<ll,int>;
-using vi = vector<int>;
-using vvi = vector<vector<int>>;
-using vll = vector<ll>;
-using vvll = vector<vector<ll>>;
-using vs = vector<string>;
-using vb = vector<bool>;
-using vpi = vector<pi>;
-using vvpi = vector<vector<pi>>;
-
-const int INF = 1e9;
-const int MOD = 1e9 + 7;
-
-static const auto fastio = [](){
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    return 0;
-}();
-
-// -------- lll (__int128) I/O --------
-lll readlll(){
-    string s; cin >> s;
-    lll x = 0; int i = 0; bool neg = false;
-    if(!s.empty() && s[0] == '-') neg = true, i = 1;
-    for(; i < (int)s.size(); i++) x = x * 10 + (s[i] - '0');
-    return neg ? -x : x;
-}
-void printlll(lll x){
-    if(x == 0){ cout << 0; return; }
-    if(x < 0) cout << '-', x = -x;
-    string s;
-    while(x){ s.push_back(char('0' + (int)(x % 10))); x /= 10; }
-    reverse(s.begin(), s.end());
-    cout << s;
-}
-// -----------------------------------
-
-// -------- Fast vector/matrix input ---
-#define rv(a) for(auto &x : (a)) cin >> x
-#define rm(mat) for(auto &r : (mat)) for(auto &x : (r)) cin >> x
-// -----------------------------------
-
-void solve(){
-    int n; 
-    cin >> n;
-    
-}
-
-int main(){
-    int t; 
-    cin >> t;
-    while(t--) solve();
-    return 0;
-}
+// TC = O(NlogN)
+// Patience Sorting - Breaks Lexicographical Ordering of Indices
 
 class Solution {
 public:
-// TC = O(NlogN)
-// Patience Sorting - Breaks Lexicographical Ordering of Indices
-    int lengthOfLIS(vector<int>& arr) {
-    vector<int>sorted;
+  int lengthOfLIS(vector<int> &arr) {
     int n = arr.size();
-    for(int i = 0;i < n; i++){
+
+    vector<int> sorted;
+
+    for (int i = 0; i < n; i++) {
       auto it = lower_bound(sorted.begin(), sorted.end(), arr[i]);
-      if(it == sorted.end()){
+
+      if (it == sorted.end())
         sorted.push_back(arr[i]);
-      }
-      else{
+      else
         *it = arr[i];
-      }
     }
+
     return sorted.size();
-    }
+  }
 };
