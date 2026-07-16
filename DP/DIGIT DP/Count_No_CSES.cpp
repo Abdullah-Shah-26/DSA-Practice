@@ -6,7 +6,7 @@ using ll = long long;
 // 10 ^ 18 -- 19 digits -- Keep 20 in dp
 // lz - 0/1
 // tight - 0/1
-// prev - // 0->9 , we are also using 10 as no past prev -- so overall 11
+// prev - // 0-> 9 , we are also using 10 as no past prev -- so overall 11
 
 ll dp[2][11][20][2];
 
