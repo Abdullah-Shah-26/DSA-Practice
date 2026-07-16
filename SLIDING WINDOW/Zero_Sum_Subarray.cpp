@@ -1,27 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-public:
-
-  int findSubarray(vector<int> &arr) {
-    // TC = O(n square)
-    int total = 0;
-    int n = arr.size();
-    for (int i = 0; i < n; i++) {
-      int sum = 0;
-      for (int j = i; j < n; j++) {
-        sum += arr[j];
-
-        if (sum == 0)
-          total++;
-      }
-    }
-    return total;
-  }
-};
-
-// TC = O(N)       SC = O(n) - worst case
 int findSubarray(vector<int> &arr) {
   // prefix sum approach - and using unordered map - TC = O(n)
   int total = 0; // total no of subarrays that have sum as 0
