@@ -41,6 +41,7 @@ class Solution {
           }
         }
       }
+      
       if(!q.empty()){
         dist++;
       }
