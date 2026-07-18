@@ -3,8 +3,8 @@ using namespace std;
 
 class Solution {
 public:
-  void solve(int idx, vector<int> temp, vector<int> &arr, int tar,
-             vector<vector<int>> &ans, int n) {
+  void solve(int idx, vector<int> temp, vector<int> &arr, int tar, vector<vector<int>> &ans, int n) {
+    
     if (idx == n) {
       if (tar == 0) {
         ans.push_back(temp);
