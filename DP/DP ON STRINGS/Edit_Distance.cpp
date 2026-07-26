@@ -81,7 +81,8 @@ public:
     int m = s2.size();
     vector<vector<int>> dp(
         n + 1,
-        vector<int>(m + 1,0)); // 1 based idx to avoid dealing with -ve base case
+        vector<int>(m + 1,
+                    0)); // 1 based idx to avoid dealing with -ve base case
 
     // for(int j = 0; j <= m ; j++)
     // dp[0][j] = j ;
