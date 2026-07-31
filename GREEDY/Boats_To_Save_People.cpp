@@ -26,7 +26,7 @@ public:
 
       boats++;
     }
-    
+
     return boats;
   }
 };
