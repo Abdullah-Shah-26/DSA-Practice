@@ -8,8 +8,8 @@ class StringHash{
 private : 
   static const ull MOD1 = 1000000007ULL;
   static const ull MOD2 = 1000000009ULL;
-  static const ull BASE1 = 313ull;
-  static const ull BASE2 = 317ull;
+  static const ull BASE1 = 313ULL;
+  static const ull BASE2 = 317ULL;
 
   vector<ull> pref1;
   vector<ull> pref2;
@@ -57,8 +57,6 @@ public:
     int low = 1, high = n, ans = n;
 
     unordered_map<ull, int> mp; // Hash, freq
-    mp.reserve(n);
-    mp.max_load_factor(0.7);
 
     StringHash hash(nums);
 
@@ -68,13 +66,13 @@ public:
     // r = l + len - 1  
     auto check = [&](int len){
       mp.clear();
-      for(int l = 0; l <= n - len; l++){
+      for(int l = 0; l + len - 1 < n; l++){
         int r = l + len - 1;
         ull h = hash.getHash(l, r);
         mp[h]++;
       }
 
-      for(int l = 0; l <= n - len; l++){
+      for(int l = 0; l + len - 1 < n; l++){
         int r = l + len - 1;
         ull h = hash.getHash(l, r);
         if(mp[h] == 1) return true; // Unique subarray 
