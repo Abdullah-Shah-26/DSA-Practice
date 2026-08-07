@@ -62,8 +62,8 @@ public:
 };
 
 //! Binary Search + DP
-//! Greedy Fails when we have interval scheduling with weight/profit cause a
-//! latter choice may give more profit
+// Greedy Fails when we have interval scheduling with weight/profit cause a
+// latter choice may give more profit
 
 class Solution {
 public:
