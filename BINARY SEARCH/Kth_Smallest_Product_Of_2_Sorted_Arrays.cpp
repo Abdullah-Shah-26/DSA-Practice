@@ -88,8 +88,7 @@ public:
     return cnt;
   }
 
-  long long kthSmallestProduct(vector<int> &nums1, vector<int> &nums2,
-                               long long k) {
+  long long kthSmallestProduct(vector<int> &nums1, vector<int> &nums2, long long k) {
 
     ll low = -10000000000LL;
     ll high = 10000000000LL;
