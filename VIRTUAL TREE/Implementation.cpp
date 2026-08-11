@@ -110,8 +110,7 @@ vector<int> buildVT(vector<int> nodes) {
   for (int i = 1; i < nodes.size(); i++) {
 
     // Pop until stack's top is ancestor of curNode
-    while (
-        !(tin[st.top()] <= tin[nodes[i]] && tout[st.top()] >= tout[nodes[i]]))
+    while (!(tin[st.top()] <= tin[nodes[i]] && tout[st.top()] >= tout[nodes[i]]))
       st.pop();
 
     vt[st.top()].push_back(nodes[i]); // ancestor -> child
