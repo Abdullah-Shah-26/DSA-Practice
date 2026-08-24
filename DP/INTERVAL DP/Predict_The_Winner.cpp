@@ -10,7 +10,7 @@ class Solution {
     bool predictTheWinner(vector<int>& a) {
     n = a.size();
 
-    long long sum = 0;10
+    long long sum = 0;
     for(int x : a) sum += x;
 
     vector<vector<long long>> dp(n, vector<long long> (n,0)); 

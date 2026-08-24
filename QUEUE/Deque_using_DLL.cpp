@@ -1,4 +1,3 @@
-//! implemneting deque as doubly linked list  // TC of all ops = O(1)
 #include<bits/stdc++.h>
 using namespace std;
 
