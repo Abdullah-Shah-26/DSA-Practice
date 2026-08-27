@@ -6,7 +6,7 @@ const int INF = 1e9;
 class Solution {
 public:
   // [st.....end] | [end+1.....n-1]
-  //   one piece      remaining piece
+  //   one piece     remaining piece
 
   int n;
   int dp[101][101];
