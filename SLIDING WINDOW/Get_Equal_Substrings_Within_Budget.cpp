@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+  int equalSubstring(string s, string t, int maxCost) {
+    int n = s.size();
+
+    int cost = 0;
+    int maxLen = 0;
+    int l = 0;
+
+    for (int r = 0; r < n; r++) {
+      cost += abs(s[r] - t[r]);
+
+      while (cost > maxCost) {
+        cost -= abs(s[l] - t[l]);
+        l++;
+      }
+
+      maxLen = max(maxLen, r - l + 1);
+    }
+
+    return maxLen;
+  }
+};
