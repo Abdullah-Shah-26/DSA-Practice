@@ -7,10 +7,12 @@ using pii = pair<int, int>;
 using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
+
 inline void fastio() {
   ios::sync_with_stdio(false);
   cin.tie(nullptr);
 }
+
 void rebalance(multiset<ll> &left, multiset<ll> &right) {
   while (left.size() > right.size() + 1) {
     auto it = prev(left.end());
@@ -23,6 +25,7 @@ void rebalance(multiset<ll> &left, multiset<ll> &right) {
     right.erase(it);
   }
 }
+
 void solve() {
   ll n, k;
   cin >> n >> k;
@@ -218,7 +221,7 @@ public:
 
   vector<double> medianSlidingWindow(vector<int> &nums, int k_) {
     k = k_;
-    
+
     vector<double> ans;
     int n = nums.size();
 
