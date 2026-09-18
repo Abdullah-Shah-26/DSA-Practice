@@ -92,5 +92,4 @@ int cutRod(vector<int> &price)
 
     return prev[n];
 }
-}
 ;

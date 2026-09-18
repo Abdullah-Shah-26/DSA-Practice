@@ -1,43 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 class Solution {
 public:
-bool subsetsumtok(int n , int k , vector<int> &arr)
-{   // Space optimized approach
-    vector<bool>prev(k +1,0), curr(k + 1,0);
+  bool canPartition(vector<int> &nums) {
+    int n = nums.size();
+    int total = accumulate(nums.begin(), nums.end(), 0);
 
-    prev[0] = curr[0] = true;
-        if (arr[0] <= k) // Only set this if the first element is within bounds means target can be formed using first element
-            prev[arr[0]] = true;
+    if (total & 1) // Odd sum can never be split into 2 equal halfs
+      return false;
 
-    for(int idx =1; idx < n; idx ++)
-    {
-        for(int target =1; target <=k ; target++)
-        {
-            bool nottake = prev[target];
-            bool take = false;
+    int target = total / 2;
+    vector<vector<bool>> dp(n + 1, vector<bool>(target + 1, false));
 
-            if(arr[idx] <= target)
-            take = prev[target- arr[idx]];
+    for (int i = 0; i <= n; i++) {
+      dp[i][0] = true;
+    }
 
-            curr[target] = take || nottake;
+    for (int i = n - 1; i >= 0; i--) {
+      for (int t = 1; t <= target; t++) {
+
+        bool take = false;
+        if (t >= nums[i]) {
+          take = dp[i + 1][t - nums[i]];
         }
-        prev = curr;
+        bool skip = dp[i + 1][t];
+
+        dp[i][t] = (take || skip);
+      }
     }
-    return prev[k];
-}
 
-
-
-    bool canPartition(vector<int>& nums) {
-        int totalsum = 0;
-
-        for(int i = 0; i < nums.size(); i++)
-        totalsum += nums[i];
-
-    if(totalsum % 2 != 0)
-        return 0; // cannot divide odd sum equally among 2 subsets
-
-        int target = totalsum /2;
-        return subsetsumtok(nums.size(), target , nums );
-    
-    }
+    return dp[0][target];
+  }
 };
