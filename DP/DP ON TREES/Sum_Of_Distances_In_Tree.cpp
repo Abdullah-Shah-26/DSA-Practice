@@ -7,52 +7,58 @@ using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+}
 
 //* TC = O(N) | SC = O(N)
 
 class Solution {
-  public:
-    //* 1. Compute Subtree sizes + root distance sum
-    int computeSubTree(int node, int parent, vector<vector<int>> &adj, vector<int> &subTreeSize, int depth, int &rootDistSum){
-      
-      int size = 1;
-      rootDistSum += depth;
+public:
+  //* 1. Compute Subtree sizes + root distance sum
+  int computeSubTree(int node, int parent, vector<vector<int>> &adj,
+                     vector<int> &subTreeSize, int depth, int &rootDistSum) {
 
-      for(int nei : adj[node]){
-        if(nei == parent) continue;
+    int size = 1;
+    rootDistSum += depth;
 
-        size += computeSubTree(nei, node, adj, subTreeSize, depth + 1, rootDistSum);
-      }
+    for (int nei : adj[node]) {
+      if (nei == parent)
+        continue;
 
-      subTreeSize[node] = size;
-      return size;
-
+      size +=
+          computeSubTree(nei, node, adj, subTreeSize, depth + 1, rootDistSum);
     }
 
-    //* 2. Reroot DP
-    void reroot(int node, int parent, vector<vector<int>> &adj, vector<int> &subTreeSize, vector<int> &distSum, int n){
+    subTreeSize[node] = size;
+    return size;
+  }
 
-      for(int nei : adj[node]){
-        if(nei == parent) continue;
+  //* 2. Reroot DP
+  void reroot(int node, int parent, vector<vector<int>> &adj,
+              vector<int> &subTreeSize, vector<int> &distSum, int n) {
 
-        distSum[nei] = distSum[node] - subTreeSize[nei] + (n - subTreeSize[nei]);
+    for (int nei : adj[node]) {
+      if (nei == parent)
+        continue;
 
-        reroot(nei, node, adj, subTreeSize, distSum, n);
-      }
+      distSum[nei] = distSum[node] - subTreeSize[nei] + (n - subTreeSize[nei]);
+
+      reroot(nei, node, adj, subTreeSize, distSum, n);
     }
-    
+  }
 
-    vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges) {
+  vector<int> sumOfDistancesInTree(int n, vector<vector<int>> &edges) {
     vector<vector<int>> adj(n);
 
-    for(auto &e : edges){
-      int u = e[0];
+    for (auto &e : edges) {
+      int u = e[0]; 
       int v = e[1];
 
       adj[u].push_back(v);
       adj[v].push_back(u);
-    }    
+    }
 
     vector<int> subTreeSize(n, 0);
     vector<int> distSum(n, 0);
@@ -66,5 +72,5 @@ class Solution {
     reroot(0, -1, adj, subTreeSize, distSum, n);
 
     return distSum;
-    }
+  }
 };
