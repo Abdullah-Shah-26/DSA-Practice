@@ -128,7 +128,9 @@ void solve() {
     ans[ep[u]] = cnt[u];
 
     // Send u's contribution to its parent.
-    // Just like diff array we take pref sum there 
+    // Just like diff array, we use a variable to propogate running prefix sum
+    // to next i, here we propogate to parent (since we go from children to
+    // parent)
     cnt[parent[u]] += cnt[u];
   }
 
