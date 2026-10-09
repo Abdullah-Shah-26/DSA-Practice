@@ -52,8 +52,8 @@ public:
     int m = grid[0].size();
 
     for (int k = min(m, n); k >= 2; k--) {
-      for (int i = 0; i + k <= n; i++) {
-        for (int j = 0; j + k <= m; j++) {
+      for (int i = 0; i + k - 1 < n; i++) {
+        for (int j = 0; j + k - 1 < m; j++) {
           if (isValid(grid, i, j, k))
             return k;
         }
