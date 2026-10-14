@@ -23,6 +23,7 @@ static const auto fastio = []() {
 }();
 
 //! Sparse Table is better for this problem since there are no updates here
+
 /*
 RMQSQ - Range Minimum Query
 no tags
@@ -62,29 +63,38 @@ Output:
 //! SC = O(Sqrt(N))
 
 const int N = 1e5 + 14;
+
 int S = (int)sqrt(N) + 1;
 int n, q, a[N], b[N];
 
 int main() {
   cin >> n;
+
   for (int i = 0; i < n; i++)
     cin >> a[i];
+
   for (int i = 0; i < n; i += S)
     b[i / S] = *min_element(a + i, a + min(i + S, n));
+
   cin >> q;
+
   while (q--) {
     int l, r;
     cin >> l >> r;
+
     int ans = INF;
+
     while (l < r) {
-      //! Start of current Block & Does this block [L..S) lie in range [L...R)
-      //! here R is exclusive
+
+      // Start of current block & does this block [L..S) lie in range [L...R)
+      // here R is exclusive
       if (l % S == 0 && l + S <= r) {
         ans = min(ans, b[l / S]);
         l += S;
       } else
         ans = min(ans, a[l++]);
     }
+
     cout << ans << endl;
   }
   return 0;
