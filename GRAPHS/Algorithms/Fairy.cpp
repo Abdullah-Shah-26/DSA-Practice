@@ -30,23 +30,6 @@ static const auto fastio = []() {
   return 0;
 }();
 
-#define rv(a) \
-  for (auto& x : (a)) cin >> x
-#define pv(a)                                   \
-  do {                                          \
-    for (const auto& x : (a)) cout << x << ' '; \
-    cout << '\n';                               \
-  } while (0)
-#define rm(mat)         \
-  for (auto& r : (mat)) \
-    for (auto& x : (r)) cin >> x
-#define pm(mat)                                     \
-  do {                                              \
-    for (const auto& r : (mat)) {                   \
-      for (const auto& x : (r)) cout << x << ' '; \
-      cout << '\n';                                 \
-    }                                               \
-  } while (0)
 #define pf(x) cout << x << '\n'
 #define all(x) begin(x), end(x)
 #define rall(x) rbegin(x), rend(x)
@@ -65,7 +48,7 @@ const int MAXN = 10005;
 
 int n, m;
 
-vector<pair<int, int>> adj[MAXN];  // [nei, edgeId]
+vector<pair<int, int>> adj[MAXN]; // [nei, edgeId]
 
 int parent[MAXN];
 int parentEdge[MAXN];
@@ -105,7 +88,8 @@ void dfs(int node, int par, int edgeUsed, int curCol, int compId) {
   tin[node] = ++timer;
 
   for (auto [child, edgeId] : adj[node]) {
-    if (edgeId == edgeUsed) continue;
+    if (edgeId == edgeUsed)
+      continue;
 
     if (!vis[child]) {
       dfs(child, node, edgeId, !curCol, compId);
@@ -116,7 +100,7 @@ void dfs(int node, int par, int edgeUsed, int curCol, int compId) {
 void dfsAccumulate(int node, int par) {
   for (auto [child, edgeId] : adj[node]) {
     if (parent[child] != node || parentEdge[child] != edgeId)
-      continue;  // Skip back edge else infinite recursion
+      continue; // Skip back edge else infinite recursion
 
     dfsAccumulate(child, node);
 
@@ -136,13 +120,13 @@ void solve() {
   cin >> n >> m;
 
   vpii edges;
-  edges.pb({-1, -1});  // dummy so edges are 1 - indexed
+  edges.pb({-1, -1}); // dummy so edges are 1 - indexed
 
   for (int id = 1; id <= m; id++) {
     int u, v;
     cin >> u >> v;
 
-    edges.pb({u, v});  // edges[id]  = {U,V}
+    edges.pb({u, v}); // edges[id]  = {U,V}
 
     adj[u].pb({v, id});
     adj[v].pb({u, id});
@@ -159,7 +143,7 @@ void solve() {
 
   // Undirected Graph
   // Only 2 kinds of edge possible
-  
+
   // Tree edge :
   // parent[u] == v || parent[v] == u
   // Back edge :
@@ -180,11 +164,13 @@ void solve() {
   for (int edgeId = 1; edgeId <= m; edgeId++) {
     auto [u, v] = edges[edgeId];
 
-    bool isTreeEdge = (parent[u] == v && parentEdge[u] == edgeId) || (parent[v] == u && parentEdge[v] == edgeId);
+    bool isTreeEdge = (parent[u] == v && parentEdge[u] == edgeId) ||
+                      (parent[v] == u && parentEdge[v] == edgeId);
 
     // Back Edge :
     if (!isTreeEdge) {
-      if (depth[u] < depth[v]) swap(u, v);
+      if (depth[u] < depth[v])
+        swap(u, v);
 
       if (color[u] == color[v]) {
         // same color endpts
@@ -214,14 +200,15 @@ void solve() {
   }
 
   for (int node = 1; node <= n; node++) {
-    if (parent[node] == 0)  // dfs root
+    if (parent[node] == 0) // dfs root
       dfsAccumulate(node, 0);
   }
 
   // Edge case: If already bipartite, removing ANY edge keeps it bipartite
   if (totalOddCycles == 0) {
     cout << m << endl;
-    for (int i = 1; i <= m; i++) cout << i << (i == m ? "" : " ");
+    for (int i = 1; i <= m; i++)
+      cout << i << (i == m ? "" : " ");
     cout << endl;
     return;
   }
@@ -229,7 +216,8 @@ void solve() {
   for (int edgeId = 1; edgeId <= m; edgeId++) {
     auto [u, v] = edges[edgeId];
 
-    bool isTreeEdge = (parent[u] == v && parentEdge[u] == edgeId) || (parent[v] == u && parentEdge[v] == edgeId);
+    bool isTreeEdge = (parent[u] == v && parentEdge[u] == edgeId) ||
+                      (parent[v] == u && parentEdge[v] == edgeId);
 
     if (!isTreeEdge && color[u] == color[v]) {
       if (totalOddCycles == 1)
@@ -241,7 +229,8 @@ void solve() {
   // cycle, other remains
 
   for (int node = 1; node <= n; node++) {
-    if (parent[node] == 0) continue;
+    if (parent[node] == 0)
+      continue;
 
     // Tree edge must cover ALL odd cycles and ZERO even cycles
     if (oddCnt[node] == totalOddCycles && evenCnt[node] == 0) {
@@ -257,7 +246,8 @@ void solve() {
   }
 
   cout << finalAns.size() << endl;
-  pv(finalAns);
+  for (auto &x : finalAns)
+    cout << x << " ";
 }
 
 int main() {

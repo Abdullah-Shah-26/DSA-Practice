@@ -3,23 +3,22 @@ using namespace std;
 
 class KMP {
 private:
-  vector<int> buildLps(string &pat) {
-    int m = pat.size();
+  vector<int> buildLps(string &s) {
+    int m = s.size();
 
     vector<int> lps(m);
 
-    for (int i = 1, len = 0; i < m;) {
-
-      if (pat[i] == pat[len]) {
-        lps[i++] = ++len;
-      }
-
-      else if (len) {
-        len = lps[len - 1];
-      }
-
-      else {
-        lps[i++] = 0;
+    for (int i = 1, j = 0; i < m;) {
+      if (s[i] == s[j]) {
+        lps[i] = j + 1;
+        i++;
+        j++;
+      } else {
+        if (j == 0) {
+          lps[i] = 0;
+          i++;
+        } else
+          j = lps[j - 1];
       }
     }
 
@@ -57,6 +56,7 @@ public:
       }
     }
 
+    // Ans contains indices where the pattern starts in text
     return ans;
   }
 };

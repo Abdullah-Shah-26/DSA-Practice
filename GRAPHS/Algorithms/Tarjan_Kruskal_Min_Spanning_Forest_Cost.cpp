@@ -32,8 +32,9 @@ void dfs(int node, int parentEdge, vector<vector<pair<int, int>>> &adj) {
         isBridge[edgeId] = 1;
       }
     } else {
-      // node1 ----- node2 ----- nei
+      // node1 ----- node2 ----- node
       //   |______________________|
+      //  nei
 
       low[node] = min(low[node], tin[nei]);
     }
