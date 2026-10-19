@@ -26,13 +26,6 @@ static const auto fastio = []() {
   return 0;
 }();
 
-#define rv(a) \
-  for (auto& x : (a)) cin >> x
-#define pv(a)                                   \
-  do {                                          \
-    for (const auto& x : (a)) cout << x << ' '; \
-    cout << '\n';                               \
-  } while (0)
 #define all(x) begin(x), end(x)
 #define rall(x) rbegin(x), rend(x)
 #define pb push_back
@@ -54,11 +47,14 @@ void solve() {
   cin >> n >> k;
 
   vi a(n + 1);
-  for (int i = 1; i <= n; i++) cin >> a[i];
+  for (int i = 1; i <= n; i++)
+    cin >> a[i];
 
   vll hot(k + 1), cold(k + 1);
-  for (int i = 1; i <= k; i++) cin >> cold[i];
-  for (int i = 1; i <= k; i++) cin >> hot[i];
+  for (int i = 1; i <= k; i++)
+    cin >> cold[i];
+  for (int i = 1; i <= k; i++)
+    cin >> hot[i];
 
   // dp[i][j] = min total time after finishing programs upto i
   // where j is the last program run on other cpu
@@ -72,7 +68,8 @@ void solve() {
     int x = a[i];
 
     for (int j = 0; j <= k; j++) {
-      if (dp[i - 1][j] == LINF) continue;
+      if (dp[i - 1][j] == LINF)
+        continue;
 
       // Case 1 :
       // Run a[i] on same cpu
