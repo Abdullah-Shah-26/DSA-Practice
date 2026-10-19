@@ -53,7 +53,7 @@ public:
     vector<vector<int>> adj(n);
 
     for (auto &e : edges) {
-      int u = e[0]; 
+      int u = e[0];
       int v = e[1];
 
       adj[u].push_back(v);
