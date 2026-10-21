@@ -2,25 +2,21 @@
 using namespace std;
 
 #include <iostream>
-class MinHeap
-{
+class MinHeap {
   // implementiong using array
   int *arr;
   int size;       // curr size of heap
   int Total_size; // total size of arr _ max capacity of heap
 public:
-  MinHeap(int n)
-  {
+  MinHeap(int n) {
     arr = new int(n);
     size = 0;
     Total_size = n;
   }
   //! funciton to insert in heap
-  void insert(int value)
-  {
+  void insert(int value) {
     // first check if heap size is available
-    if (size == Total_size)
-    {
+    if (size == Total_size) {
       cout << "Heap overflow \n";
       return;
     }
@@ -29,23 +25,20 @@ public:
     size++;
     // compare it with parent
     // if parent > child - SWAP
-    while (index > 0 && arr[(index - 1) / 2] > arr[index])
-    {
+    while (index > 0 && arr[(index - 1) / 2] > arr[index]) {
       swap(arr[(index - 1) / 2], arr[index]);
       index = (index - 1) / 2;
     }
     cout << arr[index] << " is inserted into the heap \n";
   }
   // ! print heap
-  void print()
-  {
+  void print() {
     for (int i = 0; i < size; i++)
       cout << arr[i] << " ";
     cout << endl;
   }
 };
-int main()
-{
+int main() {
   MinHeap H1(4);
   H1.insert(4);
   H1.insert(10);

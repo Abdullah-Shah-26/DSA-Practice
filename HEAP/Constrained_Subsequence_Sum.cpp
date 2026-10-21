@@ -7,32 +7,35 @@ using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+}
 
 class Solution {
 public:
-  int constrainedSubsetSum(vector<int>& nums, int k) {
-    
-  int n = nums.size();
-  int res = nums[0];
+  int constrainedSubsetSum(vector<int> &nums, int k) {
 
-  priority_queue<pair<int,int>> pq;
-    
-  pq.push({nums[0],0});
+    int n = nums.size();
+    int res = nums[0];
 
-  for(int i = 1; i < n; i++){
-  while(!pq.empty() && pq.top().second < i - k){
-    pq.pop();
-  }
+    priority_queue<pair<int, int>> pq;
 
-  int best = pq.empty() ? 0 : max(0,pq.top().first);
+    pq.push({nums[0], 0});
 
-  int curMax = max(nums[i], nums[i] + best);
+    for (int i = 1; i < n; i++) {
+      while (!pq.empty() && pq.top().second < i - k) {
+        pq.pop();
+      }
 
-  res = max(res, curMax);
+      int best = pq.empty() ? 0 : max(0, pq.top().first);
 
-  pq.push({curMax, i});
-}
-  return res;
+      int curMax = max(nums[i], nums[i] + best);
+
+      res = max(res, curMax);
+
+      pq.push({curMax, i});
+    }
+    return res;
   }
 };

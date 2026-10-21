@@ -7,33 +7,36 @@ using vi = vector<int>;
 using vll = vector<long long>;
 static const int MOD = 1e9 + 7;
 
-inline void fastio() { ios::sync_with_stdio(false); cin.tie(nullptr); }
+inline void fastio() {
+  ios::sync_with_stdio(false);
+  cin.tie(nullptr);
+}
 
 class Solution {
 public:
-  int halveArray(vector<int>& nums) {
-  double sum = 0;
+  int halveArray(vector<int> &nums) {
+    double sum = 0;
 
-  for(auto &x : nums){
-   sum += x;
-  }    
-    
-  double target = sum/2.0;
+    for (auto &x : nums) {
+      sum += x;
+    }
 
-  priority_queue<double> pq(begin(nums), end(nums)); //O(N)
+    double target = sum / 2.0;
 
-  int cnt = 0;
+    priority_queue<double> pq(begin(nums), end(nums)); // O(N)
 
-  while(!pq.empty() && sum > target){
-   double maxi = pq.top();
-   pq.pop();
+    int cnt = 0;
 
-   sum -= (maxi/2.0);
+    while (!pq.empty() && sum > target) {
+      double maxi = pq.top();
+      pq.pop();
 
-   pq.push(maxi/2.0);
-   cnt++;
-  }
+      sum -= (maxi / 2.0);
 
-  return cnt;
+      pq.push(maxi / 2.0);
+      cnt++;
+    }
+
+    return cnt;
   }
 };
