@@ -69,7 +69,7 @@ void solve() {
     }
   }
 
-  ll dp[k + 1][n + 1]; // dp[i][j] =  good arrays of len i ending in j
+  ll dp[k + 1][n + 1]; // dp[i][j] = good arrays of len i ending in j
 
   for (int i = 1; i <= n; i++)
     dp[1][i] = 1;
