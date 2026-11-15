@@ -21,8 +21,11 @@ struct sparseTable {
 
     st.assign(LOG, vector<int>(n));
 
-    st[0] = a;
+    // GCD of intervals of len = 1 (2^0)
+    for (int i = 0; i < n; i++)
+      st[0][i] = a[i];
 
+    // Each interval combines 2 adjacent intervals of len 2^(j - 1) to form interval of 2^j
     for (int j = 1; j < LOG; j++) {
       for (int i = 0; i + (1 << j) <= n; i++) {
         st[j][i] = min(st[j - 1][i], st[j - 1][i + (1 << (j - 1))]);
