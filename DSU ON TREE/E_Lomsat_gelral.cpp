@@ -63,10 +63,8 @@ static const auto fastio = []() {
 
 /*
 ==========================
-Observation / Thinking
---------------------------
 
-Classical DSU on Tree Problem
+Classical DSU on Tree
 
 ==========================
 */
