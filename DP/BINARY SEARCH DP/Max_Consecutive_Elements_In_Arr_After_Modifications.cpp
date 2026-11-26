@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Non trivial state
+// Non trivial dp state
 
 class Solution {
 public:
